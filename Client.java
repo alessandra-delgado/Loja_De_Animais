@@ -1,51 +1,33 @@
 import java.time.LocalDate;
 
-public class Client{
+public class Client extends Person{
     private static int last = 0;
     private int num;
-    private String name;
-    private int nif;
-    private int tel;
-    private LocalDate birthdate;
-    private char gender;
 
     public Client(){
+        super();
         last++;
         this.num = last;
-        this.name = "";
-        this.nif = 0;
-        this.tel = 0;
-        this.birthdate = null;
     }
 
     public Client(String name, int nif, int tel){
+        super(name, nif, tel);
         last++;
         num = last;
-        this.name = name;
-        this.nif = nif;
-        this.tel = tel;
-        this.birthdate = null;
-        this.gender = ' ';
-    }
-
-    public Client(String name, int nif, int tel, LocalDate birthdate){
-        last++;
-        num = last;
-        this.name = name;
-        this.nif = nif;
-        this.tel = tel;
-        this.birthdate = birthdate;
-        this.gender = ' ';
     }
 
     public Client(String name, int nif, int tel, LocalDate birthdate, char gender){
+        super(name, gender, birthdate, tel, nif);
         last++;
         num = last;
-        this.name = name;
-        this.nif = nif;
-        this.tel = tel;
-        this.birthdate = birthdate;
-        this.gender = gender;
+    }
+
+    public static int getLast(){
+        return last;
+    }
+
+    public static void setLast(int last){
+        Client.last = last;
     }
 
     public int getNum(){
@@ -56,48 +38,8 @@ public class Client{
         this.num = num;
     }
 
-    public String getName(){
-        return name;
-    }
-
-    public void setName(String name){
-        this.name = name;
-    }
-
-    public int getNif(){
-        return nif;
-    }
-
-    public void setNif(int nif){
-        this.nif = nif;
-    }
-
-    public int getTel(){
-        return tel;
-    }
-
-    public void setTel(int tel){
-        this.tel = tel;
-    }
-
-    public LocalDate getBirthdate(){
-        return birthdate;
-    }
-
-    public void setBirthdate(LocalDate birthdate){
-        this.birthdate = birthdate;
-    }
-
-    public char getGender(){
-        return gender;
-    }
-
-    public void setGender(char gender){
-        this.gender = gender;
-    }
-
     public String toString(){
-        String s = "Number = " + num + "\nName = " + name + "\nNIF = " + nif + "\nTel = " + tel + "\nBirthdate = " + birthdate + "\nGender = " + gender;
+        String s = super.toString() + "\nNumber = " + num;
         return s;
     }
 
