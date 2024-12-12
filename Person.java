@@ -1,11 +1,11 @@
 import java.time.LocalDate;
 
 public class Person {
-    private String name;
-    private char gender;
-    private LocalDate birthdate;
-    private int tel;
-    private int nif;
+    protected String name;
+    protected char gender;
+    protected LocalDate birthdate;
+    protected int tel;
+    protected int nif;
 
     public Person() {
         this.name = "";
@@ -80,5 +80,19 @@ public class Person {
             s += "\nBirthdate = " + birthdate;
         }
         return s;
+    }
+
+    public boolean equals(Object obj){
+        if ( obj != null && obj.getClass() == this.getClass() ) {
+            Person p = (Person) obj;
+            return name.equals(p.name) && gender == p.gender && birthdate.equals(p.birthdate) && tel == p.tel && nif == p.nif;
+        }else{
+            return false;
+        }
+    }
+
+    public Object clone(){
+        Person p = new Person(name, gender, birthdate, tel, nif);
+        return p;
     }
 }

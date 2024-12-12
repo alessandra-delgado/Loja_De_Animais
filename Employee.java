@@ -10,14 +10,8 @@ public class Employee extends Person {
         position = "";
     }
 
-    public Employee(double salary, String position, String name, int tel, int nif) {
-        super(name, tel, nif);
-        this.salary = salary;
-        this.position = position;
-    }
-
-    public Employee(double salary, String position, String name, int tel, int nif, LocalDate birthdate, char gender) {
-        super(name, gender, birthdate,tel, nif);
+    public Employee(Person p, double salary, String position) {
+        super(p.name, p.gender, p.birthdate, p.tel, p.nif);
         this.salary = salary;
         this.position = position;
     }
@@ -41,6 +35,21 @@ public class Employee extends Person {
     public String toString(){
         String s = super.toString() + "\nSalary: " + salary + "\nPosition: " + position + "\n";
         return s;
+    }
+
+    public boolean equals(Object obj){
+        if ( obj != null && obj.getClass() == this.getClass() ) {
+            Employee p = (Employee) obj;
+            return super.equals(p) && this.salary == p.salary && this.position.equals(p.position);
+        }else{
+            return false;
+        }
+    }
+
+    public Object clone(){
+        Person p = (Person) super.clone();
+        Employee e = new Employee(p, this.salary, this.position);
+        return e;
     }
 
 }
