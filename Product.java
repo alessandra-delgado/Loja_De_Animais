@@ -1,9 +1,9 @@
 public class Product {
-    private static int last = 0;
-    private int id;
-    private double price;
-    private String name;
-    private String category;
+    protected static int last = 0;
+    protected int id;
+    protected double price;
+    protected String name;
+    protected String category;
 
     public Product(){
         this.id = ++last;
@@ -63,7 +63,7 @@ public class Product {
                 p.getCategory().equals(this.getCategory());
     }
 
-    public Product clone(){
+    public Object clone(){
         Product p = new Product();
         p.price = this.price;
         p.name = this.name;
