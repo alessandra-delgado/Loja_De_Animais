@@ -18,6 +18,7 @@ public class Product {
         this.category = "";
     }
 
+    // GETTERS ------------------------------------------------------------------------------------
     public static int getLast() {
         return last;
     }
@@ -38,6 +39,7 @@ public class Product {
         return category;
     }
 
+    // SETTERS ------------------------------------------------------------------------------------
     public void setCategory(String category) {
         this.category = category;
     }
@@ -48,5 +50,30 @@ public class Product {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    // OVERRIDES ----------------------------------------------------------------------------------
+    public boolean equals(Object obj) {
+        if (obj == this) return true;
+        if (!(obj instanceof Product)) return false;
+        Product p = (Product) obj;
+        return p.getId() == this.getId() &&
+                p.getPrice() == this.getPrice() &&
+                p.getName().equals(this.getName()) &&
+                p.getCategory().equals(this.getCategory());
+    }
+
+    public Product clone(){
+        Product p = new Product();
+        p.price = this.price;
+        p.name = this.name;
+        p.category = this.category;
+        return p;
+    }
+
+    public String toString() {
+        String s = "";
+        s += "[ID: " + this.getId() + ", Price: " + this.getPrice() + ", Name: " + this.getName() + "]";
+        return s;
     }
 }
