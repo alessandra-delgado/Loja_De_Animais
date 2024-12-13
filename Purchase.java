@@ -14,6 +14,7 @@ public class Purchase {
         return id;
     }
 
+    
     public ArrayList<Product> getProducts() {
         ArrayList<Product> get = new ArrayList<>();
         for(Product p : this.products){
