@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Purchase {
-    private static last_id = 0;
+    private static int last_id = 0;
     private int id;
     private ArrayList<Product> products;
 
@@ -39,7 +39,7 @@ public class Purchase {
     }
 
     public boolean equals(Object o){
-        if (this.id == p.id) return true;
+        if (this == o) return true;
         if (!(o instanceof Purchase)) return false;
         Purchase p = (Purchase) o;
         return this.id == p.id && this.products.equals(p.products); // does id comparison make sense?
@@ -48,13 +48,13 @@ public class Purchase {
     public Object clone(){
         Purchase p = new Purchase();
         p.id = this.id; //?
-        p.products = this.products.clone();
+        p.products = (ArrayList<Product>) this.products.clone();
         return p;
     }
 
     public String toString(){
         String str = "";
-        sts = "[id: " + this.id + " , products: " + this.products.toString(); + " ]";
+        str = "[id: " + this.id + " , products: " + this.products.toString() + " ]";
         return str;
     }
 }
