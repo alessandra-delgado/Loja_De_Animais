@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Client extends Person{
-    private int totalSpent = 0;
+    private int totalSpent;
     private ArrayList<Purchase> purchases;
 
     public Client(){
@@ -38,8 +38,7 @@ public class Client extends Person{
     }
 
     public String toString(){
-        String s = super.toString() + "\nNumber = " + totalSpent;
-        return s;
+        return super.toString() + "\nNumber = " + totalSpent + "\nPurchases = " + purchases.toString() + "\n";
     }
 
     public boolean equals(Object obj){
@@ -58,7 +57,6 @@ public class Client extends Person{
         return c;
     }
 
-    //adicionar compra ao cliente
     public void AddPurchase(Purchase p){
         this.purchases.add(p);
         totalSpent += p.totalSpent;
