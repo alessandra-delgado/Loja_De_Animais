@@ -1,3 +1,5 @@
+import src.clas.Product;
+
 import java.util.ArrayList;
 
 public class Purchase {

@@ -1,4 +1,6 @@
-public class Animal extends Product{
+import src.clas.Product;
+
+public class Animal extends Product {
     private int age;
     private String gender;
     private String sciname;
