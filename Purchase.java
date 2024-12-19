@@ -68,7 +68,7 @@ public class Purchase {
 
     public String toString(){
         String str = "";
-        str = "[id: " + this.id + " , products: " + this.products.toString() + " ]";
+        str = "[id: " + this.id + " , products: " + this.products.toString() + ", total: " + this.total + " ]";
         return str;
     }
 }
