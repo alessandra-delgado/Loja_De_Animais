@@ -1,3 +1,5 @@
+package src.clas;
+
 import java.util.ArrayList;
 
 public class Client extends Person{
@@ -59,7 +61,7 @@ public class Client extends Person{
 
     public void AddPurchase(Purchase p){
         this.purchases.add(p);
-        totalSpent += p.total;
+        totalSpent += p.getTotal();
     }
 
     public void RemovePurchase(Purchase p){

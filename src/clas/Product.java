@@ -1,3 +1,5 @@
+package src.clas;
+
 public class Product {
     protected static int last = 0;
     protected int id;
