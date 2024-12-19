@@ -59,7 +59,7 @@ public class Client extends Person{
 
     public void AddPurchase(Purchase p){
         this.purchases.add(p);
-        totalSpent += p.totalSpent;
+        totalSpent += p.total;
     }
 
     public void RemovePurchase(Purchase p){

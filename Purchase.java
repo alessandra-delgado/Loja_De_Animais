@@ -3,10 +3,12 @@ import java.util.ArrayList;
 public class Purchase {
     private static int last_id = 0;
     private int id;
+    private int total;
     private ArrayList<Product> products;
 
     public Purchase(){
         this.id = ++last_id;
+        this.total = 0;
         products = new ArrayList<>();
     }
 
@@ -14,12 +16,12 @@ public class Purchase {
         return id;
     }
 
+    public int getTotal() {
+        return total;
+    }
+
     public ArrayList<Product> getProducts() {
-        ArrayList<Product> get = new ArrayList<>();
-        for(Product p : this.products){
-            get.add(p);
-        }
-        return get;
+        return (ArrayList<Product>) new ArrayList<>(this.products);
     }
 
     public void setId(int id) {
@@ -30,19 +32,31 @@ public class Purchase {
         this.products = products;
     }
 
-    public static Purchase getInstance() {
-        return new Purchase();
+    public void addProduct(Product p){
+        this.products.add(p);
+        this.total += (int) p.getPrice();
     }
 
-    public void addProducts(Product p){
-        this.products.add(p);
+    public void removeProduct(Product p){
+        this.products.remove(p);
+        this.total -= (int) p.getPrice();
+    }
+
+    public void removeProduct(int id){
+        this.products.remove(id);
+        this.total -= (int) this.products.get(id).getPrice();
+    }
+
+    public void removeAllProducts(){
+        this.products.clear();
+        this.total = 0;
     }
 
     public boolean equals(Object o){
         if (this == o) return true;
         if (!(o instanceof Purchase)) return false;
         Purchase p = (Purchase) o;
-        return this.id == p.id && this.products.equals(p.products); // does id comparison make sense?
+        return this.id == p.id && this.products.equals(p.products) && this.total == p.total; // does id comparison make sense?
     }
 
     public Object clone(){
