@@ -1,6 +1,5 @@
-package src;
-import inputs.Ler;
-import src.clas.*;
+package src.ClassesMenu;
+import src.Input.Ler;
 
 public class FuncoesMenu {
     public static void menu1() {
@@ -13,12 +12,13 @@ public class FuncoesMenu {
             op = Ler.umInt();
             switch (op) {
                 case 1:
-
+                    System.out.println("Finge que tem um catálogo :3");
                     break;
                 case 2:
-
-                    return;
+                    System.out.println("Fazer Compra");
+                    break;
                 case 3:
+                    System.out.println("Saí do menu 1");
                     return;
             }
         }
@@ -33,12 +33,13 @@ public class FuncoesMenu {
             op = Ler.umInt();
             switch (op) {
                 case 1:
-
+                    System.out.println("Produtos");
                     break;
                 case 2:
-
+                    System.out.println("Empregados");
                     break;
                 case 3:
+                    System.out.println("sair do menu 2");
                     return;
             }
         }
@@ -53,12 +54,13 @@ public class FuncoesMenu {
             op = Ler.umInt();
             switch (op) {
                 case 1:
-
+                    System.out.println("Vendas");
                     break;
                 case 2:
-
+                    System.out.println("Clientes");
                     break;
                 case 3:
+                    System.out.println("Saí do menu 3");
                     return;
             }
         }

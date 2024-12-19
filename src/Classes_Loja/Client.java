@@ -1,8 +1,8 @@
-package src.clas;
-
+package src.Classes_Loja;
 import java.util.ArrayList;
 
-public class Client extends Person{
+
+public class Client extends Person {
     private int totalSpent;
     private ArrayList<Purchase> purchases;
 

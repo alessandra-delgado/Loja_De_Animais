@@ -1,4 +1,4 @@
-package src.clas;
+package src.Classes_Loja;
 
 import java.time.LocalDate;
 
