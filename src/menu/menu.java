@@ -1,5 +1,5 @@
-package menu;
-
+package src.menu;
+import menu.FuncoesMenu;
 import inputs.Ler;
 
 public class menu {
