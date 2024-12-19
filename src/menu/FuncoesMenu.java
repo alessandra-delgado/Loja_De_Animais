@@ -17,6 +17,8 @@ public class FuncoesMenu {
                 case 2:
 
                     return;
+                case 3:
+                    return;
             }
         }
     }
