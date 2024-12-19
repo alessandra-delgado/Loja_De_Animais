@@ -1,4 +1,4 @@
-package inputs;
+package src.Input;
 
 import java.io.*;
 public class Ler {

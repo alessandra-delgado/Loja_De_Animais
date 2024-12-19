@@ -1,4 +1,4 @@
-import src.clas.Product;
+package src.Classes_Loja;
 
 public class Animal extends Product {
     private int age;
