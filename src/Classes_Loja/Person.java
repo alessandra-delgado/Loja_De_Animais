@@ -1,3 +1,5 @@
+package src.Classes_Loja;
+
 import java.time.LocalDate;
 
 public class Person {

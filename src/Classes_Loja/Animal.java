@@ -1,4 +1,6 @@
-public class Animal extends Product{
+package src.Classes_Loja;
+
+public class Animal extends Product {
     private int age;
     private String gender;
     private String sciname;

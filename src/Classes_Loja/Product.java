@@ -1,3 +1,5 @@
+package src.Classes_Loja;
+
 public class Product {
     protected static int last = 0;
     protected int id;
