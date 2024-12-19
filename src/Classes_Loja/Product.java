@@ -1,6 +1,7 @@
 package src.Classes_Loja;
+import java.io.Serializable;
 
-public class Product {
+public class Product implements Serializable {
     protected static int last = 0;
     protected int id;
     protected double price;

@@ -1,6 +1,7 @@
 package src.Classes_Loja;
+import java.io.Serializable;
 
-public class Animal extends Product {
+public class Animal extends Product implements Serializable {
     private int age;
     private String gender;
     private String sciname;

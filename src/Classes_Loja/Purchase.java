@@ -1,8 +1,8 @@
 package src.Classes_Loja;
-
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Purchase {
+public class Purchase implements Serializable {
     private static int last_id = 0;
     private int id;
     private int total;

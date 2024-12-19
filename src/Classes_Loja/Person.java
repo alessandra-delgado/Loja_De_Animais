@@ -1,8 +1,8 @@
 package src.Classes_Loja;
-
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Person {
+public class Person implements Serializable{
     protected String name;
     protected char gender;
     protected LocalDate birthdate;

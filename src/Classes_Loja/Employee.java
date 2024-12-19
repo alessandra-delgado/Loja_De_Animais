@@ -1,6 +1,7 @@
 package src.Classes_Loja;
+import java.io.Serializable;
 
-public class Employee extends Person {
+public class Employee extends Person implements Serializable {
     private double salary;
     private String position;
 
