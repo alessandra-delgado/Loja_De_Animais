@@ -2,11 +2,9 @@ package src;
 
 import src.ClassesMenu.MainMenu;
 import src.Classes_Loja.*;
-import src.Enum.AnimalType;
 import src.Enum.ProductType;
-import src.Files.files;
+import src.Files.File;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -16,36 +14,29 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Hello World");
         init();
-        fakeData();
 
         // Shows main menu
-        MainMenu mainMenu = new MainMenu();
-        mainMenu.show();
+        MainMenu.show();
+
+        File.displayInfo(File.loadInfo("Cosmetics/Cosmetics.dat"));
     }
 
     public static void init() {
         // Initializes the product by type
         products = new HashMap<>();
 
-        products.put(ProductType.ANIMAL_REAL_LAND, new ArrayList<>());
-        products.put(ProductType.ANIMAL_REAL_AQUATIC, new ArrayList<>());
-        products.put(ProductType.ANIMAL_REAL_AERIAL, new ArrayList<>());
+        products.put(ProductType.ANIMAL_REAL_LAND, File.loadInfo("Animal/Imaginary/Land.dat"));
+        products.put(ProductType.ANIMAL_REAL_AQUATIC, File.loadInfo("Animal/Imaginary/Aquatic.dat"));
+        products.put(ProductType.ANIMAL_REAL_AERIAL, File.loadInfo("Animal/Imaginary/Aerial.dat"));
 
-        products.put(ProductType.ANIMAL_IMAGINARY_LAND, new ArrayList<>());
-        products.put(ProductType.ANIMAL_IMAGINARY_AQUATIC, new ArrayList<>());
-        products.put(ProductType.ANIMAL_IMAGINARY_AERIAL, new ArrayList<>());
+        products.put(ProductType.ANIMAL_IMAGINARY_LAND, File.loadInfo("Animal/Real/Land.dat"));
+        products.put(ProductType.ANIMAL_IMAGINARY_AQUATIC, File.loadInfo("Animal/Real/Aquatic.dat"));
+        products.put(ProductType.ANIMAL_IMAGINARY_AERIAL, File.loadInfo("Animal/Real/Aerial.dat"));
 
-        products.put(ProductType.COSMETIC, new ArrayList<>());
-        products.put(ProductType.FOOD, new ArrayList<>());
-        products.put(ProductType.HABITAT, new ArrayList<>());
-        products.put(ProductType.HYGIENE, new ArrayList<>());
-        products.put(ProductType.MEDICINE, new ArrayList<>());
-    }
-
-    public static void fakeData() {
-        products.get(ProductType.ANIMAL_REAL_LAND).add(new Animal(6, "F", "Cat Catus", "cat", AnimalType.LAND));
-        products.get(ProductType.ANIMAL_REAL_LAND).add(new Animal(12, "M", "Cat Catus", "cat", AnimalType.LAND));
-        products.get(ProductType.ANIMAL_REAL_LAND).add(new Animal(33, "F", "Cat Catus", "cat", AnimalType.LAND));
+        products.put(ProductType.COSMETIC, File.loadInfo("Cosmetics/Cosmetics.dat"));
+        products.put(ProductType.FOOD, File.loadInfo("Food/Food.dat"));
+        products.put(ProductType.HABITAT, File.loadInfo("Habitat/Habitat.dat"));
+        products.put(ProductType.HYGIENE, File.loadInfo("Hygiene/Hygiene.dat"));
+        products.put(ProductType.MEDICINE, File.loadInfo("Medicine/Medicine.dat"));
     }
 }
-

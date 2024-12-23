@@ -1,11 +1,14 @@
 package src.Files;
+
 import java.io.*;
 import java.util.ArrayList;
-import src.Classes_Loja.Product;
 
-public class files {
-    //Salvar Informação
+public class File {
+    private static String path = "Loja_De_Animais/src/Files_Products/";
+
     public static <Info> void saveInfo(ArrayList<Info> list, String fileName) {
+        fileName = path + fileName;
+
         try (ObjectOutputStream info = new ObjectOutputStream(new FileOutputStream(fileName))){
             info.writeObject(list);
             info.flush();
@@ -13,16 +16,17 @@ public class files {
         } catch (IOException e) {
             System.out.println("Erro ao gravar dados: " + e.getMessage());
         }
-
     }
 
     // Carregar
-    public static <Info> ArrayList<Info> loadInfo(String fileName) {
-        ArrayList<Info> list = new ArrayList<>();
+    public static <T> ArrayList<T> loadInfo(String fileName) {
+        fileName = path + fileName;
+        ArrayList<T> list = new ArrayList<>();
         try (ObjectInputStream info = new ObjectInputStream(new FileInputStream(fileName))){
-            list = (ArrayList<Info>) info.readObject();
-            System.out.println("Dados carregados no ficheiro: " + fileName);
-        }catch (IOException | ClassNotFoundException e) {
+            list = (ArrayList<T>) info.readObject();
+        }catch (IOException e) {
+            //System.out.println("Erro ao carregar dados: " + e.getMessage());
+        } catch (ClassNotFoundException e) {
             System.out.println("Erro ao ler os dados em" + fileName + ":" + e.getMessage());
         }
         return list;
@@ -34,10 +38,8 @@ public class files {
             for (Info info : list){
                 System.out.println(info);
             }
-
         }
     }
-
 }
 
 

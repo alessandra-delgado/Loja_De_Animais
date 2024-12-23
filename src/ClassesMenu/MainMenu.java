@@ -2,8 +2,8 @@ package src.ClassesMenu;
 
 import src.Input.Ler;
 
-public class MainMenu implements IMenu{
-    private void menu() {
+public class MainMenu {
+    private static void menu() {
         System.out.println("1 - Catálogo");
         System.out.println("2 - Inventário ");
         System.out.println("3 - Estatisticas");
@@ -11,12 +11,11 @@ public class MainMenu implements IMenu{
         System.out.print("Escolha uma opção: ");
     }
 
-    public void show() {
-        int op = 0;
+    public static void show() {
         do {
             menu();
-            op = Ler.umInt();
-            switch (op) {
+
+            switch (Ler.umInt()) {
                 case 1:
                     FuncoesMenu.menuCatalogo();
                     break;
