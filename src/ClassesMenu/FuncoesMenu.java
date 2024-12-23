@@ -1,6 +1,8 @@
+// Todo: Colocar cada menu na sua própria classe
 package src.ClassesMenu;
 
-import src.Classes_Loja.Animal;
+import src.Classes_Loja.Product;
+import src.Enum.ProductType;
 import src.Input.Ler;
 import src.Main;
 
@@ -8,17 +10,17 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class FuncoesMenu {
-    public static void menu1() {
+    public static void menuCatalogo() {
+        System.out.println("Menu Catálogo");
         System.out.println("1 - Visualizar catálogo");
         System.out.println("2 - Fazer Compra");
-        System.out.println("3 - Sair");
+        System.out.println("3 - Voltar");
+        System.out.print("Escolha uma opção: ");
 
-        int op = 0;
         while (true) {
-            op = Ler.umInt();
-            switch (op) {
+            switch (Ler.umInt()) {
                 case 1:
-                    System.out.println("Finge que tem um catálogo :3");
+                    FuncoesMenu.catalogMenu();
                     break;
                 case 2:
                     System.out.println("Fazer Compra");
@@ -30,7 +32,7 @@ public class FuncoesMenu {
         }
     }
 
-    public static void menu2() {
+    public static void menuInventario() {
         System.out.println("1 - Produtos");
         System.out.println("2 - Empregados");
         System.out.println("3 - Sair");
@@ -52,7 +54,7 @@ public class FuncoesMenu {
         }
     }
 
-    public static void menu3() {
+    public static void menuEstatisticas() {
         System.out.println("1 - Vendas");
         System.out.println("2 - Clientes");
         System.out.println("3 - Sair");
@@ -76,38 +78,58 @@ public class FuncoesMenu {
     }
 
     public static void catalogMenu() {
-        System.out.println("1 - Animais");
-        System.out.println("2 - Cosmeticos");
-        System.out.println("3 - Comida");
-        System.out.println("4 - Habitat");
-        System.out.println("5 - Higiene");
-        System.out.println("6 - Medicamentos");
-        System.out.println("7 - Sair");
-        System.out.println("? - ?");
-
-
-        char op = Ler.umChar();
         do {
-            switch (op) {
+            System.out.println("1 - Animais Reais");
+            System.out.println("2 - Animais Imaginários");
+            System.out.println("3 - Cosmeticos");
+            System.out.println("4 - Comida");
+            System.out.println("5 - Habitat");
+            System.out.println("6 - Higiene");
+            System.out.println("7 - Medicamentos");
+            System.out.println("? - ?");
+            System.out.println("8 - Voltar");
+            System.out.print("Escolha uma opção: ");
+
+            switch (Ler.umChar()) {
                 case '1':
-                    System.out.println("Animais");
+                    System.out.println("Animais Reais");
+                    animalMenu(true);
                     break;
                 case '2':
-                    System.out.println("Cosmeticos");
+                    System.out.println("Animais Imaginários");
+                    animalMenu(false);
                     break;
                 case '3':
-                    System.out.println("Comida");
+                    System.out.println("Cosmeticos");
+                    for (Product p : Main.products.get(ProductType.COSMETIC)) {
+                        System.out.println(p);
+                    }
                     break;
                 case '4':
-                    System.out.println("Habitat");
+                    System.out.println("Comida");
+                    for (Product p : Main.products.get(ProductType.FOOD)) {
+                        System.out.println(p);
+                    }
                     break;
                 case '5':
-                    System.out.println("Medicamentos");
+                    System.out.println("Habitat");
+                    for (Product p : Main.products.get(ProductType.HABITAT)) {
+                        System.out.println(p);
+                    }
                     break;
                 case '6':
-                    System.out.println("Higiene");
+                    System.out.println("Medicamentos");
+                    for (Product p : Main.products.get(ProductType.MEDICINE)) {
+                        System.out.println(p);
+                    }
                     break;
                 case '7':
+                    System.out.println("Higiene");
+                    for (Product p : Main.products.get(ProductType.HYGIENE)) {
+                        System.out.println(p);
+                    }
+                    break;
+                case '8':
                     System.out.println("Sair");
                     return;
                 case '!':
@@ -118,53 +140,73 @@ public class FuncoesMenu {
                     break;
             }
         } while (true);
-
     }
 
-    public static void animalTypes() {
+    public static void animalMenu(boolean realAnimals) {
+
+        ProductType aerialType = realAnimals ? ProductType.ANIMAL_REAL_AERIAL : ProductType.ANIMAL_IMAGINARY_AERIAL;
+        ProductType landType = realAnimals ? ProductType.ANIMAL_REAL_LAND : ProductType.ANIMAL_IMAGINARY_LAND;
+        ProductType aquaticType = realAnimals ? ProductType.ANIMAL_REAL_AQUATIC : ProductType.ANIMAL_IMAGINARY_AQUATIC;
+
         System.out.println("1 - Aéreos");
         System.out.println("2 - Terrestres");
         System.out.println("3 - Aquáticos");
-        System.out.println("4 - Sair");
+        System.out.println("4 - Todos");
+        System.out.println("5 - Voltar");
+        System.out.print("Escolha uma opção: ");
 
-        int op = 0;
         while (true) {
-            op = Ler.umInt();
-            switch (op) {
+            switch (Ler.umInt()) {
                 case 1:
                     System.out.println("Aéreos");
-                    Main.animals_i.remove(0);
-                    Main.animals_i.addAll(0, (ArrayList<Animal>) readFile("src/Files_Products/Animal/Imaginary/Air.dat"));
+
+                    for (Product p : Main.products.get(aerialType)) {
+                        System.out.println(p);
+                    }
                     break;
                 case 2:
                     System.out.println("Terrestres");
-                    Main.animals_i.remove(1);
-                    Main.animals_i.addAll(1, (ArrayList<Animal>) readFile("src/Files_Products/Animal/Imaginary/Land.dat"));
+                    for (Product p : Main.products.get(landType)) {
+                        System.out.println(p);
+                    }
                     break;
                 case 3:
                     System.out.println("Aquáticos");
-                    Main.animals_i.remove(2);
-                    Main.animals_i.addAll(2, (ArrayList<Animal>) readFile("src/Files_Products/Animal/Imaginary/Water.dat"));
+                    for (Product p : Main.products.get(aquaticType)) {
+                        System.out.println(p);
+                    }
                     break;
                 case 4:
+                    System.out.println("Todos");
+                    for (Product p : Main.products.get(aerialType)) {
+                        System.out.println(p);
+                    }
+
+                    for (Product p : Main.products.get(landType)) {
+                        System.out.println(p);
+                    }
+
+                    for (Product p : Main.products.get(aquaticType)) {
+                        System.out.println(p);
+                    }
+                    break;
+                case 5:
                     System.out.println("Sair");
                     return;
             }
-
-        }
-        public static ArrayList<?> readFile (String path){
-            ArrayList<?> arr = new ArrayList<>();
-            try {
-                ObjectInputStream is = new ObjectInputStream(new FileInputStream(path));
-                arr = (ArrayList<?>) is.readObject();
-            } catch (IOException e) {
-                System.out.println(e.getMessage());
-            } catch (ClassNotFoundException e) {
-                System.out.println(e.getMessage());
-            }
-
-            return arr;
         }
     }
 
+    public static ArrayList<?> readFile(String path) {
+        try {
+            ObjectInputStream is = new ObjectInputStream(new FileInputStream(path));
+            ArrayList<?> arr = (ArrayList<?>) is.readObject();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        } catch (ClassNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
 
+        return arr;
+    }
+}

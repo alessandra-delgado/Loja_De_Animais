@@ -1,33 +1,36 @@
 package src.ClassesMenu;
+
 import src.Input.Ler;
 
-public class Menu {
-    public static void main_menu() {
+public class MainMenu implements IMenu{
+    private void menu() {
         System.out.println("1 - Catálogo");
         System.out.println("2 - Inventário ");
         System.out.println("3 - Estatisticas");
         System.out.println("4 - Sair");
-        System.out.println("Escolha uma opção:");
+        System.out.print("Escolha uma opção: ");
     }
-    public static void main() {
+
+    public void show() {
         int op = 0;
         do {
-            main_menu();
+            menu();
             op = Ler.umInt();
             switch (op) {
                 case 1:
-                    FuncoesMenu.menu1();
+                    FuncoesMenu.menuCatalogo();
                     break;
                 case 2:
-                    FuncoesMenu.menu2();
+                    FuncoesMenu.menuInventario();
                     break;
                 case 3:
-                    FuncoesMenu.menu3();
+                    FuncoesMenu.menuEstatisticas();
                     break;
                 case 4:
+                    // Exit
                     return;
             }
-        }while (true);
+        } while (true);
     }
 }
 

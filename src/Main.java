@@ -1,38 +1,49 @@
 package src;
 
-import src.ClassesMenu.Menu;
+import src.ClassesMenu.MainMenu;
 import src.Classes_Loja.*;
+import src.Enum.AnimalType;
+import src.Enum.ProductType;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Main {
-    public static ArrayList<Animal> animals_r;
-    public static ArrayList<Animal> animals_i;
-    public static ArrayList<Product> cosmetics;
-    public static ArrayList<Product> food;
-    public static ArrayList<Product> habitat;
-    public static ArrayList<Product> hygiene;
-    public static ArrayList<Product> medicine;
-    public static ArrayList<Product> secret;
-
+    public static HashMap<ProductType, ArrayList<Product>> products;
 
     public static void main(String[] args) {
         System.out.println("Hello World");
         init();
+        fakeData();
 
-
-        Menu.main();
+        // Shows main menu
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.show();
     }
 
-    public static void init(){
-        ArrayList<ArrayList<Animal>> animals_r = new ArrayList<>();
-        ArrayList<ArrayList<Animal>> animals_i = new ArrayList<>();
-        ArrayList<Product> cosmetics = new ArrayList<>();
-        ArrayList<Product> food = new ArrayList<>();
-        ArrayList<Product> habitat = new ArrayList<>();
-        ArrayList<Product> hygiene = new ArrayList<>();
-        ArrayList<Product> medicine = new ArrayList<>();
-        ArrayList<Product> secret = new ArrayList<>();
+    public static void init() {
+        // Initializes the product by type
+        products = new HashMap<>();
 
+        products.put(ProductType.ANIMAL_REAL_LAND, new ArrayList<>());
+        products.put(ProductType.ANIMAL_REAL_AQUATIC, new ArrayList<>());
+        products.put(ProductType.ANIMAL_REAL_AERIAL, new ArrayList<>());
+
+        products.put(ProductType.ANIMAL_IMAGINARY_LAND, new ArrayList<>());
+        products.put(ProductType.ANIMAL_IMAGINARY_AQUATIC, new ArrayList<>());
+        products.put(ProductType.ANIMAL_IMAGINARY_AERIAL, new ArrayList<>());
+
+        products.put(ProductType.COSMETIC, new ArrayList<>());
+        products.put(ProductType.FOOD, new ArrayList<>());
+        products.put(ProductType.HABITAT, new ArrayList<>());
+        products.put(ProductType.HYGIENE, new ArrayList<>());
+        products.put(ProductType.MEDICINE, new ArrayList<>());
+    }
+
+    public static void fakeData() {
+        products.get(ProductType.ANIMAL_REAL_LAND).add(new Animal(6, "F", "Cat Catus", "cat", AnimalType.LAND));
+        products.get(ProductType.ANIMAL_REAL_LAND).add(new Animal(12, "M", "Cat Catus", "cat", AnimalType.LAND));
+        products.get(ProductType.ANIMAL_REAL_LAND).add(new Animal(33, "F", "Cat Catus", "cat", AnimalType.LAND));
     }
 }
+
