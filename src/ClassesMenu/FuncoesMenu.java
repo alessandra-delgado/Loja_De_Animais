@@ -198,9 +198,10 @@ public class FuncoesMenu {
     }
 
     public static ArrayList<?> readFile(String path) {
+        ArrayList<?> arr = new ArrayList<>();
         try {
             ObjectInputStream is = new ObjectInputStream(new FileInputStream(path));
-            ArrayList<?> arr = (ArrayList<?>) is.readObject();
+            arr = (ArrayList<?>) is.readObject();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         } catch (ClassNotFoundException e) {
