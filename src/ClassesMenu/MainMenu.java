@@ -1,33 +1,35 @@
 package src.ClassesMenu;
+
 import src.Input.Ler;
 
-public class Menu {
-    public static void main_menu() {
+public class MainMenu {
+    private static void menu() {
         System.out.println("1 - Catálogo");
         System.out.println("2 - Inventário ");
         System.out.println("3 - Estatisticas");
         System.out.println("4 - Sair");
-        System.out.println("Escolha uma opção:");
+        System.out.print("Escolha uma opção: ");
     }
-    public static void main() {
-        int op = 0;
+
+    public static void show() {
         do {
-            main_menu();
-            op = Ler.umInt();
-            switch (op) {
+            menu();
+
+            switch (Ler.umInt()) {
                 case 1:
-                    FuncoesMenu.menu1();
+                    CatalogMenu.show();
                     break;
                 case 2:
-                    FuncoesMenu.menu2();
+                    FuncoesMenu.menuInventario();
                     break;
                 case 3:
-                    FuncoesMenu.menu3();
+                    FuncoesMenu.menuEstatisticas();
                     break;
                 case 4:
+                    // Exit
                     return;
             }
-        }while (true);
+        } while (true);
     }
 }
 

@@ -1,4 +1,6 @@
+// Todo: Colocar cada menu na sua própria classe
 package src.ClassesMenu;
+
 import src.Input.Ler;
 
 public class FuncoesMenu {
@@ -10,8 +12,11 @@ public class FuncoesMenu {
 
         int op = 0;
         while (true) {
-            op = Ler.umInt();
-            switch (op) {
+            System.out.println("1 - Produtos");
+            System.out.println("2 - Empregados");
+            System.out.println("3 - Voltar");
+            System.out.print("Insira uma opção: ");
+            switch (Ler.umInt()) {
                 case 1:
                     System.out.println("Finge que tem um catálogo :3");
                     break;
@@ -45,7 +50,7 @@ public class FuncoesMenu {
                     Menu_Empregados.main();
                     break;
                 case 3:
-                    System.out.println("sair do menu 2");
+                    System.out.println("A sair...");
                     return;
             }
         }
