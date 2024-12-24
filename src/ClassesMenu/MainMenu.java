@@ -20,10 +20,10 @@ public class MainMenu {
                     CatalogMenu.show();
                     break;
                 case 2:
-                    FuncoesMenu.menuInventario();
+                    FuncoesMenu.menu2();
                     break;
                 case 3:
-                    FuncoesMenu.menuEstatisticas();
+                    FuncoesMenu.menu3();
                     break;
                 case 4:
                     // Exit

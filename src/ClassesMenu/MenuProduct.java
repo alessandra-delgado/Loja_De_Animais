@@ -17,9 +17,8 @@ public class MenuProduct {
     }
 
     public static void show() {
-        do {
-            menu();
-
+        while (true) {
+            MenuProduct.menu();
             switch (Ler.umInt()) {
                 case 1:
                     addProduct();
@@ -39,7 +38,7 @@ public class MenuProduct {
                     System.out.println("Voltar");
                     return;
             }
-        } while (true);
+        }
     }
 
     private static void addProduct() {
@@ -50,38 +49,38 @@ public class MenuProduct {
         System.out.println("4 - Medicamentos");
         System.out.println("5 - Voltar");
 
-        int resposta = Ler.umInt();
+        while (true) {
+            switch (Ler.umInt()) {
+                case 1:
+                    System.out.println("Qual o nome do cosmetico:");
+                    String nome = Ler.umaString();
+                    System.out.println("Qual o preco do cosmetico:");
+                    double preco = Ler.umDouble();
 
-        switch (resposta) {
-            case 1:
-                System.out.println("Qual o nome do cosmetico:");
-                String nome = Ler.umaString();
-                System.out.println("Qual o preco do cosmetico:");
-                double preco = Ler.umDouble();
+                    //Cria produto
+                    Product novoCosmetico = new Product(nome, preco);
+                    //Adiciona á lista de cosméticos
+                    novoCosmetico.setCategory(ProductType.COSMETIC);
+                    Main.products.get(ProductType.COSMETIC).add(novoCosmetico);
 
-                //Cria produto
-                Product novoCosmetico = new Product(nome, preco);
-                //Adiciona á lista de cosméticos
-                novoCosmetico.setCategory(ProductType.COSMETIC);
-                Main.products.get(ProductType.COSMETIC).add(novoCosmetico);
+                    //Guardar em cosmetics.dat
+                    File.binWrite(Main.products.get(ProductType.COSMETIC), "Cosmetics/Cosmetics.dat");
 
-                //Guardar em cosmetics.dat
-                File.binWrite(Main.products.get(ProductType.COSMETIC), "Cosmetics/Cosmetics.dat");
-
-                System.out.println("Cosmético registado!!");
-                break;
-            case 2:
-                Main.products.get(ProductType.FOOD).add(new Product());
-                break;
-            case 3:
-                Main.products.get(ProductType.HABITAT).add(new Product());
-                break;
-            case 4:
-                Main.products.get(ProductType.MEDICINE).add(new Product());
-                break;
-            case 5:
-                System.out.println("Voltar");
-                break;
+                    System.out.println("Cosmético registado!!");
+                    break;
+                case 2:
+                    Main.products.get(ProductType.FOOD).add(new Product());
+                    break;
+                case 3:
+                    Main.products.get(ProductType.HABITAT).add(new Product());
+                    break;
+                case 4:
+                    Main.products.get(ProductType.MEDICINE).add(new Product());
+                    break;
+                case 5:
+                    System.out.println("Voltar");
+                    break;
+            }
         }
     }
 }
