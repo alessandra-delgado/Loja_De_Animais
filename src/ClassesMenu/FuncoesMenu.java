@@ -42,11 +42,10 @@ public class FuncoesMenu {
             op = Ler.umInt();
             switch (op) {
                 case 1:
-                    System.out.println("Produtos");
-                    Menu_Produtos.main();
+                    MenuProduct.show();
                     break;
                 case 2:
-                    System.out.println("Empregados");
+
                     Menu_Empregados.main();
                     break;
                 case 3:
@@ -116,39 +115,4 @@ public class FuncoesMenu {
         }
     }
 
-    public class Menu_Produtos {
-        public static void main_Produtos() {
-            System.out.println("1 - Adicionar Produtos");
-            System.out.println("2 - Atualizar Produtos ");
-            System.out.println("3 - Visualizar Produtos ");
-            System.out.println("4 - Eliminar Produtos ");
-            System.out.println("5 - Sair");
-            System.out.println("Escolha uma opção:");
-        }
-
-        public static void main() {
-            int op = 0;
-            do {
-                main_Produtos();
-                op = Ler.umInt();
-                switch (op) {
-                    case 1:
-                        System.out.println("Adicionar Produtos");
-                        break;
-                    case 2:
-                        System.out.println("Atualizar Produtos");
-                        break;
-                    case 3:
-                        System.out.println("Visualizar Produtos");
-                        break;
-                    case 4:
-                        System.out.println("Eliminar Produtos");
-                        break;
-                    case 5:
-                        System.out.println("Sair");
-                        return;
-                }
-            } while (true);
-        }
-    }
 }
