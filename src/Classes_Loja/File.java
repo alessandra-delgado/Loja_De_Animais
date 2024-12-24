@@ -7,7 +7,7 @@ public class File {
     /**
      * The base path of the files
      */
-    private static final String path = "Loja_De_Animais/src/Files/";
+    private static final String path = "Loja_De_Animais/files/";
 
     /**
      * Writes the given ArrayList to the fileName file in binary format.
