@@ -8,7 +8,7 @@ public class Purchase {
     private int total;
     private ArrayList<Product> products;
 
-    public Purchase(){
+    public Purchase() {
         this.id = ++last_id;
         this.total = 0;
         products = new ArrayList<>();
@@ -23,7 +23,7 @@ public class Purchase {
     }
 
     public ArrayList<Product> getProducts() {
-        return (ArrayList<Product>) new ArrayList<>(this.products);
+        return new ArrayList<>(this.products);
     }
 
     public void setId(int id) {
@@ -34,43 +34,41 @@ public class Purchase {
         this.products = products;
     }
 
-    public void addProduct(Product p){
+    public void addProduct(Product p) {
         this.products.add(p);
         this.total += (int) p.getPrice();
     }
 
-    public void removeProduct(Product p){
+    public void removeProduct(Product p) {
         this.products.remove(p);
         this.total -= (int) p.getPrice();
     }
 
-    public void removeProduct(int id){
+    public void removeProduct(int id) {
         this.products.remove(id);
         this.total -= (int) this.products.get(id).getPrice();
     }
 
-    public void removeAllProducts(){
+    public void removeAllProducts() {
         this.products.clear();
         this.total = 0;
     }
 
-    public boolean equals(Object o){
+    public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Purchase)) return false;
         Purchase p = (Purchase) o;
         return this.id == p.id && this.products.equals(p.products) && this.total == p.total; // does id comparison make sense?
     }
 
-    public Object clone(){
+    public Object clone() {
         Purchase p = new Purchase();
         p.id = this.id; //?
         p.products = (ArrayList<Product>) this.products.clone();
         return p;
     }
 
-    public String toString(){
-        String str = "";
-        str = "[id: " + this.id + " , products: " + this.products.toString() + ", total: " + this.total + " ]";
-        return str;
+    public String toString() {
+        return "[id: " + this.id + " , products: " + this.products.toString() + ", total: " + this.total + " ]";
     }
 }

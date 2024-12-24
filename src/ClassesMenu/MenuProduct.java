@@ -2,7 +2,7 @@ package src.ClassesMenu;
 
 import src.Classes_Loja.Product;
 import src.Enum.ProductType;
-import src.Files.File;
+import src.Classes_Loja.File;
 import src.Input.Ler;
 import src.Main;
 
@@ -66,7 +66,7 @@ public class MenuProduct {
                 Main.products.get(ProductType.COSMETIC).add(novoCosmetico);
 
                 //Guardar em cosmetics.dat
-                File.saveInfo(Main.products.get(ProductType.COSMETIC), "src/Files_Products/Cosmetics/Cosmetics.dat");
+                File.binWrite(Main.products.get(ProductType.COSMETIC), "src/Files/Cosmetics/Cosmetics.dat");
 
                 System.out.println("Cosmético registado!!");
                 break;

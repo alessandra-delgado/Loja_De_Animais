@@ -32,6 +32,13 @@ public class CatalogMenu {
         }
     }
 
+    private static void buy() {
+        // 1 - Choose client
+        // 2 - Choose products
+        // 3 - Display info for confirmation
+        // 4 - Write fatura file and display buy info on screen
+    }
+
     private static void viewCatalog() {
         do {
             System.out.println("1 - Animais Reais");
@@ -45,39 +52,39 @@ public class CatalogMenu {
             System.out.println("8 - Voltar");
             System.out.print("Escolha uma opção: ");
 
-            switch (Ler.umChar()) {
-                case '1':
+            switch (Ler.umInt()) {
+                case 1:
                     System.out.println("Animais Reais");
                     CatalogMenu.viewAnimals(true);
                     break;
-                case '2':
+                case 2:
                     System.out.println("Animais Imaginários");
                     CatalogMenu.viewAnimals(false);
                     break;
-                case '3':
+                case 3:
                     System.out.println("Cosmeticos");
                     CatalogMenu.listProducts(ProductType.COSMETIC);
                     break;
-                case '4':
+                case 4:
                     System.out.println("Comida");
                     CatalogMenu.listProducts(ProductType.FOOD);
                     break;
-                case '5':
+                case 5:
                     System.out.println("Habitat");
                     CatalogMenu.listProducts(ProductType.HABITAT);
                     break;
-                case '6':
+                case 6:
                     System.out.println("Medicamentos");
                     CatalogMenu.listProducts(ProductType.MEDICINE);
                     break;
-                case '7':
+                case 7:
                     System.out.println("Higiene");
                     CatalogMenu.listProducts(ProductType.HYGIENE);
                     break;
-                case '8':
+                case 8:
                     System.out.println("Sair");
                     return;
-                case '!':
+                case 42:
                     System.out.println("Menu Secreto");
                     break;
                 default:
@@ -87,11 +94,10 @@ public class CatalogMenu {
         } while (true);
     }
 
-    private static void viewAnimals(boolean realAnimals) {
-
-        ProductType aerialType = realAnimals ? ProductType.ANIMAL_REAL_AERIAL : ProductType.ANIMAL_IMAGINARY_AERIAL;
-        ProductType landType = realAnimals ? ProductType.ANIMAL_REAL_LAND : ProductType.ANIMAL_IMAGINARY_LAND;
-        ProductType aquaticType = realAnimals ? ProductType.ANIMAL_REAL_AQUATIC : ProductType.ANIMAL_IMAGINARY_AQUATIC;
+    private static void viewAnimals(boolean areAnimalsReal) {
+        ProductType aerialType = areAnimalsReal ? ProductType.ANIMAL_REAL_AERIAL : ProductType.ANIMAL_IMAGINARY_AERIAL;
+        ProductType landType = areAnimalsReal ? ProductType.ANIMAL_REAL_LAND : ProductType.ANIMAL_IMAGINARY_LAND;
+        ProductType aquaticType = areAnimalsReal ? ProductType.ANIMAL_REAL_AQUATIC : ProductType.ANIMAL_IMAGINARY_AQUATIC;
 
         System.out.println("1 - Aéreos");
         System.out.println("2 - Terrestres");
