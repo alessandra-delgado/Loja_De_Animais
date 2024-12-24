@@ -66,7 +66,7 @@ public class MenuProduct {
                 Main.products.get(ProductType.COSMETIC).add(novoCosmetico);
 
                 //Guardar em cosmetics.dat
-                File.binWrite(Main.products.get(ProductType.COSMETIC), "src/Files/Cosmetics/Cosmetics.dat");
+                File.binWrite(Main.products.get(ProductType.COSMETIC), "Cosmetics/Cosmetics.dat");
 
                 System.out.println("Cosmético registado!!");
                 break;
