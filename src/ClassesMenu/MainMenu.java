@@ -17,7 +17,7 @@ public class MainMenu {
 
             switch (Ler.umInt()) {
                 case 1:
-                    FuncoesMenu.menuCatalogo();
+                    CatalogMenu.show();
                     break;
                 case 2:
                     FuncoesMenu.menuInventario();

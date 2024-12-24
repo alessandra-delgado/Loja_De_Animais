@@ -12,13 +12,10 @@ public class Main {
     public static HashMap<ProductType, ArrayList<Product>> products;
 
     public static void main(String[] args) {
-        System.out.println("Hello World");
         init();
 
         // Shows main menu
         MainMenu.show();
-
-        File.displayInfo(File.loadInfo("Cosmetics/Cosmetics.dat"));
     }
 
     public static void init() {
