@@ -1,4 +1,5 @@
 package src.ClassesMenu;
+import java.io.*;
 import java.util.ArrayList;
 import src.Classes_Loja.Product;
 import src.Enum.ProductType;
@@ -61,8 +62,9 @@ public class MenuProduct {
                     System.out.println("Qual o preco do cosmetico:");
                     double preco = Ler.umDouble();
 
+                    int idCosmetico = LastId.generateId();
                     //Cria produto
-                    Product novoCosmetico = new Product(nome, preco);
+                    Product novoCosmetico = new Product(idCosmetico,nome, preco);
                     //Adiciona á lista de cosméticos
                     novoCosmetico.setCategory(ProductType.COSMETIC);
                     Main.products.get(ProductType.COSMETIC).add(novoCosmetico);
@@ -76,7 +78,9 @@ public class MenuProduct {
                     System.out.println("Qual o preco do comida:");
                     double precoComida = Ler.umDouble();
 
-                    Product comida = new Product(nomeComida, precoComida);
+                    int idComida = LastId.generateId();
+
+                    Product comida = new Product(idComida ,nomeComida, precoComida);
                     comida.setCategory(ProductType.FOOD);
                     Main.products.get(ProductType.FOOD).add(comida);
                     File.binWrite(Main.products.get(ProductType.FOOD), "Food/Food.dat");
@@ -88,7 +92,8 @@ public class MenuProduct {
                     System.out.println("Qual o preco do habitat:");
                     double precoHabitat = Ler.umDouble();
 
-                    Product habitat = new Product(nomeHabitat, precoHabitat);
+                    int idHabitat = LastId.generateId();
+                    Product habitat = new Product(idHabitat, nomeHabitat, precoHabitat);
                     habitat.setCategory(ProductType.HABITAT);
                     Main.products.get(ProductType.HABITAT).add(habitat);
                     File.binWrite(Main.products.get(ProductType.HABITAT), "Habitat/Habitat.dat");
@@ -100,7 +105,8 @@ public class MenuProduct {
                     System.out.println("Qual o preco do produto de higiene:");
                     double precoHigiene = Ler.umDouble();
 
-                    Product higiene = new Product(nomeHigiene, precoHigiene);
+                    int idHigiene = LastId.generateId();
+                    Product higiene = new Product(idHigiene, nomeHigiene, precoHigiene);
                     higiene.setCategory(ProductType.HYGIENE);
                     Main.products.get(ProductType.HYGIENE).add(higiene);
                     File.binWrite(Main.products.get(ProductType.HYGIENE), "Hygiene/Hygiene.dat");
@@ -112,7 +118,8 @@ public class MenuProduct {
                     System.out.println("Qual o preco do medicamento:");
                     double precoMedicamento = Ler.umDouble();
 
-                    Product medicamento = new Product(nomeMedicamento, precoMedicamento);
+                    int idMedicamento = LastId.generateId();
+                    Product medicamento = new Product(idMedicamento,nomeMedicamento, precoMedicamento);
                     medicamento.setCategory(ProductType.MEDICINE);
                     Main.products.get(ProductType.MEDICINE).add(medicamento);
                     File.binWrite(Main.products.get(ProductType.MEDICINE), "Medicine/Medicine.dat");
@@ -826,6 +833,36 @@ public class MenuProduct {
             }
         }
         return null;
+    }
+
+    //Guardar o ultimo id do produto
+    public class LastId {
+        private static final String LastIdFile = "LastProduct/LastProduct.dat";
+        private static int idAtual = 0;
+
+        //carrega o último ID do ficheiro
+        public static void loadLastID () {
+            try (ObjectInputStream id = new ObjectInputStream(new FileInputStream(LastIdFile))) {
+                idAtual = id.readInt();
+            } catch (IOException e) {
+                System.out.println("Erro ao salvar o último id: " + e.getMessage());
+            }
+        }
+
+        //salvar o próximo ID no ficheiro
+        public static void saveLastID () {
+            try (ObjectOutputStream id = new ObjectOutputStream(new FileOutputStream(LastIdFile))){
+                id.writeInt(idAtual);
+            } catch (IOException e) {
+                System.out.println("Erro ao salvar ID: " + e.getMessage());
+            }
+        }
+
+        public static int generateId() {
+            idAtual++;
+            saveLastID();
+            return idAtual;
+        }
     }
 
 }
