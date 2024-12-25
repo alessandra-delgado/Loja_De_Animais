@@ -22,7 +22,6 @@ public class FuncoesMenu {
                     break;
                 case 2:
                     System.out.println("Fazer Compra");
-
                     break;
                 case 3:
                     System.out.println("Saí do menu 1");
@@ -43,14 +42,15 @@ public class FuncoesMenu {
             switch (op) {
                 case 1:
                     MenuProduct.show();
-                    break;
+                    return;
                 case 2:
-
                     MenuEmpregados.show();
-                    break;
+                    return;
                 case 3:
                     System.out.println("A sair...");
                     return;
+                default:
+                    break;
             }
         }
     }
