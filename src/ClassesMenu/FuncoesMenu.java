@@ -33,7 +33,8 @@ public class FuncoesMenu {
     public static void menu2() {
         System.out.println("1 - Produtos");
         System.out.println("2 - Empregados");
-        System.out.println("3 - Sair");
+        System.out.println("3 - Clientes");
+        System.out.println("4 - Sair");
         System.out.println("Escolha uma opção:");
 
         int op = 0;
@@ -47,6 +48,9 @@ public class FuncoesMenu {
                     MenuEmpregados.show();
                     return;
                 case 3:
+                    MenuClients.show();
+                    return;
+                case 4:
                     System.out.println("A sair...");
                     return;
                 default:

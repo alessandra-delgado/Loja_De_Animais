@@ -12,14 +12,14 @@ public class Client extends Person {
         this.purchases = new ArrayList<>();
     }
 
-    public Client(String name, int nif, int tel, int totalSpent){
-        super(name, nif, tel);
+    public Client(String name, int nif, int tel,String email, int totalSpent){
+        super(name, nif, tel, email);
         this.totalSpent = totalSpent;
         this.purchases = new ArrayList<>();
     }
 
     public Client(Person p, int totalSpent){
-        super(p.name, p.gender, p.birthdate, p.tel, p.nif);
+        super(p.name, p.gender, p.birthdate, p.tel, p.nif, p.email);
         this.totalSpent = totalSpent;
     }
 
