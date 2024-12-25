@@ -16,6 +16,7 @@ public class Main {
     public static void main(String[] args) {
         init();
 
+        fakeData();
         // Shows main menu
         MainMenu.show();
     }
@@ -44,4 +45,10 @@ public class Main {
         // Employees
         employees = File.binRead("Employee/Employee.dat");
     }
+
+    public static void fakeData() {
+        clients.add(new Client(new Person("alfa", 123123123, 987656789)));
+        clients.add(new Client(new Person("beta", 123123123, 987656789)));
+    }
+
 }

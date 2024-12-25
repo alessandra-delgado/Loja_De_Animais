@@ -79,7 +79,7 @@ public class MenuProduct {
                     break;
                 case 5:
                     System.out.println("Voltar");
-                    break;
+                    return;
             }
         }
     }

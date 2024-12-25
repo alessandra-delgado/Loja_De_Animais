@@ -5,7 +5,7 @@ import src.Input.Ler;
 public class MainMenu {
     private static void menu() {
         System.out.println("1 - Catálogo");
-        System.out.println("2 - Inventário ");
+        System.out.println("2 - Inventário");
         System.out.println("3 - Estatisticas");
         System.out.println("4 - Sair");
         System.out.print("Escolha uma opção: ");

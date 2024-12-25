@@ -12,15 +12,16 @@ public class Client extends Person {
         this.purchases = new ArrayList<>();
     }
 
-    public Client(String name, int nif, int tel, int totalSpent){
+    public Client(String name, int nif, int tel){
         super(name, nif, tel);
-        this.totalSpent = totalSpent;
+        this.totalSpent = 0;
         this.purchases = new ArrayList<>();
     }
 
-    public Client(Person p, int totalSpent){
+    public Client(Person p){
         super(p.name, p.gender, p.birthdate, p.tel, p.nif);
-        this.totalSpent = totalSpent;
+        this.totalSpent = 0;
+        this.purchases = new ArrayList<>();
     }
 
     public int getTotalSpent(){
@@ -54,7 +55,8 @@ public class Client extends Person {
 
     public Object clone(){
         Person p = (Person) super.clone();
-        Client c = new Client(p, this.totalSpent);
+        Client c = new Client(p);
+        c.setTotalSpent(this.totalSpent);
         c.setPurchases(this.purchases);
         return c;
     }
