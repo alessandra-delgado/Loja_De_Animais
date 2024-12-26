@@ -2,9 +2,9 @@ package src.Classes_Loja;
 
 import src.Enum.AnimalType;
 
-public class Animal extends Product {
+public class  Animal extends Product {
     private int age;
-    private String gender;
+    private char gender;
     private String sciname;
     private String asciiart;
     private AnimalType type;
@@ -13,7 +13,7 @@ public class Animal extends Product {
 
     }
 
-    public Animal(int age, String gender, String sciname, String asciiart, AnimalType type) {
+    public Animal(int age, char gender, String sciname, String asciiart, AnimalType type) {
         super();
         super.setName(getName());
         super.setCategory(getCategory());
@@ -30,7 +30,7 @@ public class Animal extends Product {
         return age;
     }
 
-    public String getGender() {
+    public char getGender() {
         return gender;
     }
 
@@ -51,7 +51,7 @@ public class Animal extends Product {
         this.age = age;
     }
 
-    public void setGender(String gender) {
+    public void setGender(char gender) {
         this.gender = gender;
     }
 
@@ -72,10 +72,11 @@ public class Animal extends Product {
         return super.toString() + "Age: " + age + "Gender: " + gender + "Sciname: " + sciname + "Asciiart: " + asciiart;
     }
 
-    // public boolean equals(Object obj){
-    //     if (obj != null && obj instanceof Animal){
-    //         Animal a = (Animal) obj;
-    //         return super.equals()
-    //     }
-    // }
+    public boolean equals(Object obj){
+         if (obj instanceof Animal){
+             Animal a = (Animal) obj;
+             return super.equals(a) && this.age == a.age && this.gender == a.gender && this.sciname.equals(a.sciname) && this.asciiart.equals(a.asciiart) && this.type == a.type;
+         }
+         return false;
+     }
 }
