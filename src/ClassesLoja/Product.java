@@ -1,11 +1,11 @@
-package src.Classes_Loja;
+package src.ClassesLoja;
 
 import src.Enum.ProductType;
 
 import java.io.Serial;
 import java.io.Serializable;
 
-public class Product implements Serializable{
+public class Product implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
     protected static int last = 0;
@@ -26,12 +26,6 @@ public class Product implements Serializable{
         this.price = price;
         this.name = name;
         this.category = ProductType.NONE;
-    }
-    public Product(int id, String name, double price) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.category = null;
     }
 
     // GETTERS ------------------------------------------------------------------------------------
@@ -56,6 +50,10 @@ public class Product implements Serializable{
     }
 
     // SETTERS ------------------------------------------------------------------------------------
+    public static void setLast(int last) {
+        Product.last = last;
+    }
+
     public void setCategory(ProductType category) {
         this.category = category;
     }
@@ -68,7 +66,9 @@ public class Product implements Serializable{
         this.price = price;
     }
 
-    public void setId(int id) {this.id = id;}
+    public void setId(int id) {
+        this.id = id;
+    }
 
     // OVERRIDES ----------------------------------------------------------------------------------
     public boolean equals(Object obj) {

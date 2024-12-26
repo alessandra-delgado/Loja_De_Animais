@@ -1,9 +1,9 @@
 package src;
 
 import src.ClassesMenu.MainMenu;
-import src.Classes_Loja.*;
+import src.ClassesLoja.*;
 import src.Enum.ProductType;
-import src.Classes_Loja.File;
+import src.ClassesLoja.File;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,5 +43,15 @@ public class Main {
 
         // Employees
         employees = File.binRead("Employee/Employee.dat");
+
+        // Set Product ID
+        Product.setLast(File.binReadInt("Product/LastId.dat"));
+
+    }
+
+    public static void listProducts(ProductType type) {
+        for (Product p : Main.products.get(type)) {
+            System.out.println(p);
+        }
     }
 }

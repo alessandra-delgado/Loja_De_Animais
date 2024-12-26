@@ -1,8 +1,12 @@
-package src.Classes_Loja;
+package src.ClassesLoja;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Purchase {
+public class Purchase implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
     private static int last_id = 0;
     private int id;
     private int total;
@@ -35,18 +39,18 @@ public class Purchase {
     }
 
     public void addProduct(Product p) {
-        this.products.add(p);
         this.total += (int) p.getPrice();
+        this.products.add(p);
     }
 
     public void removeProduct(Product p) {
-        this.products.remove(p);
         this.total -= (int) p.getPrice();
+        this.products.remove(p);
     }
 
     public void removeProduct(int id) {
-        this.products.remove(id);
         this.total -= (int) this.products.get(id).getPrice();
+        this.products.remove(id);
     }
 
     public void removeAllProducts() {

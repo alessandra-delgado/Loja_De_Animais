@@ -1,4 +1,4 @@
-package src.Classes_Loja;
+package src.ClassesLoja;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -11,14 +11,16 @@ public class File {
 
     /**
      * Writes the given ArrayList to the fileName file in binary format.
-     * @param list The ArrayList to write on the file
+     *
+     * @param list     The ArrayList to write on the file
      * @param fileName The name of the file that will be written
-     * @param <T> The type of the elements of the given ArrayList
+     * @param <T>      The type of the elements of the given ArrayList
      */
     public static <T> void binWrite(ArrayList<T> list, String fileName) {
         fileName = path + fileName;
 
         try (ObjectOutputStream file = new ObjectOutputStream(new FileOutputStream(fileName))) {
+            // System.out.print("Writing " + fileName); // debug
             file.writeObject(list);
             file.flush();
 
@@ -30,9 +32,10 @@ public class File {
 
     /**
      * Reads the given binary fileName file
+     *
      * @param fileName The name of the file to load
+     * @param <T>      The type of the elements of the returned ArrayList
      * @return An ArrayList with the information in the file
-     * @param <T> The type of the elements of the returned ArrayList
      */
     public static <T> ArrayList<T> binRead(String fileName) {
         fileName = path + fileName;
@@ -52,14 +55,34 @@ public class File {
         return list;
     }
 
-    public static <Info> void displayInfo(ArrayList<Info> list) {
-        if (list.isEmpty()) {
-            System.out.println("Nenhuma informação encontrada");
-        } else {
-            for (Info info : list) {
-                System.out.println(info);
+    public static void binWriteInt(int value, String fileName) {
+        fileName = path + fileName;
+
+        try (ObjectOutputStream file = new ObjectOutputStream(new FileOutputStream(fileName))) {
+            // System.out.print("Writing " + fileName); // debug
+            file.writeInt(value);
+            file.flush();
+
+            System.out.println("Dados guardados no ficheiro: " + fileName);
+        } catch (IOException e) {
+            System.out.println("Erro ao guardar os dados do ficheiro " + fileName + ": " + e.getMessage());
+        }
+    }
+
+    public static int binReadInt(String fileName) {
+        fileName = path + fileName;
+
+        int value = 0;
+
+        try (ObjectInputStream file = new ObjectInputStream(new FileInputStream(fileName))) {
+            value = file.readInt();
+        } catch (IOException e) {
+            // Ignore if the error is that the file is null
+            if (e.getMessage() != null) {
+                System.out.println("Erro ao ler os dados do ficheiro " + fileName + ": " + e.getMessage());
             }
         }
+        return value;
     }
 }
 

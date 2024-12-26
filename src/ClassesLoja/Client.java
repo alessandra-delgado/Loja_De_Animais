@@ -1,8 +1,12 @@
-package src.Classes_Loja;
+package src.ClassesLoja;
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class Client extends Person {
+public class Client extends Person implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
     private int totalSpent;
     private ArrayList<Purchase> purchases;
 
@@ -12,15 +16,16 @@ public class Client extends Person {
         this.purchases = new ArrayList<>();
     }
 
-    public Client(String name, int nif, int tel,String email, int totalSpent){
-        super(name, nif, tel, email);
-        this.totalSpent = totalSpent;
+    public Client(String name, int nif, int tel){
+        super(name, nif, tel);
+        this.totalSpent = 0;
         this.purchases = new ArrayList<>();
     }
 
-    public Client(Person p, int totalSpent){
-        super(p.name, p.gender, p.birthdate, p.tel, p.nif, p.email);
-        this.totalSpent = totalSpent;
+    public Client(Person p){
+        super(p.name, p.gender, p.birthdate, p.tel, p.nif);
+        this.totalSpent = 0;
+        this.purchases = new ArrayList<>();
     }
 
     public int getTotalSpent(){
@@ -54,22 +59,23 @@ public class Client extends Person {
 
     public Object clone(){
         Person p = (Person) super.clone();
-        Client c = new Client(p, this.totalSpent);
+        Client c = new Client(p);
+        c.setTotalSpent(this.totalSpent);
         c.setPurchases(this.purchases);
         return c;
     }
 
-    public void AddPurchase(Purchase p){
+    public void addPurchase(Purchase p){
         this.purchases.add(p);
         totalSpent += p.getTotal();
     }
 
-    public void RemovePurchase(Purchase p){
+    public void removePurchase(Purchase p){
         this.purchases.remove(p);
         totalSpent--;
     }
 
-    public int TotalPurchases(){
+    public int totalPurchases(){
         return purchases.size();
     }
 }

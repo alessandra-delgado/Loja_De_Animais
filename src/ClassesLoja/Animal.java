@@ -1,4 +1,4 @@
-package src.Classes_Loja;
+package src.ClassesLoja;
 
 import src.Enum.AnimalType;
 

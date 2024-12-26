@@ -1,85 +1,55 @@
 package src.ClassesMenu;
 
-import src.Classes_Loja.Product;
 import src.Enum.ProductType;
 import src.Input.Ler;
 import src.Main;
 
 public class CatalogMenu {
-    private static void menu() {
-        System.out.println("Menu Catálogo");
-        System.out.println("1 - Visualizar catálogo");
-        System.out.println("2 - Fazer Compra");
-        System.out.println("3 - Voltar");
+    private static void menu(){
+        System.out.println("1 - Animais Reais");
+        System.out.println("2 - Animais Imaginários");
+        System.out.println("3 - Cosmeticos");
+        System.out.println("4 - Comida");
+        System.out.println("5 - Habitat");
+        System.out.println("6 - Medicamentos");
+        System.out.println("7 - Higiene");
+        System.out.println("? - ?");
+        System.out.println("8 - Voltar");
         System.out.print("Escolha uma opção: ");
     }
 
     public static void show() {
-        while (true) {
+        do {
             CatalogMenu.menu();
 
             switch (Ler.umInt()) {
                 case 1:
-                    CatalogMenu.viewCatalog();
-                    break;
-                case 2:
-                    System.out.println("Fazer Compra");
-                    break;
-                case 3:
-                    System.out.println("A voltar");
-                    return;
-            }
-        }
-    }
-
-    private static void buy() {
-        // 1 - Choose client
-        // 2 - Choose products
-        // 3 - Display info for confirmation
-        // 4 - Write fatura file and display buy info on screen
-    }
-
-    private static void viewCatalog() {
-        do {
-            System.out.println("1 - Animais Reais");
-            System.out.println("2 - Animais Imaginários");
-            System.out.println("3 - Cosmeticos");
-            System.out.println("4 - Comida");
-            System.out.println("5 - Habitat");
-            System.out.println("6 - Higiene");
-            System.out.println("7 - Medicamentos");
-            System.out.println("? - ?");
-            System.out.println("8 - Voltar");
-            System.out.print("Escolha uma opção: ");
-
-            switch (Ler.umInt()) {
-                case 1:
                     System.out.println("Animais Reais");
-                    CatalogMenu.viewAnimals(true);
+                    CatalogMenu.submenuAnimals(true);
                     break;
                 case 2:
                     System.out.println("Animais Imaginários");
-                    CatalogMenu.viewAnimals(false);
+                    CatalogMenu.submenuAnimals(false);
                     break;
                 case 3:
                     System.out.println("Cosmeticos");
-                    CatalogMenu.listProducts(ProductType.COSMETIC);
+                    Main.listProducts(ProductType.COSMETIC);
                     break;
                 case 4:
                     System.out.println("Comida");
-                    CatalogMenu.listProducts(ProductType.FOOD);
+                    Main.listProducts(ProductType.FOOD);
                     break;
                 case 5:
                     System.out.println("Habitat");
-                    CatalogMenu.listProducts(ProductType.HABITAT);
+                    Main.listProducts(ProductType.HABITAT);
                     break;
                 case 6:
                     System.out.println("Medicamentos");
-                    CatalogMenu.listProducts(ProductType.MEDICINE);
+                    Main.listProducts(ProductType.MEDICINE);
                     break;
                 case 7:
                     System.out.println("Higiene");
-                    CatalogMenu.listProducts(ProductType.HYGIENE);
+                    Main.listProducts(ProductType.HYGIENE);
                     break;
                 case 8:
                     System.out.println("Sair");
@@ -94,48 +64,45 @@ public class CatalogMenu {
         } while (true);
     }
 
-    private static void viewAnimals(boolean areAnimalsReal) {
+    private static void submenuAnimals(boolean areAnimalsReal) {
         ProductType aerialType = areAnimalsReal ? ProductType.ANIMAL_REAL_AERIAL : ProductType.ANIMAL_IMAGINARY_AERIAL;
         ProductType landType = areAnimalsReal ? ProductType.ANIMAL_REAL_LAND : ProductType.ANIMAL_IMAGINARY_LAND;
         ProductType aquaticType = areAnimalsReal ? ProductType.ANIMAL_REAL_AQUATIC : ProductType.ANIMAL_IMAGINARY_AQUATIC;
 
-        System.out.println("1 - Aéreos");
-        System.out.println("2 - Terrestres");
-        System.out.println("3 - Aquáticos");
-        System.out.println("4 - Todos");
-        System.out.println("5 - Voltar");
-        System.out.print("Escolha uma opção: ");
+        do {
+            System.out.println("1 - Aéreos");
+            System.out.println("2 - Terrestres");
+            System.out.println("3 - Aquáticos");
+            System.out.println("4 - Todos");
+            System.out.println("5 - Voltar");
+            System.out.print("Escolha uma opção: ");
 
-        while (true) {
             switch (Ler.umInt()) {
                 case 1:
                     System.out.println("Aéreos");
-                    CatalogMenu.listProducts(aerialType);
+                    Main.listProducts(aerialType);
                     break;
                 case 2:
                     System.out.println("Terrestres");
-                    CatalogMenu.listProducts(landType);
+                    Main.listProducts(landType);
                     break;
                 case 3:
                     System.out.println("Aquáticos");
-                    CatalogMenu.listProducts(aquaticType);
+                    Main.listProducts(aquaticType);
                     break;
                 case 4:
                     System.out.println("Todos");
-                    CatalogMenu.listProducts(aerialType);
-                    CatalogMenu.listProducts(landType);
-                    CatalogMenu.listProducts(aquaticType);
+                    Main.listProducts(aerialType);
+                    Main.listProducts(landType);
+                    Main.listProducts(aquaticType);
                     break;
                 case 5:
                     System.out.println("Sair");
                     return;
+                default:
+                    System.out.println("Opção inválida.");
+                    break;
             }
-        }
-    }
-
-    private static void listProducts(ProductType type) {
-        for (Product p : Main.products.get(type)) {
-            System.out.println(p);
-        }
+        } while (true);
     }
 }
