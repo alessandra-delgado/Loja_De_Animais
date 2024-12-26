@@ -27,6 +27,12 @@ public class Product implements Serializable{
         this.name = name;
         this.category = ProductType.NONE;
     }
+    public Product(int id, String name, double price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.category = null;
+    }
 
     // GETTERS ------------------------------------------------------------------------------------
     public static int getLast() {
@@ -61,6 +67,8 @@ public class Product implements Serializable{
     public void setPrice(double price) {
         this.price = price;
     }
+
+    public void setId(int id) {this.id = id;}
 
     // OVERRIDES ----------------------------------------------------------------------------------
     public boolean equals(Object obj) {
