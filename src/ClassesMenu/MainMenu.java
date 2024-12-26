@@ -28,6 +28,9 @@ public class MainMenu {
                 case 4:
                     // Exit
                     return;
+                default:
+                    System.out.println("Opção inválida");
+                    break;
             }
         } while (true);
     }

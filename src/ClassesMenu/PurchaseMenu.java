@@ -32,7 +32,7 @@ public class PurchaseMenu {
                 case 2:
                     id_selected = selectClientID();
                     if (id_selected == -2) {
-                        System.out.println("<-");
+                        System.out.println("Compra cancelada");
                         return;
                     }
 
@@ -62,7 +62,10 @@ public class PurchaseMenu {
 
         // 2 - Choose products
         do {
-            System.out.println("Adicione produtos para a compra (por indice)");
+            System.out.println("Carrinho de Compras: ");
+            System.out.println(purchase.getProducts());
+            System.out.println("--------------------------------------------");
+            System.out.println("Adicione produtos para a compra");
             System.out.println("1 - Visualizar Catálogo");
             System.out.println("2 - Adicionar produto à lista de compras");
             System.out.println("3 - Remover produto da lista de compras");
@@ -118,14 +121,26 @@ public class PurchaseMenu {
     }
 
     private static int selectClientID() {
+        if (Main.clients.isEmpty()) {
+            System.out.println("Não existem clientes.");
+            return -1;
+        }
+
         System.out.print("Insira id do cliente: ");
         int id = Ler.umInt();
 
-        while (id > 0 && id <= Main.clients.size()) {
+        if (id <= 0 || id > Main.clients.size()) {
+            System.out.println("O id inserido não é válido.");
+            return -1;
+        }
+
+        do {
             System.out.println("Selecionou o cliente " + Main.clients.get(id - 1) + ".");
             System.out.println("1 - Prosseguir com este cliente");
             System.out.println("2 - Reescolher cliente");
             System.out.println("3 - Cancelar compra");
+            System.out.print("Opção inserida: ");
+
             switch (Ler.umInt()) {
                 case 1:
                     return id - 1;
@@ -136,15 +151,13 @@ public class PurchaseMenu {
                 default:
                     System.out.println("Operação inválida!");
             }
-        }
-
-        return -1;
+        } while (true);
     }
 
     private static Product selectProductID() {
         AtomicReference<Product> selected = new AtomicReference<>();
 
-        System.out.println("Insira o id do produto:");
+        System.out.print("Insira o id do produto: ");
         int id = Ler.umInt();
 
         Main.products.forEach((_, products) -> {
@@ -160,6 +173,7 @@ public class PurchaseMenu {
             System.out.println("Selecionou o produto " + selected.get() + ".");
             System.out.println("1 - Prosseguir com este produto");
             System.out.println("2 - Reescolher produto");
+            System.out.print("Opção introduzida: ");
 
             switch (Ler.umInt()) {
                 case 1:
@@ -172,6 +186,8 @@ public class PurchaseMenu {
             }
         }
 
+        System.out.println("Erro: Não existe nenhum produto com o id introduzido");
+
         return null;
     }
 
@@ -179,6 +195,8 @@ public class PurchaseMenu {
         do {
             System.out.println("1 - Remover todos os produtos");
             System.out.println("2 - Remover um produto");
+            System.out.print("Opção introduzida: ");
+
             switch (Ler.umInt()) {
                 case 1:
                     purchase.removeAllProducts();
