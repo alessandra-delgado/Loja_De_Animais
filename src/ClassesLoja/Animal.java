@@ -79,4 +79,9 @@ public class  Animal extends Product {
          }
          return false;
      }
+
+     public Object clone () {
+        Animal a = new Animal (age, gender, sciname, asciiart, type);
+        return a;
+     }
 }

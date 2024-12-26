@@ -6,6 +6,7 @@ import src.Input.Ler;
 import src.Classes_Loja.File;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import src.Classes_Loja.Employee;
 
 public class MenuEmpregados {
     public static void menu() {
@@ -143,6 +144,25 @@ public class MenuEmpregados {
                     }
                 }
             }
+        }
+    }
+
+    private static void viewEmpregrados (ArrayList<Employee> employees) {
+
+        for (int i = 0; i < employees.size(); i++) {
+            System.out.println(employees.get(i).toString());
+        }
+    }
+
+    private static void deleteEmpregado (ArrayList<Employee> employees) {
+        System.out.println("Insira o NIF do Empregado: ");
+        double nif = Ler.umDouble();
+
+        for (int i = 0; i < employees.size(); i++) {
+            if (employees.get(i).getNif() == nif) {
+                employees.remove(i);
+            }
+
         }
     }
 }
