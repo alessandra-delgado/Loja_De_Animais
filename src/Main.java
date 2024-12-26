@@ -50,15 +50,4 @@ public class Main {
             System.out.println(p);
         }
     }
-
-    public static HashMap<Integer, Client> filterByName(String name) {
-        HashMap<Integer, Client> clients = new HashMap<>();
-        for (int i = 0; i < Main.clients.size(); i++) {
-            Client c = Main.clients.get(i);
-            if (c.getName().contains(name)) {
-                clients.put(i, c);
-            }
-        }
-        return clients;
-    }
 }

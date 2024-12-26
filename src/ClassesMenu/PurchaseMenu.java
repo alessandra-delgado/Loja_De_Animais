@@ -2,15 +2,12 @@ package src.ClassesMenu;
 
 // Todo: try catch <-> verificações, organizar, escrever fatura para o ficheiro de faturas, Formatar fatura!
 
-import src.Classes_Loja.Client;
 import src.Classes_Loja.File;
 import src.Classes_Loja.Product;
 import src.Classes_Loja.Purchase;
 import src.Input.Ler;
 import src.Main;
 
-import java.time.LocalDate;
-import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class PurchaseMenu {
@@ -30,7 +27,7 @@ public class PurchaseMenu {
 
             switch (Ler.umInt()) {
                 case 1:
-                    searchClient();
+                    MenuClient.searchClient();
                     break;
                 case 2:
                     id_selected = selectClientID();
@@ -46,7 +43,7 @@ public class PurchaseMenu {
                     System.out.println("Cliente selecionado com sucesso! (id : " + (id_selected + 1) + ")");
                     break;
                 case 3:
-                    id_selected = createNewClient();
+                    id_selected = MenuClient.createNewClient();
 
                     if (id_selected == -1) {
                         continue;
@@ -120,38 +117,6 @@ public class PurchaseMenu {
         System.out.println(purchase.getProducts());
     }
 
-    // Todo: move method to MenuClient
-    private static void searchClient() {
-        do {
-            System.out.println("Pesquisar cliente");
-            System.out.println("1 - Filtrar por Nome");
-            System.out.println("2 - Listagem de todos os clientes");
-            System.out.println("3 - Voltar");
-            System.out.print("Insira uma opção: ");
-
-            switch (Ler.umInt()) {
-                case 1:
-                    HashMap<Integer, Client> clients = Main.filterByName(Ler.umaString());
-
-                    if (clients.isEmpty())
-                        System.out.println("Não há clientes com esse nome");
-
-                    clients.forEach((k, v) -> System.out.println((k + 1) + " - " + v));
-                    break;
-                case 2:
-                    for (int i = 0; i < Main.clients.size(); i++) {
-                        System.out.println((i + 1) + " - " + Main.clients.get(i));
-                    }
-                    break;
-                case 3:
-                    System.out.println("<-");
-                    return;
-                default:
-                    System.out.println("Opção inválida.");
-            }
-        } while (true);
-    }
-
     private static int selectClientID() {
         System.out.print("Insira id do cliente: ");
         int id = Ler.umInt();
@@ -174,61 +139,6 @@ public class PurchaseMenu {
         }
 
         return -1;
-    }
-
-    private static int createNewClient() {
-        System.out.println("INFORMAÇÃO");
-        System.out.println("Para registar um novo cliente, as seguintes informações são obrigatórias:");
-        System.out.println("- Nome");
-        System.out.println("- Contacto telefónico");
-        System.out.println("- Nif");
-
-        System.out.println("As informações seguintes são apenas opcionais:");
-        System.out.println("- Género");
-        System.out.println("- Data de nascimento");
-
-        System.out.println("Deseja prosseguir? (Y/N)");
-        while (true) {
-            switch (Ler.umChar()) {
-                case 'Y', 'y':
-                    Client c = new Client();
-                    System.out.print("Nome: ");
-                    c.setName(Ler.umaString());
-                    System.out.print("Contato: ");
-                    c.setTel(Ler.umInt());
-                    System.out.print("Nif: ");
-                    c.setNif(Ler.umInt());
-
-                    System.out.print("Deseja inserir o género? (Y para confirmar) ");
-                    switch (Ler.umChar()) {
-                        case 'Y', 'y':
-                            System.out.print("Género: ");
-                            c.setGender(Ler.umChar());
-                    }
-
-                    System.out.print("Deseja inserir a data de nascimento? (Y para confirmar) ");
-                    switch (Ler.umChar()) {
-                        case 'Y', 'y':
-                            System.out.print("Deve inserir no formato YYYY-MM-DD: ");
-                            c.setBirthdate(LocalDate.parse(Ler.umaString()));
-                    }
-
-                    System.out.println("Cliente registado com sucesso!");
-                    System.out.println(c);
-                    Main.clients.add(c);
-                    File.binWrite(Main.clients, "Client/Client.dat");
-                    return Main.clients.size() - 1;
-
-                case 'N', 'n':
-                    System.out.println("Registo de cliente cancelado.");
-                    return -1;
-
-                default:
-                    System.out.println("Opção inválida!");
-            }
-
-        }
-
     }
 
     private static Product selectProductID() {

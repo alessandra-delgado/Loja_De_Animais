@@ -24,7 +24,7 @@ public class FuncoesMenu {
                     MenuEmpregados.show();
                     return;
                 case 3:
-                    MenuClients.show();
+                    MenuClient.show();
                     return;
                 case 4:
                     System.out.println("A sair...");
