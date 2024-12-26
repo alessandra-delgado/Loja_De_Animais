@@ -28,23 +28,23 @@ public class MenuClient {
             switch (Ler.umInt()) {
                 case 1:
                     MenuClient.searchClient();
-                    return;
+                    break;
                 case 2:
                     System.out.println("Adicionar clientes");
                     MenuClient.createNewClient();
-                    return;
+                    break;
                 case 3:
                     updateClient();
                     File.binWrite(Main.clients, "Client/Client.dat");
-                    return;
+                    break;
                 case 4:
                     viewClient();
-                    return;
+                    break;
                 case 5:
                     purchaseHistory();
-                    return;
+                    break;
                 case 6:
-                    System.out.println("A sair ...");
+                    System.out.println("A voltar ...");
                     return;
                 default:
                     System.out.println("Opção inválida");
@@ -63,7 +63,10 @@ public class MenuClient {
 
             switch (Ler.umInt()) {
                 case 1:
-                    HashMap<Integer, Client> clients = MenuClient.filterByName(Ler.umaString());
+                    System.out.print("Insira um nome: ");
+                    String name = Ler.umaString();
+
+                    HashMap<Integer, Client> clients = MenuClient.filterByName(name);
 
                     if (clients.isEmpty())
                         System.out.println("Não há clientes com esse nome");
