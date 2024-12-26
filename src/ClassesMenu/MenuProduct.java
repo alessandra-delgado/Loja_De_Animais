@@ -59,9 +59,11 @@ public class MenuProduct {
                     String nome = Ler.umaString();
                     System.out.println("Qual o preco do cosmetico:");
                     double preco = Ler.umDouble();
+                    System.out.println("Qual a quantidade do cosmetico:");
+                    int quantidade = Ler.umInt();
 
                     //Cria produto
-                    Product novoCosmetico = new Product(nome, preco);
+                    Product novoCosmetico = new Product(nome, preco, quantidade);
                     //Adiciona á lista de cosméticos
                     novoCosmetico.setCategory(ProductType.COSMETIC);
                     Main.products.get(ProductType.COSMETIC).add(novoCosmetico);
@@ -74,8 +76,10 @@ public class MenuProduct {
                     String nomeComida = Ler.umaString();
                     System.out.println("Qual o preco do comida:");
                     double precoComida = Ler.umDouble();
+                    System.out.println("Qual a quantidade do comida:");
+                    int quantidadeComida = Ler.umInt();
 
-                    Product comida = new Product(nomeComida, precoComida);
+                    Product comida = new Product(nomeComida, precoComida, quantidadeComida);
                     comida.setCategory(ProductType.FOOD);
                     Main.products.get(ProductType.FOOD).add(comida);
                     File.binWrite(Main.products.get(ProductType.FOOD), "Food/Food.dat");
@@ -87,8 +91,10 @@ public class MenuProduct {
                     String nomeHabitat = Ler.umaString();
                     System.out.println("Qual o preco do habitat:");
                     double precoHabitat = Ler.umDouble();
+                    System.out.println("Qual a quantidade do habitat:");
+                    int quantidadeHabitat = Ler.umInt();
 
-                    Product habitat = new Product(nomeHabitat, precoHabitat);
+                    Product habitat = new Product(nomeHabitat, precoHabitat, quantidadeHabitat);
                     habitat.setCategory(ProductType.HABITAT);
                     Main.products.get(ProductType.HABITAT).add(habitat);
                     File.binWrite(Main.products.get(ProductType.HABITAT), "Habitat/Habitat.dat");
@@ -100,8 +106,10 @@ public class MenuProduct {
                     String nomeHigiene = Ler.umaString();
                     System.out.println("Qual o preco do produto de higiene:");
                     double precoHigiene = Ler.umDouble();
+                    System.out.println("Qual a quantidade do produto de higiene:");
+                    int quantidadeHigiene = Ler.umInt();
 
-                    Product higiene = new Product(nomeHigiene, precoHigiene);
+                    Product higiene = new Product(nomeHigiene, precoHigiene, quantidadeHigiene);
                     higiene.setCategory(ProductType.HYGIENE);
                     Main.products.get(ProductType.HYGIENE).add(higiene);
                     File.binWrite(Main.products.get(ProductType.HYGIENE), "Hygiene/Hygiene.dat");
@@ -113,8 +121,10 @@ public class MenuProduct {
                     String nomeMedicamento = Ler.umaString();
                     System.out.println("Qual o preco do medicamento:");
                     double precoMedicamento = Ler.umDouble();
+                    System.out.println("Qual a quantidade do medicamento:");
+                    int quantidadeMedicamento = Ler.umInt();
 
-                    Product medicamento = new Product(nomeMedicamento, precoMedicamento);
+                    Product medicamento = new Product(nomeMedicamento, precoMedicamento, quantidadeMedicamento);
                     medicamento.setCategory(ProductType.MEDICINE);
                     Main.products.get(ProductType.MEDICINE).add(medicamento);
                     File.binWrite(Main.products.get(ProductType.MEDICINE), "Medicine/Medicine.dat");

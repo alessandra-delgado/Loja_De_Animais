@@ -13,19 +13,22 @@ public class Product implements Serializable {
     protected double price;
     protected String name;
     protected ProductType category;
+    protected int quantity;
 
     public Product() {
         this.id = ++last;
         this.price = 0;
         this.name = "";
         this.category = ProductType.NONE;
+        this.quantity = 0;
     }
 
-    public Product(String name, double price) {
+    public Product(String name, double price, int quantity) {
         this.id = ++last;
         this.price = price;
         this.name = name;
         this.category = ProductType.NONE;
+        this.quantity = quantity;
     }
 
     // GETTERS ------------------------------------------------------------------------------------
@@ -49,6 +52,10 @@ public class Product implements Serializable {
         return category;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
     // SETTERS ------------------------------------------------------------------------------------
     public static void setLast(int last) {
         Product.last = last;
@@ -70,6 +77,10 @@ public class Product implements Serializable {
         this.id = id;
     }
 
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     // OVERRIDES ----------------------------------------------------------------------------------
     public boolean equals(Object obj) {
         if (obj == this) return true;
@@ -79,7 +90,8 @@ public class Product implements Serializable {
         return p.getId() == this.getId() &&
                 p.getPrice() == this.getPrice() &&
                 p.getName().equals(this.getName()) &&
-                p.getCategory().equals(this.getCategory());
+                p.getCategory().equals(this.getCategory()) &&
+                p.getQuantity() == this.getQuantity();
     }
 
     public Object clone() {
@@ -87,10 +99,11 @@ public class Product implements Serializable {
         p.price = this.price;
         p.name = this.name;
         p.category = this.category;
+        p.quantity = this.quantity;
         return p;
     }
 
     public String toString() {
-        return "[ID: " + this.getId() + ", Price: " + this.getPrice() + ", Name: " + this.getName() + ", Categoria: " + this.category + "]";
+        return "[ID: " + this.getId() + ", Price: " + this.getPrice() + ", Name: " + this.getName() + ", Categoria: " + this.category  + ", Quantidade:" + this.quantity +  "]";
     }
 }
