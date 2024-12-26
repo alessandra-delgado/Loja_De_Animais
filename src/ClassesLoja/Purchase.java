@@ -58,8 +58,8 @@ public class Purchase implements Serializable {
     public void removeAllProducts() {
         for (Product p : this.products) {
             p.incrementQuantity();
-            this.products.remove(p);
         }
+        this.products.clear();
         this.total = 0;
     }
 
