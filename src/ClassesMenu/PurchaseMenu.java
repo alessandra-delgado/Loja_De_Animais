@@ -1,10 +1,10 @@
 package src.ClassesMenu;
 
-// Todo: try catch <-> verificações, organizar, escrever fatura para o ficheiro de faturas, Formatar fatura!
+// Todo: escrever fatura para o ficheiro de faturas, Formatar fatura!
 
-import src.Classes_Loja.File;
-import src.Classes_Loja.Product;
-import src.Classes_Loja.Purchase;
+import src.ClassesLoja.File;
+import src.ClassesLoja.Product;
+import src.ClassesLoja.Purchase;
 import src.Input.Ler;
 import src.Main;
 

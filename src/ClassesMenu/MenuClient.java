@@ -1,12 +1,12 @@
 package src.ClassesMenu;
 
-import src.Classes_Loja.Client;
-import src.Classes_Loja.File;
-import src.Classes_Loja.Purchase;
+import src.ClassesLoja.*;
+import src.Exceptions.ClientNotFound;
 import src.Input.Ler;
 import src.Main;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -50,7 +50,7 @@ public class MenuClient {
                     System.out.println("Opção inválida");
                     break;
             }
-        }while(true);
+        } while (true);
     }
 
     public static void searchClient() {
@@ -90,9 +90,9 @@ public class MenuClient {
     public static void updateClient() {
         System.out.println("Digite o NIF do cliente: ");
         int nif = Ler.umInt();
-        Client cliente = findByNIF(nif);
 
-        if (cliente != null) {
+        try {
+            Client cliente = findByNIF(nif);
             System.out.println("Cliente encontrado: " + cliente.getName());
             System.out.println("O que quer atualizar?");
             System.out.println("1 - Nome");
@@ -122,8 +122,18 @@ public class MenuClient {
                         cliente.setBirthdate(LocalDate.parse(Ler.umaString()));
                         return;
                     case 5:
-                        System.out.println("Novo NIF:");
-                        cliente.setNif(Ler.umInt());
+                        do {
+                            System.out.println("Novo NIF:");
+                            nif = Ler.umInt();
+                            try {
+                                findByNIF(nif);
+                                System.out.println("Já existe um cliente com o NIF introduzido!");
+                            } catch (ClientNotFound e) {
+                                cliente.setNif(Ler.umInt());
+                                break;
+                            }
+
+                        } while (true);
                         return;
                     case 6:
                         System.out.println("A voltar");
@@ -134,8 +144,8 @@ public class MenuClient {
                 }
                 System.out.println("Cliente atualizado!");
             }
-        } else {
-            System.out.println("Cliente com o NIF " + nif + " não encontrado");
+        } catch (ClientNotFound e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -154,9 +164,12 @@ public class MenuClient {
     public static void purchaseHistory() {
         System.out.println("Digite o NIF do cliente: ");
         int nif = Ler.umInt();
-        Client cliente = findByNIF(nif);
 
-        if (cliente != null) {
+        try {
+
+            Client cliente = findByNIF(nif);
+
+
             System.out.println("Histórico de compras de " + cliente.getName() + ":");
             ArrayList<Purchase> purchases = cliente.getPurchases();
 
@@ -168,18 +181,19 @@ public class MenuClient {
                     System.out.println("------------------------");
                 }
             }
-        } else {
-            System.out.println("Cliente com o NIF " + nif + " não está registado");
+
+        } catch (ClientNotFound e) {
+            System.out.println(e.getMessage());
         }
     }
 
-    public static Client findByNIF(int nif) {
+    public static Client findByNIF(int nif) throws ClientNotFound {
         for (Client client : Main.clients) {
             if (client.getNif() == nif) {
                 return client;
             }
         }
-        return null;
+        throw new ClientNotFound("Cliente com o NIF " + nif + " não está registado");
     }
 
     public static HashMap<Integer, Client> filterByName(String name) {
@@ -213,8 +227,17 @@ public class MenuClient {
                     c.setName(Ler.umaString());
                     System.out.print("Contato: ");
                     c.setTel(Ler.umInt());
-                    System.out.print("Nif: ");
-                    c.setNif(Ler.umInt());
+                    do {
+                        System.out.print("Nif: ");
+                        int nif = Ler.umInt();
+                        try {
+                            findByNIF(nif);
+                            System.out.println("Já existe um cliente com o NIF introduzido!");
+                        } catch (ClientNotFound e) {
+                            c.setNif(Ler.umInt());
+                            break;
+                        }
+                    } while (true);
 
                     System.out.print("Deseja inserir o género? (Y para confirmar) ");
                     switch (Ler.umChar()) {
@@ -226,8 +249,18 @@ public class MenuClient {
                     System.out.print("Deseja inserir a data de nascimento? (Y para confirmar) ");
                     switch (Ler.umChar()) {
                         case 'Y', 'y':
-                            System.out.print("Deve inserir no formato YYYY-MM-DD: ");
-                            c.setBirthdate(LocalDate.parse(Ler.umaString()));
+                            do {
+                                System.out.print("Deve inserir no formato YYYY-MM-DD: ");
+
+                                try {
+                                    c.setBirthdate(LocalDate.parse(Ler.umaString()));
+                                    break;
+                                } catch (DateTimeParseException e) {
+                                    System.out.println("A data introduzida não é válida.");
+                                }
+                            } while (true);
+
+                            break;
                     }
 
                     System.out.println("Cliente registado com sucesso!");

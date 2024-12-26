@@ -2,9 +2,9 @@ package src.ClassesMenu;
 
 import java.util.ArrayList;
 
-import src.Classes_Loja.Product;
+import src.ClassesLoja.Product;
 import src.Enum.ProductType;
-import src.Classes_Loja.File;
+import src.ClassesLoja.File;
 import src.Input.Ler;
 import src.Main;
 

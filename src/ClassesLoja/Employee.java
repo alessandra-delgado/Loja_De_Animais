@@ -1,4 +1,4 @@
-package src.Classes_Loja;
+package src.ClassesLoja;
 
 public class Employee extends Person {
     private double salary;

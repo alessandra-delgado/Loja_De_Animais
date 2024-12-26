@@ -1,9 +1,9 @@
 package src;
 
 import src.ClassesMenu.MainMenu;
-import src.Classes_Loja.*;
+import src.ClassesLoja.*;
 import src.Enum.ProductType;
-import src.Classes_Loja.File;
+import src.ClassesLoja.File;
 
 import java.util.ArrayList;
 import java.util.HashMap;
