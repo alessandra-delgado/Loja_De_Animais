@@ -5,6 +5,7 @@ package src.ClassesMenu;
 import src.ClassesLoja.File;
 import src.ClassesLoja.Product;
 import src.ClassesLoja.Purchase;
+import src.Exceptions.ProductNotFound;
 import src.Input.Ler;
 import src.Main;
 
@@ -155,10 +156,39 @@ public class PurchaseMenu {
     }
 
     private static Product selectProductID() {
-        AtomicReference<Product> selected = new AtomicReference<>();
 
         System.out.print("Insira o id do produto: ");
         int id = Ler.umInt();
+
+        try {
+            Product product = findProductById(id);
+
+            do {
+                System.out.println("Selecionou o produto " + product + ".");
+                System.out.println("1 - Prosseguir com este produto");
+                System.out.println("2 - Reescolher produto");
+                System.out.print("Opção introduzida: ");
+
+                switch (Ler.umInt()) {
+                    case 1:
+                        return product;
+                    case 2:
+                        return null;
+                    default:
+                        System.out.println("Operação inválida!");
+                        break;
+                }
+            } while (true);
+
+        } catch (ProductNotFound e) {
+            System.out.println(e.getMessage());
+        }
+
+        return null;
+    }
+
+    private static Product findProductById(int id) throws ProductNotFound {
+        AtomicReference<Product> selected = new AtomicReference<>();
 
         Main.products.forEach((_, products) -> {
             for (Product p : products) {
@@ -169,26 +199,11 @@ public class PurchaseMenu {
             }
         });
 
-        while (selected.get() != null) {
-            System.out.println("Selecionou o produto " + selected.get() + ".");
-            System.out.println("1 - Prosseguir com este produto");
-            System.out.println("2 - Reescolher produto");
-            System.out.print("Opção introduzida: ");
-
-            switch (Ler.umInt()) {
-                case 1:
-                    return selected.get();
-                case 2:
-                    return null;
-                default:
-                    System.out.println("Operação inválida!");
-                    break;
-            }
+        if (selected.get() != null) {
+            return selected.get();
         }
 
-        System.out.println("Erro: Não existe nenhum produto com o id introduzido");
-
-        return null;
+        throw new ProductNotFound("Erro: Não existe nenhum produto com o id introduzido");
     }
 
     private static void removeSelectedProduct(Purchase purchase) {
