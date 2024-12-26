@@ -1,9 +1,12 @@
 package src.Classes_Loja;
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 
 public class Client extends Person implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
     private int totalSpent;
     private ArrayList<Purchase> purchases;
 
@@ -62,17 +65,17 @@ public class Client extends Person implements Serializable {
         return c;
     }
 
-    public void AddPurchase(Purchase p){
+    public void addPurchase(Purchase p){
         this.purchases.add(p);
         totalSpent += p.getTotal();
     }
 
-    public void RemovePurchase(Purchase p){
+    public void removePurchase(Purchase p){
         this.purchases.remove(p);
         totalSpent--;
     }
 
-    public int TotalPurchases(){
+    public int totalPurchases(){
         return purchases.size();
     }
 }

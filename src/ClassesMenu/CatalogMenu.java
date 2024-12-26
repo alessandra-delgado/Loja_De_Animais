@@ -130,6 +130,10 @@ public class CatalogMenu {
 
         // 4 - Write fatura file and display buy info on screen
         System.out.println("Obrigado Pela Compra");
+        Main.clients.get(id_selected).addPurchase(purchase);
+
+        File.binWrite(Main.clients, "Client/Client.dat");
+
         System.out.println(Main.clients.get(id_selected));
         System.out.println(purchase.getProducts());
     }
