@@ -45,9 +45,20 @@ public class Main {
         employees = File.binRead("Employee/Employee.dat");
     }
 
-    public static void fakeData() {
-        clients.add(new Client(new Person("alfa", 123123123, 987656789)));
-        clients.add(new Client(new Person("beta", 123123123, 987656789)));
+    public static void listProducts(ProductType type) {
+        for (Product p : Main.products.get(type)) {
+            System.out.println(p);
+        }
     }
 
+    public static HashMap<Integer, Client> filterByName(String name) {
+        HashMap<Integer, Client> clients = new HashMap<>();
+        for (int i = 0; i < Main.clients.size(); i++) {
+            Client c = Main.clients.get(i);
+            if (c.getName().contains(name)) {
+                clients.put(i, c);
+            }
+        }
+        return clients;
+    }
 }
