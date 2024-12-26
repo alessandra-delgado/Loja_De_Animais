@@ -19,6 +19,7 @@ public class File {
         fileName = path + fileName;
 
         try (ObjectOutputStream file = new ObjectOutputStream(new FileOutputStream(fileName))) {
+            // System.out.print("Writing " + fileName); // debug
             file.writeObject(list);
             file.flush();
 

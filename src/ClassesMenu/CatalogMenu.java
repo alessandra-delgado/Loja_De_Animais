@@ -1,12 +1,18 @@
 package src.ClassesMenu;
 
+// Todo: try catch <-> verificações, organizar, escrever fatura para o ficheiro de faturas, Formatar fatura!
+
 import src.Classes_Loja.Client;
+import src.Classes_Loja.File;
 import src.Classes_Loja.Product;
+import src.Classes_Loja.Purchase;
 import src.Enum.ProductType;
 import src.Input.Ler;
 import src.Main;
 
+import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class CatalogMenu {
     private static void menu() {
@@ -35,9 +41,12 @@ public class CatalogMenu {
     }
 
     private static void makePurchase() {
-        boolean isClientValid = false;
+        Purchase purchase = new Purchase();
+
+        int id_selected = -1;
+
+        // 1 - Choose client----
         do {
-            // 1 - Choose client----
             System.out.println("Escolher um cliente para a operação (por id)");
             System.out.println("1 - Pesquisar cliente");
             System.out.println("2 - Inserir id de cliente");
@@ -49,29 +58,80 @@ public class CatalogMenu {
                 case 1:
                     searchClient();
                 case 2:
-                    int id = selectClientID();
-                    if (id == -2) {
+                    id_selected = selectClientID();
+                    if (id_selected == -2) {
                         System.out.println("<-");
                         return;
                     }
 
-                    if (id != -1) {
-                        System.out.println("Cliente selecionado com sucesso!");
-                        isClientValid = true;
+                    if (id_selected == -1) {
+                        continue;
                     }
+
+                    System.out.println("Cliente selecionado com sucesso! (id : " + (id_selected + 1) + ")");
                     break;
                 case 3:
+                    id_selected = createNewClient();
 
+                    if (id_selected == -1) {
+                        continue;
+                    }
+
+                    System.out.println("Cliente registado e selecionado com sucesso! (id : " + (id_selected + 1) + ")");
+                    break;
 
                 case 4:
                     System.out.println("<-");
                     return;
             }
-        } while (!isClientValid);
+        } while (id_selected == -1);
 
         // 2 - Choose products
-        // 3 - Display info for confirmation
+        int opt;
+        do {
+            System.out.println("Adicione produtos para a compra (por indice)");
+            System.out.println("1 - Visualizar Catálogo");
+            System.out.println("2 - Adicionar produto à lista de compras");
+            System.out.println("3 - Remover produto da lista de compras");
+            System.out.println("4 - Finalizar compra");
+            System.out.println("5 - Cancelar compra");
+            System.out.print("Insira uma opção: ");
+
+            opt = Ler.umInt();
+
+            switch (opt) {
+                case 1:
+                    viewCatalog();
+                    break;
+                case 2:
+                    Product product = selectProductID();
+                    if (product == null)
+                        continue;
+
+                    purchase.addProduct(product);
+
+                    System.out.println("Produtos: " + purchase.getProducts());
+                    break;
+                case 3:
+                    removeSelectedProduct(purchase);
+                    break;
+                case 4:
+                    if (purchase.getProducts().isEmpty()) {
+                        System.out.println("Necessita de especificar pelo menos um produto");
+                    }
+                    break;
+                case 5:
+                    System.out.println("<-");
+                    return;
+            }
+
+
+        } while (opt != 4 || purchase.getProducts().isEmpty());
+
         // 4 - Write fatura file and display buy info on screen
+        System.out.println("Obrigado Pela Compra");
+        System.out.println(Main.clients.get(id_selected));
+        System.out.println(purchase.getProducts());
     }
 
     private static void viewCatalog() {
@@ -201,7 +261,7 @@ public class CatalogMenu {
     }
 
     private static int selectClientID() {
-        System.out.println("Insira id do cliente:");
+        System.out.print("Insira id do cliente: ");
         int id = Ler.umInt();
         do {
             System.out.println("Selecionou o cliente " + Main.clients.get(id - 1) + ".");
@@ -233,7 +293,7 @@ public class CatalogMenu {
         return clients;
     }
 
-    private static void createNewClient() {
+    private static int createNewClient() {
         System.out.println("INFORMAÇÃO");
         System.out.println("Para registar um novo cliente, as seguintes informações são obrigatórias:");
         System.out.println("- Nome");
@@ -242,33 +302,108 @@ public class CatalogMenu {
 
         System.out.println("As informações seguintes são apenas opcionais:");
         System.out.println("- Género");
-        System.out.println("- Email");
         System.out.println("- Data de nascimento");
 
 
-        System.out.println("Deseja prosseguir? (Y/N");
+        System.out.println("Deseja prosseguir? (Y/N)");
         while (true) {
             switch (Ler.umChar()) {
-                case 'Y':
-                case 'y':
-                    //código bravo
+                case 'Y', 'y':
+                    Client c = new Client();
+                    System.out.print("Nome: ");
+                    c.setName(Ler.umaString());
+                    System.out.print("Contato: ");
+                    c.setTel(Ler.umInt());
+                    System.out.print("Nif: ");
+                    c.setNif(Ler.umInt());
 
+                    System.out.print("Deseja inserir o género? (Y para confirmar) ");
+                    switch (Ler.umChar()) {
+                        case 'Y', 'y':
+                            System.out.print("Género: ");
+                            c.setGender(Ler.umChar());
+                    }
 
-                    break;
-                case 'N':
-                case 'n':
-                    System.out.println("<-");
-                    return;
+                    System.out.print("Deseja inserir a data de nascimento? (Y para confirmar) ");
+                    switch (Ler.umChar()) {
+                        case 'Y', 'y':
+                            System.out.print("Deve inserir no formato YYYY-MM-DD: ");
+                            c.setBirthdate(LocalDate.parse(Ler.umaString()));
+                    }
+
+                    System.out.println("Cliente registado com sucesso!");
+                    System.out.println(c);
+                    Main.clients.add(c);
+                    File.binWrite(Main.clients, "Client/Client.dat");
+                    return Main.clients.size() - 1;
+
+                case 'N', 'n':
+                    System.out.println("Registo de cliente cancelado.");
+                    return -1;
 
                 default:
                     System.out.println("Opção inválida!");
-
             }
 
         }
 
     }
 
-    private static void createNewProduct() {
+    private static Product selectProductID() {
+        AtomicReference<Product> selected = new AtomicReference<>();
+
+        System.out.println("Insira id do produto:");
+        int id = Ler.umInt();
+
+        Main.products.forEach((_, products) -> {
+            for (Product p : products) {
+                if (p.getId() == id) {
+                    selected.set(p);
+                    break;
+                }
+            }
+        });
+
+        do {
+            System.out.println("Selecionou o produto " + selected.get() + ".");
+            System.out.println("1 - Prosseguir com este produto");
+            System.out.println("2 - Reescolher produto");
+            switch (Ler.umInt()) {
+                case 1:
+                    return selected.get();
+                case 2:
+                    return null;
+                default:
+                    System.out.println("Operação inválida!");
+            }
+
+        } while (true);
+    }
+
+    private static void removeSelectedProduct(Purchase purchase) {
+        while(true) {
+            System.out.println("1 - Remover todos os produtos");
+            System.out.println("2 - Remover um produto");
+            switch (Ler.umInt()) {
+                case 1:
+                    purchase.removeAllProducts();
+                    return;
+                case 2:
+                    for (int i = 0; i < purchase.getProducts().size(); i++) {
+                        System.out.println((i + 1) + " - " + purchase.getProducts().get(i));
+                    }
+                    while (true) {
+                        System.out.print("Insira o produto que deseja remover (índice): ");
+                        int opt = Ler.umInt();
+                        if (opt > 0 && opt <= purchase.getProducts().size()) {
+                            purchase.removeProduct(opt - 1);
+                            return;
+                        } else System.out.println("Índice inválido!");
+                    }
+                default:
+                    System.out.println("Opção inválida!");
+                    break;
+            }
+        }
     }
 }

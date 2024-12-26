@@ -16,7 +16,6 @@ public class Main {
     public static void main(String[] args) {
         init();
 
-        fakeData();
         // Shows main menu
         MainMenu.show();
     }

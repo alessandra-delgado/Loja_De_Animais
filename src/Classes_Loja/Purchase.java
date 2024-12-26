@@ -35,18 +35,18 @@ public class Purchase {
     }
 
     public void addProduct(Product p) {
-        this.products.add(p);
         this.total += (int) p.getPrice();
+        this.products.add(p);
     }
 
     public void removeProduct(Product p) {
-        this.products.remove(p);
         this.total -= (int) p.getPrice();
+        this.products.remove(p);
     }
 
     public void removeProduct(int id) {
-        this.products.remove(id);
         this.total -= (int) this.products.get(id).getPrice();
+        this.products.remove(id);
     }
 
     public void removeAllProducts() {

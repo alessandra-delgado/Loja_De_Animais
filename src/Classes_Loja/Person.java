@@ -1,8 +1,12 @@
 package src.Classes_Loja;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Person {
+public class Person implements Serializable{
+    @Serial
+    private static final long serialVersionUID = 1L;
     protected String name;
     protected char gender;
     protected LocalDate birthdate;

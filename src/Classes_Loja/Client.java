@@ -1,8 +1,9 @@
 package src.Classes_Loja;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class Client extends Person {
+public class Client extends Person implements Serializable {
     private int totalSpent;
     private ArrayList<Purchase> purchases;
 
