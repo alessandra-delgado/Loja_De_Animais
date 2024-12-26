@@ -2,14 +2,11 @@ package src.ClassesMenu;
 
 // Todo: escrever fatura para o ficheiro de faturas, Formatar fatura!
 
-import src.ClassesLoja.File;
-import src.ClassesLoja.Product;
-import src.ClassesLoja.Purchase;
+import src.ClassesLoja.*;
 import src.Exceptions.ProductNotFound;
+import src.Exceptions.ProductStockExceeded;
 import src.Input.Ler;
 import src.Main;
-
-import java.util.concurrent.atomic.AtomicReference;
 
 public class PurchaseMenu {
     public static void show() {
@@ -116,6 +113,7 @@ public class PurchaseMenu {
         Main.clients.get(id_selected).addPurchase(purchase);
 
         File.binWrite(Main.clients, "Client/Client.dat");
+        Main.saveData(); // Update Quantities after finishing purchase
 
         System.out.println(Main.clients.get(id_selected));
         System.out.println(purchase.getProducts());
@@ -161,8 +159,7 @@ public class PurchaseMenu {
         int id = Ler.umInt();
 
         try {
-            Product product = findProductById(id);
-
+            Product product = MenuProduct.findProductById(id);
             do {
                 System.out.println("Selecionou o produto " + product + ".");
                 System.out.println("1 - Prosseguir com este produto");
@@ -171,6 +168,7 @@ public class PurchaseMenu {
 
                 switch (Ler.umInt()) {
                     case 1:
+                        product.decrementQuantity();
                         return product;
                     case 2:
                         return null;
@@ -180,30 +178,11 @@ public class PurchaseMenu {
                 }
             } while (true);
 
-        } catch (ProductNotFound e) {
+        } catch (ProductNotFound | ProductStockExceeded e) {
             System.out.println(e.getMessage());
         }
 
         return null;
-    }
-
-    private static Product findProductById(int id) throws ProductNotFound {
-        AtomicReference<Product> selected = new AtomicReference<>();
-
-        Main.products.forEach((_, products) -> {
-            for (Product p : products) {
-                if (p.getId() == id) {
-                    selected.set(p);
-                    break;
-                }
-            }
-        });
-
-        if (selected.get() != null) {
-            return selected.get();
-        }
-
-        throw new ProductNotFound("Erro: Não existe nenhum produto com o id introduzido");
     }
 
     private static void removeSelectedProduct(Purchase purchase) {

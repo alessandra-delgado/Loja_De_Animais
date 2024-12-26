@@ -1,10 +1,12 @@
 package src.ClassesMenu;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicReference;
 
 import src.ClassesLoja.Product;
 import src.Enum.ProductType;
 import src.ClassesLoja.File;
+import src.Exceptions.ProductNotFound;
 import src.Input.Ler;
 import src.Main;
 
@@ -828,4 +830,26 @@ public class MenuProduct {
         }
         return null;
     }
+
+    public static Product findProductById(int id) throws ProductNotFound {
+        AtomicReference<Product> selected = new AtomicReference<>();
+
+        Main.products.forEach((_, products) -> {
+            for (Product p : products) {
+                if (p.getId() == id) {
+                    selected.set(p);
+                    break;
+                }
+            }
+        });
+
+        if (selected.get() != null) {
+            return selected.get();
+        }
+
+        throw new ProductNotFound("Erro: Não existe nenhum produto com o id introduzido");
+    }
+
+
+
 }

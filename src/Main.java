@@ -49,6 +49,21 @@ public class Main {
 
     }
 
+    public static void saveData(){
+        File.binWrite(products.get(ProductType.ANIMAL_IMAGINARY_LAND), "Animal/Imaginary/Land.dat");
+        File.binWrite(products.get(ProductType.ANIMAL_IMAGINARY_AQUATIC), "Animal/Imaginary/Aquatic.dat");
+        File.binWrite(products.get(ProductType.ANIMAL_IMAGINARY_AERIAL), "Animal/Imaginary/Aerial.dat");
+
+        File.binWrite(products.get(ProductType.ANIMAL_REAL_LAND), "Animal/Real/Land.dat");
+        File.binWrite(products.get(ProductType.ANIMAL_REAL_AQUATIC), "Animal/Real/Aquatic.dat");
+        File.binWrite(products.get(ProductType.ANIMAL_REAL_AERIAL), "Animal/Real/Aerial.dat");
+
+        File.binWrite(products.get(ProductType.COSMETIC), "Cosmetics/Cosmetics.dat");
+        File.binWrite(products.get(ProductType.FOOD), "Food/Food.dat");
+        File.binWrite(products.get(ProductType.HABITAT), "Habitat/Habitat.dat");
+        File.binWrite(products.get(ProductType.HYGIENE), "Hygiene/Hygiene.dat");
+        File.binWrite(products.get(ProductType.MEDICINE), "Medicine/Medicine.dat");
+    }
     public static void listProducts(ProductType type) {
         for (Product p : Main.products.get(type)) {
             System.out.println(p);
