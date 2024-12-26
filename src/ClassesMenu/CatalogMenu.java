@@ -11,8 +11,8 @@ public class CatalogMenu {
         System.out.println("3 - Cosmeticos");
         System.out.println("4 - Comida");
         System.out.println("5 - Habitat");
-        System.out.println("6 - Higiene");
-        System.out.println("7 - Medicamentos");
+        System.out.println("6 - Medicamentos");
+        System.out.println("7 - Higiene");
         System.out.println("? - ?");
         System.out.println("8 - Voltar");
         System.out.print("Escolha uma opção: ");

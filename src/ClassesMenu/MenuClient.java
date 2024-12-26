@@ -94,11 +94,11 @@ public class MenuClient {
             System.out.println("O que quer atualizar?");
             System.out.println("1 - Nome");
             System.out.println("2 - Telefone");
-            System.out.println("3 - Email");
-            System.out.println("4 - Género");
-            System.out.println("5 - Data de nascimento");
-            System.out.println("6 - NIF");
-            System.out.println("7 - Sair");
+            System.out.println("3 - Género");
+            System.out.println("4 - Data de nascimento");
+            System.out.println("5 - NIF");
+            System.out.println("6 - Voltar");
+            System.out.print("Insira uma opção: ");
 
             while (true) {
                 switch (Ler.umInt()) {
@@ -111,23 +111,19 @@ public class MenuClient {
                         cliente.setTel(Ler.umInt());
                         return;
                     case 3:
-                        System.out.println("Novo email:");
-                        cliente.setEmail(Ler.umaString());
-                        return;
-                    case 4:
                         System.out.println("Novo género (M/F):");
                         cliente.setGender(Ler.umChar());
                         return;
-                    case 5:
+                    case 4:
                         System.out.println("Nova data de nascimento (AAAA-MM-DD):");
                         cliente.setBirthdate(LocalDate.parse(Ler.umaString()));
                         return;
-                    case 6:
+                    case 5:
                         System.out.println("Novo NIF:");
                         cliente.setNif(Ler.umInt());
                         return;
-                    case 7:
-                        System.out.println("A sair");
+                    case 6:
+                        System.out.println("A voltar");
                         return;
                     default:
                         System.out.println("Opção inválida!");
@@ -187,7 +183,7 @@ public class MenuClient {
         HashMap<Integer, Client> clients = new HashMap<>();
         for (int i = 0; i < Main.clients.size(); i++) {
             Client c = Main.clients.get(i);
-            if (c.getName().contains(name)) {
+            if (c.getName().toLowerCase().contains(name.toLowerCase())) {
                 clients.put(i, c);
             }
         }

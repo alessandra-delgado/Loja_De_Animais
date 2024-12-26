@@ -43,6 +43,10 @@ public class Main {
 
         // Employees
         employees = File.binRead("Employee/Employee.dat");
+
+        // Set Product ID
+        Product.setLast(File.binReadInt("Product/LastId.dat"));
+
     }
 
     public static void listProducts(ProductType type) {
