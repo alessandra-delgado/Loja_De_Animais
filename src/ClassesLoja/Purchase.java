@@ -1,5 +1,7 @@
 package src.ClassesLoja;
 
+import src.Exceptions.ProductStockExceeded;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -18,9 +20,10 @@ public class Purchase implements Serializable {
         products = new ArrayList<>();
     }
 
-    public static int getLast(){
+    public static int getLast() {
         return Purchase.last_id;
     }
+
     public int getId() {
         return id;
     }
@@ -45,7 +48,8 @@ public class Purchase implements Serializable {
         this.products = products;
     }
 
-    public void addProduct(Product p) {
+    public void addProduct(Product p) throws ProductStockExceeded {
+        p.decrementQuantity();
         this.total += (int) p.getPrice();
         this.products.add(p);
     }
@@ -65,15 +69,17 @@ public class Purchase implements Serializable {
     public void removeAllProducts() {
         for (Product p : this.products) {
             p.incrementQuantity();
+            // Given that remove() removes the first instance of given object in an ArrayList,
+            // removing each product for each iteration would not work if repeated products
+            // are contained in the list
         }
         this.products.clear();
-        this.total = 0;
+        this.total = 0.0;
     }
 
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Purchase)) return false;
-        Purchase p = (Purchase) o;
+        if (!(o instanceof Purchase p)) return false;
         return this.id == p.id && this.products.equals(p.products) && this.total == p.total; // does id comparison make sense?
     }
 
