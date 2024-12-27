@@ -5,7 +5,6 @@ import src.Input.Ler;
 
 public class FuncoesMenu {
 
-
     public static void menu2() {
         System.out.println("1 - Produtos");
         System.out.println("2 - Empregados");

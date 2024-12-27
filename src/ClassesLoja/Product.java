@@ -15,6 +15,7 @@ public class Product implements Serializable {
     protected String name;
     protected ProductType category;
     protected int quantity;
+    protected int quantity_sold;
 
     public Product() {
         this.id = ++last;
@@ -22,6 +23,7 @@ public class Product implements Serializable {
         this.name = "";
         this.category = ProductType.NONE;
         this.quantity = 0;
+        this.quantity_sold = 0;
     }
 
     public Product(String name, double price, int quantity) {
@@ -30,6 +32,7 @@ public class Product implements Serializable {
         this.name = name;
         this.category = ProductType.NONE;
         this.quantity = quantity;
+        this.quantity_sold = 0;
     }
 
     // GETTERS ------------------------------------------------------------------------------------
@@ -57,6 +60,10 @@ public class Product implements Serializable {
         return quantity;
     }
 
+    public int getQuantity_sold() {
+        return quantity_sold;
+    }
+
     // SETTERS ------------------------------------------------------------------------------------
     public static void setLast(int last) {
         Product.last = last;
@@ -82,6 +89,10 @@ public class Product implements Serializable {
         this.quantity = quantity;
     }
 
+    public void setQuantity_sold(int quantity_sold) {
+        this.quantity_sold = quantity_sold;
+    }
+
     // OVERRIDES ----------------------------------------------------------------------------------
     public boolean equals(Object obj) {
         if (obj == this) return true;
@@ -92,7 +103,8 @@ public class Product implements Serializable {
                 p.getPrice() == this.getPrice() &&
                 p.getName().equals(this.getName()) &&
                 p.getCategory().equals(this.getCategory()) &&
-                p.getQuantity() == this.getQuantity();
+                p.getQuantity() == this.getQuantity() &&
+                p.getQuantity_sold() == this.getQuantity_sold();
     }
 
     public Object clone() {
@@ -101,6 +113,7 @@ public class Product implements Serializable {
         p.name = this.name;
         p.category = this.category;
         p.quantity = this.quantity;
+        p.quantity_sold = this.quantity_sold;
         return p;
     }
 
@@ -113,9 +126,12 @@ public class Product implements Serializable {
             throw new ProductStockExceeded("O produto não está em stock.");
 
         this.quantity--;
+        this.quantity_sold++;
     }
 
     public void incrementQuantity(){
         this.quantity++;
+        this.quantity_sold--;
     }
+
 }

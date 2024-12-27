@@ -9,7 +9,6 @@ public class Purchase implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
     private static int last_id = 0;
-    private static HashMap<Integer, Integer> quant_prod_sold;
     private int id;
     private int total;
     private ArrayList<Product> products;
@@ -18,7 +17,6 @@ public class Purchase implements Serializable {
         this.id = ++last_id;
         this.total = 0;
         products = new ArrayList<>();
-        quant_prod_sold = new HashMap<>();
     }
 
     public int getId() {
@@ -33,10 +31,6 @@ public class Purchase implements Serializable {
         return new ArrayList<>(this.products);
     }
 
-    public static HashMap<Integer, Integer> getQuant_prod_sold() {
-        return quant_prod_sold;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -45,19 +39,10 @@ public class Purchase implements Serializable {
         this.products = products;
     }
 
-    public static void setQuant_prod_sold(HashMap<Integer, Integer> quant_prod_sold) {
-        Purchase.quant_prod_sold = new HashMap<>(quant_prod_sold);
-    }
-
     public void addProduct(Product p) {
         this.total += (int) p.getPrice();
         this.products.add(p);
         this.total += (int) p.getPrice();
-        if ( quant_prod_sold.containsKey(p.getId()) ) {
-            quant_prod_sold.put(p.getId(), quant_prod_sold.get(p.getId()) + 1);
-        }else {
-            quant_prod_sold.put(p.getId(), 1);
-        }
     }
 
     public void removeProduct(Product p) {
@@ -65,11 +50,6 @@ public class Purchase implements Serializable {
         this.products.get(id).incrementQuantity();
         this.products.remove(p);
         this.total -= (int) p.getPrice();
-        if ( quant_prod_sold.get(p.getId()) != 1 ) {
-            quant_prod_sold.put(p.getId(), quant_prod_sold.get(p.getId()) - 1);
-        }else {
-            quant_prod_sold.remove(p.getId(), quant_prod_sold.get(p.getId()));
-        }
     }
 
     public void removeProduct(int id) {
@@ -77,11 +57,6 @@ public class Purchase implements Serializable {
         this.products.get(id).incrementQuantity();
         this.products.remove(id);
         this.total -= (int) this.products.get(id).getPrice();
-        if ( quant_prod_sold.get(id) != 1 ) {
-            quant_prod_sold.put(id, quant_prod_sold.get(id) - 1);
-        }else {
-            quant_prod_sold.remove(id, quant_prod_sold.get(id));
-        }
     }
 
     public void removeAllProducts() {
