@@ -9,7 +9,7 @@ public class Purchase implements Serializable {
     private static final long serialVersionUID = 1L;
     private static int last_id = 0;
     private int id;
-    private int total;
+    private double total;
     private ArrayList<Product> products;
 
     public Purchase() {
@@ -22,7 +22,7 @@ public class Purchase implements Serializable {
         return id;
     }
 
-    public int getTotal() {
+    public double getTotal() {
         return total;
     }
 
@@ -32,6 +32,10 @@ public class Purchase implements Serializable {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public static void setLast(int last_id) {
+        Purchase.last_id = last_id;
     }
 
     public void setProducts(ArrayList<Product> products) {
@@ -50,7 +54,7 @@ public class Purchase implements Serializable {
     }
 
     public void removeProduct(int id) {
-        this.total -= (int) this.products.get(id).getPrice();
+        this.total -= this.products.get(id).getPrice();
         this.products.get(id).incrementQuantity();
         this.products.remove(id);
     }

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Client extends Person implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
-    private int totalSpent;
+    private double totalSpent;
     private ArrayList<Purchase> purchases;
 
     public Client(){
@@ -28,11 +28,11 @@ public class Client extends Person implements Serializable {
         this.purchases = new ArrayList<>();
     }
 
-    public int getTotalSpent(){
+    public double getTotalSpent(){
         return totalSpent;
     }
 
-    public void setTotalSpent(int totalSpent){
+    public void setTotalSpent(double totalSpent){
         this.totalSpent = totalSpent;
     }
 
