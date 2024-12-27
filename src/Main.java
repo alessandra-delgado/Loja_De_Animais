@@ -24,13 +24,13 @@ public class Main {
         // Initializes the product by type
         products = new HashMap<>();
 
-        products.put(ProductType.ANIMAL_REAL_LAND, File.binRead("Animal/Imaginary/Land.dat"));
-        products.put(ProductType.ANIMAL_REAL_AQUATIC, File.binRead("Animal/Imaginary/Aquatic.dat"));
-        products.put(ProductType.ANIMAL_REAL_AERIAL, File.binRead("Animal/Imaginary/Aerial.dat"));
+        products.put(ProductType.ANIMAL_REAL_LAND, File.binRead("Animal/Real/Land.dat"));
+        products.put(ProductType.ANIMAL_REAL_AQUATIC, File.binRead("Animal/Real/Aquatic.dat"));
+        products.put(ProductType.ANIMAL_REAL_AERIAL, File.binRead("Animal/Real/Aerial.dat"));
 
-        products.put(ProductType.ANIMAL_IMAGINARY_LAND, File.binRead("Animal/Real/Land.dat"));
-        products.put(ProductType.ANIMAL_IMAGINARY_AQUATIC, File.binRead("Animal/Real/Aquatic.dat"));
-        products.put(ProductType.ANIMAL_IMAGINARY_AERIAL, File.binRead("Animal/Real/Aerial.dat"));
+        products.put(ProductType.ANIMAL_IMAGINARY_LAND, File.binRead("Animal/Imaginary/Land.dat"));
+        products.put(ProductType.ANIMAL_IMAGINARY_AQUATIC, File.binRead("Animal/Imaginary/Aquatic.dat"));
+        products.put(ProductType.ANIMAL_IMAGINARY_AERIAL, File.binRead("Animal/Imaginary/Aerial.dat"));
 
         products.put(ProductType.COSMETIC, File.binRead("Cosmetics/Cosmetics.dat"));
         products.put(ProductType.FOOD, File.binRead("Food/Food.dat"));

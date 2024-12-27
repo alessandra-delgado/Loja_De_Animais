@@ -8,7 +8,7 @@ public class Animal extends Product {
     private String sciname;
     private String asciiart;
     private AnimalType type;
-    
+
     public Animal(int age, String gender, String sciname, String asciiart, AnimalType type) {
         super();
         super.setName(getName());
