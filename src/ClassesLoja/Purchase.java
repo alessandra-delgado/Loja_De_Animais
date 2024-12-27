@@ -4,6 +4,8 @@ import src.Exceptions.ProductStockExceeded;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -14,11 +16,13 @@ public class Purchase implements Serializable {
     private int id;
     private double total;
     private ArrayList<Product> products;
+    private LocalDateTime purchase_time;
 
     public Purchase() {
         this.id = ++last_id;
         this.total = 0.0;
         products = new ArrayList<>();
+        purchase_time = LocalDateTime.now();
     }
 
     public static int getLast() {
@@ -37,6 +41,10 @@ public class Purchase implements Serializable {
         return new ArrayList<>(this.products);
     }
 
+    public LocalDateTime getPurchase_time() {
+        return purchase_time;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -47,6 +55,10 @@ public class Purchase implements Serializable {
 
     public void setProducts(ArrayList<Product> products) {
         this.products = products;
+    }
+
+    public void setPurchase_time(LocalDateTime purchase_time) {
+        this.purchase_time = purchase_time;
     }
 
     public void addProduct(Product p) throws ProductStockExceeded {
@@ -84,12 +96,14 @@ public class Purchase implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Purchase p)) return false;
-        return this.id == p.id && this.products.equals(p.products) && this.total == p.total; // does id comparison make sense?
+        return this.id == p.id && this.products.equals(p.products) && this.total == p.total && this.purchase_time.equals(p.purchase_time); // does id comparison make sense?
     }
 
     public Object clone() {
         Purchase p = new Purchase();
         p.id = this.id; //?
+        p.total = this.total;
+        p.purchase_time = this.purchase_time;
         p.products = (ArrayList<Product>) this.products.clone();
         return p;
     }

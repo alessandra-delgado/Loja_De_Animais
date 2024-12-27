@@ -4,6 +4,11 @@ import src.ClassesLoja.*;
 import src.Enum.ProductType;
 import src.Input.Ler;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.TemporalAdjuster;
+import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 
 import static src.Main.clients;
@@ -37,11 +42,11 @@ public class MenuStats {
                     MenuStats.bestClient();
                     break;
                 case 4:
-                    System.out.println("Valor faturado");
+                    MenuTotalGained.showMenu();
                     break;
                 case 5:
                     System.out.println("Sair");
-                    break;
+                    return;
                 default:
                     System.out.println("Opção inválida");
                     break;
@@ -82,15 +87,16 @@ public class MenuStats {
     }
 
     public static void bestClient() {
-            int max = Integer.MIN_VALUE;
-            int i = 0;
-            ArrayList<Client> bestClients = new ArrayList<Client>(clients);
-            bestClients.sort((client1, client2) -> Double.compare(client2.getTotalSpent(), client1.getTotalSpent()));
+        int max = Integer.MIN_VALUE;
+        int i = 0;
+        ArrayList<Client> bestClients = new ArrayList<Client>(clients);
+        bestClients.sort((client1, client2) -> Double.compare(client2.getTotalSpent(), client1.getTotalSpent()));
 
-            while ( i<bestClients.size() ) {
-                    System.out.println(bestClients.get(i).getName() + " : Total spent is " + bestClients.get(i).getTotalSpent());
-                    if ( i == 5 ) break;
-                    i++;
-            }
+        while (i < bestClients.size()) {
+            System.out.println(bestClients.get(i).getName() + " : Total spent is " + bestClients.get(i).getTotalSpent());
+            if (i == 5) break;
+            i++;
+        }
     }
+
 }
