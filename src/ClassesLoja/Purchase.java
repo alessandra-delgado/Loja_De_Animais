@@ -14,10 +14,13 @@ public class Purchase implements Serializable {
 
     public Purchase() {
         this.id = ++last_id;
-        this.total = 0;
+        this.total = 0.0;
         products = new ArrayList<>();
     }
 
+    public static int getLast(){
+        return Purchase.last_id;
+    }
     public int getId() {
         return id;
     }

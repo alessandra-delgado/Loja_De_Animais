@@ -18,7 +18,7 @@ public class Product implements Serializable {
 
     public Product() {
         this.id = ++last;
-        this.price = 0;
+        this.price = 0.0;
         this.name = "";
         this.category = ProductType.NONE;
         this.quantity = 0;

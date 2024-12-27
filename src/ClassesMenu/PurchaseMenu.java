@@ -113,6 +113,7 @@ public class PurchaseMenu {
         Main.clients.get(id_selected).addPurchase(purchase);
 
         File.binWrite(Main.clients, "Client/Client.dat");
+        File.binWriteInt(Purchase.getLast(), "Invoices/LastId.dat");
         Main.saveData(); // Update Quantities after finishing purchase
 
         System.out.println(Main.clients.get(id_selected));

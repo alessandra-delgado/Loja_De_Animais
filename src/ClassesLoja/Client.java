@@ -12,19 +12,19 @@ public class Client extends Person implements Serializable {
 
     public Client(){
         super();
-        this.totalSpent = 0;
+        this.totalSpent = 0.0;
         this.purchases = new ArrayList<>();
     }
 
     public Client(String name, int nif, int tel){
         super(name, nif, tel);
-        this.totalSpent = 0;
+        this.totalSpent = 0.0;
         this.purchases = new ArrayList<>();
     }
 
     public Client(Person p){
         super(p.name, p.gender, p.birthdate, p.tel, p.nif);
-        this.totalSpent = 0;
+        this.totalSpent = 0.0;
         this.purchases = new ArrayList<>();
     }
 
