@@ -11,7 +11,7 @@ import java.util.HashMap;
 public class Main {
     public static HashMap<ProductType, ArrayList<Product>> products;
     public static ArrayList<Client> clients;
-    public static ArrayList<Client> employees;
+    public static ArrayList<Employee> employees;
 
     public static void main(String[] args) {
         init();
