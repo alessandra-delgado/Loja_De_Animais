@@ -163,7 +163,7 @@ public class PurchaseMenu {
         int id = Ler.umInt();
 
         try {
-            Product product = MenuProduct.findProductById(id);
+            Product product = ProductMenu.findProductById(id);
 
             // If the product is not in stock, warn user. Exits Product selection with null.
             if (product.getQuantity() == 0)
