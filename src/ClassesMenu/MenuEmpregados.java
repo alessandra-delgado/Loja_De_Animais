@@ -1,12 +1,12 @@
 package src.ClassesMenu;
 
-import src.Classes_Loja.Employee;
-import src.Classes_Loja.Person;
+import src.ClassesLoja.Person;
+import src.ClassesLoja.Employee;
 import src.Input.Ler;
-import src.Classes_Loja.File;
+import src.ClassesLoja.File;
+import src.Main;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import src.Classes_Loja.Employee;
+
 
 public class MenuEmpregados {
     public static void menu() {
@@ -43,7 +43,7 @@ public class MenuEmpregados {
         }
     }
 
-    private static void addEmpregado (ArrayList<Employee> employees) {
+    private static void addEmpregado () {
         System.out.println("Insira o nome, género, data de nascimento, número de telefone e NIF da Pessoa: ");
 
         //dados da pessoa
@@ -64,23 +64,23 @@ public class MenuEmpregados {
 
         //criar empregado
         Employee emp = new Employee(e1, sal, position);
-        employees.add(emp);
+        Main.employees.add(emp);
 
         //atualizar ficheiro
-        File.binWrite(employees, "Employees/Employees.dat");
+        File.binWrite(Main.employees, "Employees/Employees.dat");
 
         System.out.println("Empregado adicionado com sucesso!");
     }
 
-    private static void updateEmpregado (ArrayList<Employee> employees) {
+    private static void updateEmpregado () {
 
         System.out.println("Insira o NIF do Empregado: ");
         int nif = Ler.umInt();
 
-        for (int i = 0; i < employees.size(); i++) {
-            if (employees.get(i).getNif() == nif) {
+        for (int i = 0; i < Main.employees.size(); i++) {
+            if (Main.employees.get(i).getNif() == nif) {
                 System.out.println("Empregado: ");
-                System.out.println(employees.get(i).toString());
+                System.out.println(Main.employees.get(i).toString());
 
 
                 System.out.println("Selecione o que deseja atualizar: ");
@@ -100,41 +100,41 @@ public class MenuEmpregados {
                         case 1:
                             System.out.println("Insira o nome do Empregado: ");
                             String name = Ler.umaString();
-                            employees.get(i).setName(name);
+                            Main.employees.get(i).setName(name);
                             break;
                         case 2:
                             System.out.println("Insira o género do Empregado: ");
                             char gender = Ler.umChar();
-                            employees.get(i).setGender(gender);
+                            Main.employees.get(i).setGender(gender);
                             break;
                         case 3:
                             System.out.println("Insira o data de nascimento do Empregado: ");
                             String date = Ler.umaString();
                             LocalDate datenascimento = LocalDate.parse(date);
-                            employees.get(i).setBirthdate(datenascimento);
+                            Main.employees.get(i).setBirthdate(datenascimento);
                             break;
                         case 4:
                             System.out.println("Insira o telefone do Empregado: ");
                             int tel = Ler.umInt();
-                            employees.get(i).setTel(tel);
+                            Main.employees.get(i).setTel(tel);
                             break;
                         case 5:
                             System.out.println("Insira o nif do Empregado: ");
                             int nif2 = Ler.umInt();
-                            employees.get(i).setNif(nif2);
+                            Main.employees.get(i).setNif(nif2);
                             break;
                         case 6:
                             System.out.println("Insira o salário do Empregado: ");
                             double sal = Ler.umDouble();
-                            employees.get(i).setSalary(sal);
+                            Main.employees.get(i).setSalary(sal);
                             break;
                         case 7:
                             System.out.println("Insira a posição do Empregado: ");
                             String position = Ler.umaString();
-                            employees.get(i).setPosition(position);
+                            Main.employees.get(i).setPosition(position);
                             break;
                         case 8:
-                            File.binWrite(employees, "Employees/Employees.dat");
+                            File.binWrite(Main.employees, "Employees/Employees.dat");
                             System.out.println("Empregado atualizado com sucesso!");
                             System.out.println("A sair...");
                             return;
@@ -147,20 +147,20 @@ public class MenuEmpregados {
         }
     }
 
-    private static void viewEmpregrados (ArrayList<Employee> employees) {
+    private static void viewEmpregrados () {
 
-        for (int i = 0; i < employees.size(); i++) {
-            System.out.println(employees.get(i).toString());
+        for (int i = 0; i < Main.employees.size(); i++) {
+            System.out.println(Main.employees.get(i).toString());
         }
     }
 
-    private static void deleteEmpregado (ArrayList<Employee> employees) {
+    private static void deleteEmpregado () {
         System.out.println("Insira o NIF do Empregado: ");
         double nif = Ler.umDouble();
 
-        for (int i = 0; i < employees.size(); i++) {
-            if (employees.get(i).getNif() == nif) {
-                employees.remove(i);
+        for (int i = 0; i < Main.employees.size(); i++) {
+            if (Main.employees.get(i).getNif() == nif) {
+                Main.employees.remove(i);
             }
 
         }

@@ -1,12 +1,16 @@
-package src.ClassesMenu;
+package ClassesMenu;
 
 // Todo: escrever fatura para o ficheiro de faturas, Formatar fatura!
 
-import src.ClassesLoja.*;
+import ClassesLoja.*;
 import src.Exceptions.ProductNotFound;
 import src.Exceptions.ProductStockExceeded;
 import src.Input.Ler;
 import src.Main;
+import src.ClassesLoja.Product;
+import src.ClassesLoja.Purchase;
+import src.ClassesMenu.MenuClient;
+
 
 public class PurchaseMenu {
     public static void show() {

@@ -1,6 +1,9 @@
 // Todo: Colocar cada menu na sua própria classe
-package src.ClassesMenu;
+package ClassesMenu;
 
+import src.ClassesMenu.MenuEmpregados;
+import src.ClassesMenu.MenuClient;
+import src.ClassesMenu.MenuProduct;
 import src.Input.Ler;
 
 public class FuncoesMenu {

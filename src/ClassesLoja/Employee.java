@@ -1,4 +1,5 @@
 package src.ClassesLoja;
+import src.ClassesLoja.Person;
 
 public class Employee extends Person {
     private double salary;

@@ -2,6 +2,8 @@ package src.ClassesLoja;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
+import src.ClassesLoja.Person;
+import src.ClassesLoja.Purchase;
 
 
 public class Client extends Person implements Serializable {

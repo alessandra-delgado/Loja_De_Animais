@@ -4,6 +4,8 @@ import src.ClassesLoja.*;
 import src.Exceptions.ClientNotFound;
 import src.Input.Ler;
 import src.Main;
+import src.ClassesLoja.Client;
+import src.ClassesLoja.File;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;

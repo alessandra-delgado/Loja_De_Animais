@@ -1,7 +1,11 @@
 package src;
 
 import src.ClassesMenu.MainMenu;
-import src.ClassesLoja.*;
+//import ClassesLoja.*;
+import src.ClassesLoja.Animal;
+import src.ClassesLoja.Client;
+import src.ClassesLoja.Employee;
+import src.ClassesLoja.Product;
 import src.Enum.ProductType;
 import src.ClassesLoja.File;
 
