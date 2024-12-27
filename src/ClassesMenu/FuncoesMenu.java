@@ -36,9 +36,11 @@ public class FuncoesMenu {
     }
 
     public static void menu3() {
-        System.out.println("1 - Vendas");
-        System.out.println("2 - Clientes");
-        System.out.println("3 - Sair");
+        System.out.println("1 - Produtos mais vendidos");
+        System.out.println("2 - Produtos menos vendidos");
+        System.out.println("3 - Melhores clientes");
+        System.out.println("4 - Valor faturado");
+        System.out.println("5 - Sair");
         System.out.println("Escolha uma opção:");
 
         int op = 0;
@@ -46,7 +48,8 @@ public class FuncoesMenu {
             op = Ler.umInt();
             switch (op) {
                 case 1:
-                    System.out.println("Vendas");
+                    System.out.println("Produtos mais vendidos");
+
                     break;
                 case 2:
                     System.out.println("Clientes");
