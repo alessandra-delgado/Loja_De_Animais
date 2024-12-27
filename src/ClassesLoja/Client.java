@@ -7,32 +7,32 @@ import java.util.ArrayList;
 public class Client extends Person implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
-    private int totalSpent;
+    private double totalSpent;
     private ArrayList<Purchase> purchases;
 
     public Client(){
         super();
-        this.totalSpent = 0;
+        this.totalSpent = 0.0;
         this.purchases = new ArrayList<>();
     }
 
     public Client(String name, int nif, int tel){
         super(name, nif, tel);
-        this.totalSpent = 0;
+        this.totalSpent = 0.0;
         this.purchases = new ArrayList<>();
     }
 
     public Client(Person p){
         super(p.name, p.gender, p.birthdate, p.tel, p.nif);
-        this.totalSpent = 0;
+        this.totalSpent = 0.0;
         this.purchases = new ArrayList<>();
     }
 
-    public int getTotalSpent(){
+    public double getTotalSpent(){
         return totalSpent;
     }
 
-    public void setTotalSpent(int totalSpent){
+    public void setTotalSpent(double totalSpent){
         this.totalSpent = totalSpent;
     }
 
