@@ -85,7 +85,7 @@ public class MenuStats {
             int max = Integer.MIN_VALUE;
             int i = 0;
             ArrayList<Client> bestClients = new ArrayList<Client>(clients);
-            bestClients.sort((client1, client2) -> client2.getTotalSpent() - client1.getTotalSpent());
+            bestClients.sort((client1, client2) -> Double.compare(client2.getTotalSpent(), client1.getTotalSpent()));
 
             while ( i<bestClients.size() ) {
                     System.out.println(bestClients.get(i).getName() + " : Total spent is " + bestClients.get(i).getTotalSpent());
