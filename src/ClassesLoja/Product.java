@@ -110,7 +110,7 @@ public class Product implements Serializable {
 
     public void decrementQuantity() throws ProductStockExceeded {
         if (this.quantity == 0)
-            throw new ProductStockExceeded("O produto não está em stock.");
+            throw new ProductStockExceeded("O produto selecionado não está em stock.");
 
         this.quantity--;
     }

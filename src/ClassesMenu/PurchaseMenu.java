@@ -165,9 +165,9 @@ public class PurchaseMenu {
         try {
             Product product = MenuProduct.findProductById(id);
 
-            // If the product 
+            // If the product
             if (product.getQuantity() == 0)
-                throw new ProductStockExceeded("O produto selecionado não está disponível");
+                throw new ProductStockExceeded("O produto selecionado não está em stock.");
 
             do {
                 System.out.println("Selecionou o produto " + product + ".");
