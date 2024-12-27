@@ -165,7 +165,7 @@ public class PurchaseMenu {
         try {
             Product product = MenuProduct.findProductById(id);
 
-            // If the product
+            // If the product is not in stock, warn user. Exits Product selection with null.
             if (product.getQuantity() == 0)
                 throw new ProductStockExceeded("O produto selecionado não está em stock.");
 
