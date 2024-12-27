@@ -25,7 +25,7 @@ public class PurchaseMenu {
 
             switch (Ler.umInt()) {
                 case 1:
-                    MenuClient.searchClient();
+                    ClientMenu.searchClient();
                     break;
                 case 2:
                     id_selected = selectClientID();
@@ -41,7 +41,7 @@ public class PurchaseMenu {
                     System.out.println("Cliente selecionado com sucesso! (id : " + (id_selected + 1) + ")");
                     break;
                 case 3:
-                    id_selected = MenuClient.createNewClient();
+                    id_selected = ClientMenu.createNewClient();
 
                     if (id_selected == -1) {
                         continue;
