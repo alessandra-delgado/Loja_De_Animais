@@ -10,7 +10,7 @@ import src.Exceptions.ProductNotFound;
 import src.Input.Ler;
 import src.Main;
 
-public class MenuProduct {
+public class ProductMenu {
     private static void menu() {
         System.out.println("1 - Adicionar Produtos");
         System.out.println("2 - Atualizar Produtos");
@@ -22,7 +22,7 @@ public class MenuProduct {
 
     public static void show() {
         while (true) {
-            MenuProduct.menu();
+            ProductMenu.menu();
             switch (Ler.umInt()) {
                 case 1:
                     addProduct();

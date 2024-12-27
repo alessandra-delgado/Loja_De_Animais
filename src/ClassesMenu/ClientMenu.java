@@ -10,7 +10,7 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class MenuClient {
+public class ClientMenu {
     public static void menu() {
         System.out.println("1 - Pesquisar Clientes");
         System.out.println("2 - Adicionar Clientes");
@@ -23,15 +23,15 @@ public class MenuClient {
 
     public static void show() {
         do {
-            MenuClient.menu();
+            ClientMenu.menu();
 
             switch (Ler.umInt()) {
                 case 1:
-                    MenuClient.searchClient();
+                    ClientMenu.searchClient();
                     break;
                 case 2:
                     System.out.println("Adicionar clientes");
-                    MenuClient.createNewClient();
+                    ClientMenu.createNewClient();
                     break;
                 case 3:
                     updateClient();
@@ -66,7 +66,7 @@ public class MenuClient {
                     System.out.print("Insira um nome: ");
                     String name = Ler.umaString();
 
-                    HashMap<Integer, Client> clients = MenuClient.filterByName(name);
+                    HashMap<Integer, Client> clients = ClientMenu.filterByName(name);
 
                     if (clients.isEmpty())
                         System.out.println("Não há clientes com esse nome");

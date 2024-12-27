@@ -25,7 +25,7 @@ public class PurchaseMenu {
 
             switch (Ler.umInt()) {
                 case 1:
-                    MenuClient.searchClient();
+                    ClientMenu.searchClient();
                     break;
                 case 2:
                     id_selected = selectClientID();
@@ -41,7 +41,7 @@ public class PurchaseMenu {
                     System.out.println("Cliente selecionado com sucesso! (id : " + (id_selected + 1) + ")");
                     break;
                 case 3:
-                    id_selected = MenuClient.createNewClient();
+                    id_selected = ClientMenu.createNewClient();
 
                     if (id_selected == -1) {
                         continue;
@@ -79,10 +79,14 @@ public class PurchaseMenu {
                     break;
                 case 2:
                     Product product = selectProductID();
-                    if (product == null)
+                    if (product == null) // Either the product does not exist, or the user wants to choose another product
                         continue;
 
-                    purchase.addProduct(product);
+                    try {
+                        purchase.addProduct(product);
+                    } catch (ProductStockExceeded e) {
+                        System.out.println(e.getMessage());
+                    } // Redundant, but necessary if changes are made in the code
 
                     System.out.println("Produtos: " + purchase.getProducts());
                     break;
@@ -113,6 +117,7 @@ public class PurchaseMenu {
         Main.clients.get(id_selected).addPurchase(purchase);
 
         File.binWrite(Main.clients, "Client/Client.dat");
+        File.binWriteInt(Purchase.getLast(), "Invoices/LastId.dat");
         Main.saveData(); // Update Quantities after finishing purchase
 
         System.out.println(Main.clients.get(id_selected));
@@ -154,12 +159,16 @@ public class PurchaseMenu {
     }
 
     private static Product selectProductID() {
-
         System.out.print("Insira o id do produto: ");
         int id = Ler.umInt();
 
         try {
-            Product product = MenuProduct.findProductById(id);
+            Product product = ProductMenu.findProductById(id);
+
+            // If the product is not in stock, warn user. Exits Product selection with null.
+            if (product.getQuantity() == 0)
+                throw new ProductStockExceeded("O produto selecionado não está em stock.");
+
             do {
                 System.out.println("Selecionou o produto " + product + ".");
                 System.out.println("1 - Prosseguir com este produto");
@@ -168,7 +177,6 @@ public class PurchaseMenu {
 
                 switch (Ler.umInt()) {
                     case 1:
-                        product.decrementQuantity();
                         return product;
                     case 2:
                         return null;
