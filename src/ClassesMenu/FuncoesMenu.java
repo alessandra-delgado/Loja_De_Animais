@@ -17,13 +17,13 @@ public class FuncoesMenu {
             op = Ler.umInt();
             switch (op) {
                 case 1:
-                    MenuProduct.show();
+                    ProductMenu.show();
                     return;
                 case 2:
                     MenuEmpregados.show();
                     return;
                 case 3:
-                    MenuClient.show();
+                    ClientMenu.show();
                     return;
                 case 4:
                     System.out.println("A sair...");

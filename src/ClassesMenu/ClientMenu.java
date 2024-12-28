@@ -1,7 +1,7 @@
 package src.ClassesMenu;
 
 import src.ClassesLoja.*;
-import src.Exceptions.ClientNotFound;
+import src.Exceptions.ClientNotFoundException;
 import src.Input.Ler;
 import src.Main;
 
@@ -10,7 +10,7 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class MenuClient {
+public class ClientMenu {
     public static void menu() {
         System.out.println("1 - Pesquisar Clientes");
         System.out.println("2 - Adicionar Clientes");
@@ -23,15 +23,15 @@ public class MenuClient {
 
     public static void show() {
         do {
-            MenuClient.menu();
+            ClientMenu.menu();
 
             switch (Ler.umInt()) {
                 case 1:
-                    MenuClient.searchClient();
+                    ClientMenu.searchClient();
                     break;
                 case 2:
                     System.out.println("Adicionar clientes");
-                    MenuClient.createNewClient();
+                    ClientMenu.createNewClient();
                     break;
                 case 3:
                     updateClient();
@@ -66,7 +66,7 @@ public class MenuClient {
                     System.out.print("Insira um nome: ");
                     String name = Ler.umaString();
 
-                    HashMap<Integer, Client> clients = MenuClient.filterByName(name);
+                    HashMap<Integer, Client> clients = ClientMenu.filterByName(name);
 
                     if (clients.isEmpty())
                         System.out.println("Não há clientes com esse nome");
@@ -137,7 +137,7 @@ public class MenuClient {
                             try {
                                 findByNIF(nif);
                                 System.out.println("Já existe um cliente com o NIF introduzido!");
-                            } catch (ClientNotFound e) {
+                            } catch (ClientNotFoundException e) {
                                 cliente.setNif(nif);
                                 break;
                             }
@@ -153,7 +153,7 @@ public class MenuClient {
                 }
                 System.out.println("Cliente atualizado!");
             }
-        } catch (ClientNotFound e) {
+        } catch (ClientNotFoundException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -189,18 +189,18 @@ public class MenuClient {
                 }
             }
 
-        } catch (ClientNotFound e) {
+        } catch (ClientNotFoundException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public static Client findByNIF(int nif) throws ClientNotFound {
+    public static Client findByNIF(int nif) throws ClientNotFoundException {
         for (Client client : Main.clients) {
             if (client.getNif() == nif) {
                 return client;
             }
         }
-        throw new ClientNotFound("Cliente com o NIF " + nif + " não está registado");
+        throw new ClientNotFoundException("Cliente com o NIF " + nif + " não está registado");
     }
 
     public static HashMap<Integer, Client> filterByName(String name) {
@@ -240,7 +240,7 @@ public class MenuClient {
                         try {
                             findByNIF(nif);
                             System.out.println("Já existe um cliente com o NIF introduzido!");
-                        } catch (ClientNotFound e) {
+                        } catch (ClientNotFoundException e) {
                             c.setNif(nif);
                             break;
                         }
