@@ -48,7 +48,7 @@ public class Main {
         Product.setLast(File.binReadInt("Product/LastId.dat"));
 
         // Set Purchase ID
-        Purchase.setLast(File.binReadInt("Invoices/LastId.dat"));
+        Purchase.setLast(File.binReadInt("Purchase/LastId.dat"));
 
     }
 

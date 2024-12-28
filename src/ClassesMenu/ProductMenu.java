@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicReference;
 import src.ClassesLoja.Product;
 import src.Enum.ProductType;
 import src.ClassesLoja.File;
-import src.Exceptions.ProductNotFound;
+import src.Exceptions.ProductNotFoundException;
 import src.Input.Ler;
 import src.Main;
 
@@ -831,7 +831,7 @@ public class ProductMenu {
         return null;
     }
 
-    public static Product findProductById(int id) throws ProductNotFound {
+    public static Product findProductById(int id) throws ProductNotFoundException {
         AtomicReference<Product> selected = new AtomicReference<>();
 
         Main.products.forEach((_, products) -> {
@@ -847,7 +847,7 @@ public class ProductMenu {
             return selected.get();
         }
 
-        throw new ProductNotFound("Erro: Não existe nenhum produto com o id introduzido");
+        throw new ProductNotFoundException("Erro: Não existe nenhum produto com o id introduzido");
     }
 
 

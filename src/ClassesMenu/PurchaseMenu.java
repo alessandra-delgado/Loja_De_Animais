@@ -3,8 +3,8 @@ package src.ClassesMenu;
 // Todo: escrever fatura para o ficheiro de faturas, Formatar fatura!
 
 import src.ClassesLoja.*;
-import src.Exceptions.ProductNotFound;
-import src.Exceptions.ProductStockExceeded;
+import src.Exceptions.ProductNotFoundException;
+import src.Exceptions.ProductStockExceededException;
 import src.Input.Ler;
 import src.Main;
 
@@ -84,7 +84,7 @@ public class PurchaseMenu {
 
                     try {
                         purchase.addProduct(product);
-                    } catch (ProductStockExceeded e) {
+                    } catch (ProductStockExceededException e) {
                         System.out.println(e.getMessage());
                     } // Redundant, but necessary if changes are made in the code
 
@@ -104,6 +104,7 @@ public class PurchaseMenu {
                     }
                     break;
                 case 5:
+                    if (!purchase.getProducts().isEmpty()) purchase.removeAllProducts();
                     System.out.println("<-");
                     return;
                 default:
@@ -117,11 +118,12 @@ public class PurchaseMenu {
         Main.clients.get(id_selected).addPurchase(purchase);
 
         File.binWrite(Main.clients, "Client/Client.dat");
-        File.binWriteInt(Purchase.getLast(), "Invoices/LastId.dat");
+        File.binWriteInt(Purchase.getLast(), "Purchase/LastId.dat");
         Main.saveData(); // Update Quantities after finishing purchase
 
-        System.out.println(Main.clients.get(id_selected));
-        System.out.println(purchase.getProducts());
+        //System.out.println(Main.clients.get(id_selected));
+        //System.out.println(purchase.getProducts());
+        purchase.printInvoice(Main.clients.get(id_selected));
     }
 
     private static int selectClientID() {
@@ -167,7 +169,7 @@ public class PurchaseMenu {
 
             // If the product is not in stock, warn user. Exits Product selection with null.
             if (product.getQuantity() == 0)
-                throw new ProductStockExceeded("O produto selecionado não está em stock.");
+                throw new ProductStockExceededException("O produto selecionado não está em stock.");
 
             do {
                 System.out.println("Selecionou o produto " + product + ".");
@@ -186,7 +188,7 @@ public class PurchaseMenu {
                 }
             } while (true);
 
-        } catch (ProductNotFound | ProductStockExceeded e) {
+        } catch (ProductNotFoundException | ProductStockExceededException e) {
             System.out.println(e.getMessage());
         }
 

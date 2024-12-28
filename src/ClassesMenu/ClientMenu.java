@@ -1,7 +1,7 @@
 package src.ClassesMenu;
 
 import src.ClassesLoja.*;
-import src.Exceptions.ClientNotFound;
+import src.Exceptions.ClientNotFoundException;
 import src.Input.Ler;
 import src.Main;
 
@@ -137,7 +137,7 @@ public class ClientMenu {
                             try {
                                 findByNIF(nif);
                                 System.out.println("Já existe um cliente com o NIF introduzido!");
-                            } catch (ClientNotFound e) {
+                            } catch (ClientNotFoundException e) {
                                 cliente.setNif(nif);
                                 break;
                             }
@@ -153,7 +153,7 @@ public class ClientMenu {
                 }
                 System.out.println("Cliente atualizado!");
             }
-        } catch (ClientNotFound e) {
+        } catch (ClientNotFoundException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -189,18 +189,18 @@ public class ClientMenu {
                 }
             }
 
-        } catch (ClientNotFound e) {
+        } catch (ClientNotFoundException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public static Client findByNIF(int nif) throws ClientNotFound {
+    public static Client findByNIF(int nif) throws ClientNotFoundException {
         for (Client client : Main.clients) {
             if (client.getNif() == nif) {
                 return client;
             }
         }
-        throw new ClientNotFound("Cliente com o NIF " + nif + " não está registado");
+        throw new ClientNotFoundException("Cliente com o NIF " + nif + " não está registado");
     }
 
     public static HashMap<Integer, Client> filterByName(String name) {
@@ -240,7 +240,7 @@ public class ClientMenu {
                         try {
                             findByNIF(nif);
                             System.out.println("Já existe um cliente com o NIF introduzido!");
-                        } catch (ClientNotFound e) {
+                        } catch (ClientNotFoundException e) {
                             c.setNif(nif);
                             break;
                         }

@@ -1,10 +1,15 @@
 package src.ClassesLoja;
 
-import src.Exceptions.ProductStockExceeded;
+import src.ClassesMenu.ProductMenu;
+import src.Exceptions.ProductNotFoundException;
+import src.Exceptions.ProductStockExceededException;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Purchase implements Serializable {
     @Serial
@@ -48,14 +53,14 @@ public class Purchase implements Serializable {
         this.products = products;
     }
 
-    public void addProduct(Product p) throws ProductStockExceeded {
+    public void addProduct(Product p) throws ProductStockExceededException {
         p.decrementQuantity();
-        this.total += (int) p.getPrice();
+        this.total += p.getPrice();
         this.products.add(p);
     }
 
     public void removeProduct(Product p) {
-        this.total -= (int) p.getPrice();
+        this.total -= p.getPrice();
         this.products.get(id).incrementQuantity();
         this.products.remove(p);
     }
@@ -92,5 +97,66 @@ public class Purchase implements Serializable {
 
     public String toString() {
         return "[id: " + this.id + " , products: " + this.products.toString() + ", total: " + this.total + " ]";
+    }
+
+    public void printInvoice(Client c) {
+        int char_space = 48; // Espaço padrão
+        int name_length = 0;
+
+        // Armazenar a quantidade para cada produto no HashMap
+        HashMap<Integer, Integer> idAndQuantity = new HashMap<>();
+        for (Product p : this.products) {
+            idAndQuantity.put(p.getId(), idAndQuantity.getOrDefault(p.getId(), 0) + 1);
+        }
+
+        // Cabeçalho da fatura
+        System.out.println("====================================================");
+        System.out.printf("|| %-46s ||%n", "PURO PET                       LOJA DE ANIMAIS");
+        System.out.printf("|| %-46s ||%n", "");
+        System.out.printf("|| %-46s ||%n", "**** LOJA DE ANIMAIS ****");
+        System.out.printf("|| %-46s ||%n", "Puro Pet, Lda.");
+        System.out.printf("|| %-46s ||%n", "C:\\Users\\PuroPet\\Faturas");
+        System.out.printf("|| %-46s ||%n", "6200-XXX Covilha");
+        System.out.println("|| ---------------------------------------------- ||");
+        System.out.printf("|| %-46s ||%n", "Fatura Simplificada");
+
+        // Data formatada
+        System.out.printf("||  Data: %-39s ||%n", "currentDate"); //todo: add date
+
+        System.out.println("|| ---------------------------------------------- ||");
+
+        // NIF (preenchido com exemplo ou dinamicamente se necessário)
+        System.out.printf("||  NIF: %-40s ||%n", c.getNif());
+
+        System.out.println("|| ---------------------------------------------- ||");
+        System.out.printf("||  %-30s %-7s %-6s ||%n", "Produto", "Quant", "Valor");
+        System.out.println("|| ---------------------------------------------- ||");
+
+        // Corpo da fatura: produtos, quantidades e valores
+        idAndQuantity.forEach((id, quantity) -> {
+            try {
+                Product product = ProductMenu.findProductById(id);
+                String productName = product.getName();
+                double productPrice = product.getPrice();
+
+                // Truncar ou ajustar nomes muito longos para caber no espaço
+                if (productName.length() > 30) {
+                    productName = productName.substring(0, 27) + "...";
+                }
+
+                // Exibir cada linha formatada
+                System.out.printf("||  %-30s %-7d %-6.2f ||%n", productName, quantity, productPrice * quantity);
+            } catch (ProductNotFoundException e) {
+                System.out.printf("||  %-30s %-7s %-6s ||%n", "Produto não encontrado", "-", "-");
+            }
+        });
+        System.out.println("|| ---------------------------------------------- ||");
+        System.out.printf("|| %-30s %-7s %-6.2f€ ||%n", "TOTAL", "", this.total);
+        System.out.println("|| ---------------------------------------------- ||");
+        System.out.printf("|| %-46s ||%n", "* Obrigado Pela Visita. Volte Sempre. *");
+        System.out.printf("|| %-46s ||%n", "Este documento nao constitui documento");
+        System.out.printf("|| %-46s ||%n", "de transporte, nos termos do");
+        System.out.printf("|| %-46s ||%n", "Decreto-Lei n.º 147/2003");
+        System.out.println("====================================================");
     }
 }
