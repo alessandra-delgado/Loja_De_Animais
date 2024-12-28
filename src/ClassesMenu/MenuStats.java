@@ -39,7 +39,7 @@ public class MenuStats {
                     break;
                 case 3:
                     System.out.println("Melhores clientes");
-                    MenuStats.bestClient();
+                    MenuBestClient.showMenu();
                     break;
                 case 4:
                     MenuTotalGained.showMenu();
@@ -83,19 +83,6 @@ public class MenuStats {
             System.out.println(prod_sold.get(i).getName() + " : " + prod_sold.get(i).getQuantity_sold() + " purchases");
             i++;
             if (i == 5) break;
-        }
-    }
-
-    public static void bestClient() {
-        int max = Integer.MIN_VALUE;
-        int i = 0;
-        ArrayList<Client> bestClients = new ArrayList<Client>(clients);
-        bestClients.sort((client1, client2) -> Double.compare(client2.getTotalSpent(), client1.getTotalSpent()));
-
-        while (i < bestClients.size()) {
-            System.out.println(bestClients.get(i).getName() + " : Total spent is " + bestClients.get(i).getTotalSpent());
-            if (i == 5) break;
-            i++;
         }
     }
 
