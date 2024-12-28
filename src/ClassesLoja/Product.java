@@ -1,6 +1,7 @@
 package src.ClassesLoja;
 
 import src.Enum.ProductType;
+import src.Exceptions.ProductStockExceededException;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -17,7 +18,7 @@ public class Product implements Serializable {
 
     public Product() {
         this.id = ++last;
-        this.price = 0;
+        this.price = 0.0;
         this.name = "";
         this.category = ProductType.NONE;
         this.quantity = 0;
@@ -105,5 +106,16 @@ public class Product implements Serializable {
 
     public String toString() {
         return "[ID: " + this.getId() + ", Price: " + this.getPrice() + ", Name: " + this.getName() + ", Categoria: " + this.category  + ", Quantidade:" + this.quantity +  "]";
+    }
+
+    public void decrementQuantity() throws ProductStockExceededException {
+        if (this.quantity == 0)
+            throw new ProductStockExceededException("O produto selecionado não está em stock.");
+
+        this.quantity--;
+    }
+
+    public void incrementQuantity(){
+        this.quantity++;
     }
 }

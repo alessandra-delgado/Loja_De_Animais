@@ -2,13 +2,11 @@ package src.ClassesMenu;
 
 // Todo: escrever fatura para o ficheiro de faturas, Formatar fatura!
 
-import src.ClassesLoja.File;
-import src.ClassesLoja.Product;
-import src.ClassesLoja.Purchase;
+import src.ClassesLoja.*;
+import src.Exceptions.ProductNotFoundException;
+import src.Exceptions.ProductStockExceededException;
 import src.Input.Ler;
 import src.Main;
-
-import java.util.concurrent.atomic.AtomicReference;
 
 public class PurchaseMenu {
     public static void show() {
@@ -27,7 +25,7 @@ public class PurchaseMenu {
 
             switch (Ler.umInt()) {
                 case 1:
-                    MenuClient.searchClient();
+                    ClientMenu.searchClient();
                     break;
                 case 2:
                     id_selected = selectClientID();
@@ -43,7 +41,7 @@ public class PurchaseMenu {
                     System.out.println("Cliente selecionado com sucesso! (id : " + (id_selected + 1) + ")");
                     break;
                 case 3:
-                    id_selected = MenuClient.createNewClient();
+                    id_selected = ClientMenu.createNewClient();
 
                     if (id_selected == -1) {
                         continue;
@@ -81,10 +79,14 @@ public class PurchaseMenu {
                     break;
                 case 2:
                     Product product = selectProductID();
-                    if (product == null)
+                    if (product == null) // Either the product does not exist, or the user wants to choose another product
                         continue;
 
-                    purchase.addProduct(product);
+                    try {
+                        purchase.addProduct(product);
+                    } catch (ProductStockExceededException e) {
+                        System.out.println(e.getMessage());
+                    } // Redundant, but necessary if changes are made in the code
 
                     System.out.println("Produtos: " + purchase.getProducts());
                     break;
@@ -102,6 +104,7 @@ public class PurchaseMenu {
                     }
                     break;
                 case 5:
+                    if (!purchase.getProducts().isEmpty()) purchase.removeAllProducts();
                     System.out.println("<-");
                     return;
                 default:
@@ -115,9 +118,12 @@ public class PurchaseMenu {
         Main.clients.get(id_selected).addPurchase(purchase);
 
         File.binWrite(Main.clients, "Client/Client.dat");
+        File.binWriteInt(Purchase.getLast(), "Purchase/LastId.dat");
+        Main.saveData(); // Update Quantities after finishing purchase
 
-        System.out.println(Main.clients.get(id_selected));
-        System.out.println(purchase.getProducts());
+        //System.out.println(Main.clients.get(id_selected));
+        //System.out.println(purchase.getProducts());
+        purchase.printInvoice(Main.clients.get(id_selected));
     }
 
     private static int selectClientID() {
@@ -155,38 +161,36 @@ public class PurchaseMenu {
     }
 
     private static Product selectProductID() {
-        AtomicReference<Product> selected = new AtomicReference<>();
-
         System.out.print("Insira o id do produto: ");
         int id = Ler.umInt();
 
-        Main.products.forEach((_, products) -> {
-            for (Product p : products) {
-                if (p.getId() == id) {
-                    selected.set(p);
-                    break;
+        try {
+            Product product = ProductMenu.findProductById(id);
+
+            // If the product is not in stock, warn user. Exits Product selection with null.
+            if (product.getQuantity() == 0)
+                throw new ProductStockExceededException("O produto selecionado não está em stock.");
+
+            do {
+                System.out.println("Selecionou o produto " + product + ".");
+                System.out.println("1 - Prosseguir com este produto");
+                System.out.println("2 - Reescolher produto");
+                System.out.print("Opção introduzida: ");
+
+                switch (Ler.umInt()) {
+                    case 1:
+                        return product;
+                    case 2:
+                        return null;
+                    default:
+                        System.out.println("Operação inválida!");
+                        break;
                 }
-            }
-        });
+            } while (true);
 
-        while (selected.get() != null) {
-            System.out.println("Selecionou o produto " + selected.get() + ".");
-            System.out.println("1 - Prosseguir com este produto");
-            System.out.println("2 - Reescolher produto");
-            System.out.print("Opção introduzida: ");
-
-            switch (Ler.umInt()) {
-                case 1:
-                    return selected.get();
-                case 2:
-                    return null;
-                default:
-                    System.out.println("Operação inválida!");
-                    break;
-            }
+        } catch (ProductNotFoundException | ProductStockExceededException e) {
+            System.out.println(e.getMessage());
         }
-
-        System.out.println("Erro: Não existe nenhum produto com o id introduzido");
 
         return null;
     }

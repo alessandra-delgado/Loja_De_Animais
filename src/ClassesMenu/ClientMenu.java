@@ -1,7 +1,7 @@
 package src.ClassesMenu;
 
 import src.ClassesLoja.*;
-import src.Exceptions.ClientNotFound;
+import src.Exceptions.ClientNotFoundException;
 import src.Input.Ler;
 import src.Main;
 
@@ -10,7 +10,7 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class MenuClient {
+public class ClientMenu {
     public static void menu() {
         System.out.println("1 - Pesquisar Clientes");
         System.out.println("2 - Adicionar Clientes");
@@ -23,15 +23,15 @@ public class MenuClient {
 
     public static void show() {
         do {
-            MenuClient.menu();
+            ClientMenu.menu();
 
             switch (Ler.umInt()) {
                 case 1:
-                    MenuClient.searchClient();
+                    ClientMenu.searchClient();
                     break;
                 case 2:
                     System.out.println("Adicionar clientes");
-                    MenuClient.createNewClient();
+                    ClientMenu.createNewClient();
                     break;
                 case 3:
                     updateClient();
@@ -66,7 +66,7 @@ public class MenuClient {
                     System.out.print("Insira um nome: ");
                     String name = Ler.umaString();
 
-                    HashMap<Integer, Client> clients = MenuClient.filterByName(name);
+                    HashMap<Integer, Client> clients = ClientMenu.filterByName(name);
 
                     if (clients.isEmpty())
                         System.out.println("Não há clientes com esse nome");
@@ -106,30 +106,39 @@ public class MenuClient {
             while (true) {
                 switch (Ler.umInt()) {
                     case 1:
-                        System.out.println("Novo nome:");
+                        System.out.print("Novo nome: ");
                         cliente.setName(Ler.umaString());
                         return;
                     case 2:
-                        System.out.println("Novo telefone:");
+                        System.out.print("Novo telefone: ");
                         cliente.setTel(Ler.umInt());
                         return;
                     case 3:
-                        System.out.println("Novo género (M/F):");
+                        System.out.print("Novo género (M/F): ");
                         cliente.setGender(Ler.umChar());
                         return;
                     case 4:
-                        System.out.println("Nova data de nascimento (AAAA-MM-DD):");
-                        cliente.setBirthdate(LocalDate.parse(Ler.umaString()));
+                        do {
+                            System.out.println("Nova data de nascimento (AAAA-MM-DD):");
+
+                            try {
+                                cliente.setBirthdate(LocalDate.parse(Ler.umaString()));
+                                break;
+                            } catch (DateTimeParseException e) {
+                                System.out.println("A data introduzida não é válida.");
+                            }
+                        } while (true);
+
                         return;
                     case 5:
                         do {
-                            System.out.println("Novo NIF:");
+                            System.out.print("Novo NIF: ");
                             nif = Ler.umInt();
                             try {
                                 findByNIF(nif);
                                 System.out.println("Já existe um cliente com o NIF introduzido!");
-                            } catch (ClientNotFound e) {
-                                cliente.setNif(Ler.umInt());
+                            } catch (ClientNotFoundException e) {
+                                cliente.setNif(nif);
                                 break;
                             }
 
@@ -144,7 +153,7 @@ public class MenuClient {
                 }
                 System.out.println("Cliente atualizado!");
             }
-        } catch (ClientNotFound e) {
+        } catch (ClientNotFoundException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -166,9 +175,7 @@ public class MenuClient {
         int nif = Ler.umInt();
 
         try {
-
             Client cliente = findByNIF(nif);
-
 
             System.out.println("Histórico de compras de " + cliente.getName() + ":");
             ArrayList<Purchase> purchases = cliente.getPurchases();
@@ -182,18 +189,18 @@ public class MenuClient {
                 }
             }
 
-        } catch (ClientNotFound e) {
+        } catch (ClientNotFoundException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public static Client findByNIF(int nif) throws ClientNotFound {
+    public static Client findByNIF(int nif) throws ClientNotFoundException {
         for (Client client : Main.clients) {
             if (client.getNif() == nif) {
                 return client;
             }
         }
-        throw new ClientNotFound("Cliente com o NIF " + nif + " não está registado");
+        throw new ClientNotFoundException("Cliente com o NIF " + nif + " não está registado");
     }
 
     public static HashMap<Integer, Client> filterByName(String name) {
@@ -233,8 +240,8 @@ public class MenuClient {
                         try {
                             findByNIF(nif);
                             System.out.println("Já existe um cliente com o NIF introduzido!");
-                        } catch (ClientNotFound e) {
-                            c.setNif(Ler.umInt());
+                        } catch (ClientNotFoundException e) {
+                            c.setNif(nif);
                             break;
                         }
                     } while (true);
