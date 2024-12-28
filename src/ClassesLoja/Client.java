@@ -78,4 +78,11 @@ public class Client extends Person implements Serializable {
     public int totalPurchases(){
         return purchases.size();
     }
+
+    public double MostExpensivePurchase(){
+        if (purchases.isEmpty()){ return 0.0; }
+
+        purchases.sort((purchase1, purchase2) -> Double.compare(purchase2.getTotal(), purchase1.getTotal()));
+        return purchases.get(0).getTotal();
+    }
 }
