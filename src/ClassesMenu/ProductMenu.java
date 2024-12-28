@@ -166,7 +166,8 @@ public class ProductMenu {
                     System.out.println("O que quer atualizar:");
                     System.out.println("1 - Preço");
                     System.out.println("2 - Categoria");
-                    System.out.println("3 - Sair");
+                    System.out.println("3 - Quantidade");
+                    System.out.println("4 - Sair");
                     while (true) {
                         switch (Ler.umInt()) {
                             case 1:
@@ -238,6 +239,17 @@ public class ProductMenu {
                                     }
                                 }
                             case 3:
+                                System.out.println("Qual a nova quantidade:");
+                                int qt = Ler.umInt();
+                                if (qt > 0){
+                                    cosmetics.setQuantity(qt);
+                                    File.binWrite(Main.products.get(ProductType.COSMETIC), "Cosmetics/Cosmetics.dat");
+                                    System.out.println("Quantidade atualizada!!");
+                                }else{
+                                    System.out.println("Quantidade tem de ser positiva!");
+                                }
+                                return;
+                            case 4:
                                 System.out.println("A sair...");
                                 return;
                             default:
@@ -262,7 +274,8 @@ public class ProductMenu {
                     System.out.println("O que quer atualizar:");
                     System.out.println("1 - Preço");
                     System.out.println("2 - Categoria");
-                    System.out.println("3 - Sair");
+                    System.out.println("3 - Quantidade");
+                    System.out.println("4 - Sair");
                     while (true) {
                         switch (Ler.umInt()) {
                             case 1:
@@ -333,6 +346,17 @@ public class ProductMenu {
                                     }
                                 }
                             case 3:
+                                System.out.println("Qual a nova quantidade:");
+                                int qt = Ler.umInt();
+                                if (qt > 0){
+                                    foods.setQuantity(qt);
+                                    File.binWrite(Main.products.get(ProductType.FOOD), "Food/Food.dat");
+                                    System.out.println("Quantidade atualizada!!");
+                                }else{
+                                    System.out.println("Quantidade tem de ser positiva!");
+                                }
+                                return;
+                            case 4:
                                 System.out.println("A sair...");
                                 return;
                             default:
@@ -357,7 +381,8 @@ public class ProductMenu {
                     System.out.println("O que quer atualizar:");
                     System.out.println("1 - Preço");
                     System.out.println("2 - Categoria");
-                    System.out.println("3 - Sair");
+                    System.out.println("3 - Quantidade");
+                    System.out.println("4 - Sair");
                     while (true) {
                         switch (Ler.umInt()) {
                             case 1:
@@ -428,6 +453,17 @@ public class ProductMenu {
                                     }
                                 }
                             case 3:
+                                System.out.println("Qual a nova quantidade:");
+                                int qt = Ler.umInt();
+                                if (qt > 0){
+                                    habitats.setQuantity(qt);
+                                    File.binWrite(Main.products.get(ProductType.HABITAT), "Habitat/Habitat.dat");
+                                    System.out.println("Quantidade atualizada!!");
+                                }else{
+                                    System.out.println("Quantidade tem de ser positiva!");
+                                }
+                                return;
+                            case 4:
                                 System.out.println("A sair...");
                                 return;
                             default:
@@ -451,7 +487,8 @@ public class ProductMenu {
                     System.out.println("O que quer atualizar:");
                     System.out.println("1 - Preço");
                     System.out.println("2 - Categoria");
-                    System.out.println("3 - Sair");
+                    System.out.println("3 - Quantidade");
+                    System.out.println("4 - Sair");
                     while (true) {
                         switch (Ler.umInt()) {
                             case 1:
@@ -523,6 +560,17 @@ public class ProductMenu {
                                     }
                                 }
                             case 3:
+                                System.out.println("Qual a nova quantidade:");
+                                int qt = Ler.umInt();
+                                if (qt > 0){
+                                    limpeza.setQuantity(qt);
+                                    File.binWrite(Main.products.get(ProductType.HYGIENE), "Hygiene/Hygiene.dat");
+                                    System.out.println("Quantidade atualizada!!");
+                                }else{
+                                    System.out.println("Quantidade tem de ser positiva!");
+                                }
+                                return;
+                            case 4:
                                 System.out.println("A sair...");
                                 return;
                             default:
@@ -546,7 +594,8 @@ public class ProductMenu {
                     System.out.println("O que quer atualizar:");
                     System.out.println("1 - Preço");
                     System.out.println("2 - Categoria");
-                    System.out.println("3 - Sair");
+                    System.out.println("3 - Quantidade");
+                    System.out.println("4 - Sair");
                     while (true) {
                         switch (Ler.umInt()) {
                             case 1:
@@ -618,6 +667,17 @@ public class ProductMenu {
                                     }
                                 }
                             case 3:
+                                System.out.println("Qual a nova quantidade:");
+                                int qt = Ler.umInt();
+                                if (qt > 0){
+                                    medicines.setQuantity(qt);
+                                    File.binWrite(Main.products.get(ProductType.MEDICINE), "Medicine/Medicine.dat");
+                                    System.out.println("Quantidade atualizada!!");
+                                }else{
+                                    System.out.println("Quantidade tem de ser positiva!");
+                                }
+                                return;
+                            case 4:
                                 System.out.println("A sair...");
                                 return;
                             default:
