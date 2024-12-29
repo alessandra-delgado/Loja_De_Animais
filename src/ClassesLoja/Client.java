@@ -4,8 +4,6 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-
-
 public class Client extends Person implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
@@ -47,7 +45,7 @@ public class Client extends Person implements Serializable {
     }
 
     public String toString(){
-        return super.toString() + "\nNumber = " + totalSpent + "\nPurchases = " + purchases.toString() + "\n";
+        return super.toString() + "\nTotal gasto = " + totalSpent + "\nPurchases = " + purchases.toString() + "\n";
     }
 
     public boolean equals(Object obj){
