@@ -63,9 +63,15 @@ public class Animal extends Product {
         this.type = type;
     }
 
-
     public String toString() {
-        return super.toString() + "Age: " + age + "Gender: " + gender + "Sciname: " + sciname + "Asciiart: " + asciiart;
+        return super.toString() + "Idade: " + age + "Género: " + gender + "Nome científico: " + sciname;
+    }
+
+    public void viewAnimal(){
+        if (asciiart != null) {
+            System.out.print(asciiart);
+        }
+        else System.out.println("Não há visualização disponível");
     }
 
     public boolean equals(Object obj){

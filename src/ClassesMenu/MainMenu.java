@@ -20,10 +20,10 @@ public class MainMenu {
                     ShopMenu.show();
                     break;
                 case 2:
-                    FuncoesMenu.menu2();
+                    InventoryMenu.menu2();
                     break;
                 case 3:
-                    MenuStats.showMenu();
+                    StatsMenu.showMenu();
                     break;
                 case 4:
                     // Exit

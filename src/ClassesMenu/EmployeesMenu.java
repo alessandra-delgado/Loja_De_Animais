@@ -8,7 +8,7 @@ import src.Main;
 import java.time.LocalDate;
 
 
-public class MenuEmpregados {
+public class EmployeesMenu {
     public static void menu() {
         System.out.println("1 - Adicionar Empregados");
         System.out.println("2 - Atualizar Empregados ");
@@ -21,7 +21,7 @@ public class MenuEmpregados {
     public static void show() {
         int op = 0;
         while (true) {
-            MenuEmpregados.menu();
+            EmployeesMenu.menu();
             op = Ler.umInt();
             switch (op) {
                 case 1:

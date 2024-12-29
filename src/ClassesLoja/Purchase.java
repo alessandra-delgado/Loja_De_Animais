@@ -67,21 +67,18 @@ public class Purchase implements Serializable {
         p.decrementQuantity();
         this.total += p.getPrice();
         this.products.add(p);
-        this.total += (int) p.getPrice();
     }
 
     public void removeProduct(Product p) {
         this.total -= p.getPrice();
         this.products.get(id).incrementQuantity();
         this.products.remove(p);
-        this.total -= (int) p.getPrice();
     }
 
     public void removeProduct(int id) {
         this.total -= this.products.get(id).getPrice();
         this.products.get(id).incrementQuantity();
         this.products.remove(id);
-        this.total -= (int) this.products.get(id).getPrice();
     }
 
     public void removeAllProducts() {
@@ -111,7 +108,7 @@ public class Purchase implements Serializable {
     }
 
     public String toString() {
-        return "[id: " + this.id + " , products: " + this.products.toString() + ", total: " + this.total + " ]";
+        return "[ID: " + this.id + " , Produtos: " + this.products.toString() + ", Total: " + this.total + " ]";
     }
 
     public void printInvoice(Client c) {

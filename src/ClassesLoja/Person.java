@@ -78,12 +78,12 @@ public class Person implements Serializable {
     }
 
     public String toString() {
-        String s = "\nName = " + name + "\nBirthdate = " + birthdate + "\nTel = " + tel + "\nNIF = " + nif;
+        String s = "\nNome = " + name +  "\nTel = " + tel + "\nNIF = " + nif;
         if (gender != ' ') {
-            s += "\nGender = " + gender;
+            s += "\nGénero = " + gender;
         }
         if (birthdate != null) {
-            s += "\nBirthdate = " + birthdate;
+            s += "\nData de Nascimento = " + birthdate;
         }
         return s;
     }
