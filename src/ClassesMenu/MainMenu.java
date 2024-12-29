@@ -23,7 +23,7 @@ public class MainMenu {
                     FuncoesMenu.menu2();
                     break;
                 case 3:
-                    FuncoesMenu.menu3();
+                    MenuStats.showMenu();
                     break;
                 case 4:
                     // Exit

@@ -1,5 +1,7 @@
 package src.Enum;
 
+import java.nio.file.ProviderNotFoundException;
+
 public enum ProductType {
     ANIMAL_REAL_LAND,
     ANIMAL_REAL_AERIAL,
@@ -29,6 +31,22 @@ public enum ProductType {
             case HYGIENE -> "Higiene";
             case MEDICINE -> "Medicina";
             case NONE -> "Sem categoria";
+        };
+    }
+    public String getFilePath(){
+        return switch (this) {
+            case ANIMAL_REAL_LAND -> "Animal/Real/Land.dat" ;
+            case ANIMAL_REAL_AERIAL -> "Animal/Real/Aerial.dat";
+            case ANIMAL_REAL_AQUATIC -> "Animal/Real/Aquatic.dat";
+            case ANIMAL_IMAGINARY_LAND -> "Animal/Imaginary/Land.dat";
+            case ANIMAL_IMAGINARY_AERIAL -> "Animal/Imaginary/Aerial.dat";
+            case ANIMAL_IMAGINARY_AQUATIC -> "Animal/Imaginary/Aquatic.dat";
+            case COSMETIC -> "Cosmetics/Cosmetics.dat";
+            case FOOD -> "Food/Food.dat";
+            case HABITAT -> "Habitat/Habitat.dat";
+            case HYGIENE -> "Hygiene/Hygiene.dat";
+            case MEDICINE -> "Medicine/Medicine.dat";
+            default -> throw new ProviderNotFoundException("Categoria de produto não encontrada");
         };
     }
 }

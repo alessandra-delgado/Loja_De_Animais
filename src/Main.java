@@ -52,24 +52,57 @@ public class Main {
 
     }
 
-    public static void saveData(){
-        File.binWrite(products.get(ProductType.ANIMAL_IMAGINARY_LAND), "Animal/Imaginary/Land.dat");
-        File.binWrite(products.get(ProductType.ANIMAL_IMAGINARY_AQUATIC), "Animal/Imaginary/Aquatic.dat");
-        File.binWrite(products.get(ProductType.ANIMAL_IMAGINARY_AERIAL), "Animal/Imaginary/Aerial.dat");
+    public static void saveData() {
+        // All products (animals included)
+        for(ProductType type : ProductType.values()) {
+            File.binWrite(Main.products.get(type), type.getFilePath());
+        }
 
-        File.binWrite(products.get(ProductType.ANIMAL_REAL_LAND), "Animal/Real/Land.dat");
-        File.binWrite(products.get(ProductType.ANIMAL_REAL_AQUATIC), "Animal/Real/Aquatic.dat");
-        File.binWrite(products.get(ProductType.ANIMAL_REAL_AERIAL), "Animal/Real/Aerial.dat");
+        // Clients and employees
+        File.binWrite(clients, "Client/Client.dat");
+        File.binWrite(employees, "Employee/Employee.dat");
 
-        File.binWrite(products.get(ProductType.COSMETIC), "Cosmetics/Cosmetics.dat");
-        File.binWrite(products.get(ProductType.FOOD), "Food/Food.dat");
-        File.binWrite(products.get(ProductType.HABITAT), "Habitat/Habitat.dat");
-        File.binWrite(products.get(ProductType.HYGIENE), "Hygiene/Hygiene.dat");
-        File.binWrite(products.get(ProductType.MEDICINE), "Medicine/Medicine.dat");
+        // Last IDs
+        File.binWriteInt(Purchase.getLast(), "Purchase/LastId.dat");
+        File.binWriteInt(Product.getLast(), "Product/LastId.dat");
+
     }
+
     public static void listProducts(ProductType type) {
         for (Product p : Main.products.get(type)) {
             System.out.println(p);
         }
+    }
+
+    public static void presetData() {
+        //todo: create objects
+
+        // products --------------------------------
+        // animal field
+
+
+        // cosmetic field
+
+
+        // food field
+        
+
+        // habitat field
+
+
+        // hygiene field
+
+
+        // medicine field
+
+
+        // clients ---------------------------------
+
+
+        // employees -------------------------------
+
+
+        // Guardar todos os produtos
+        saveData();
     }
 }
