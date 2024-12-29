@@ -118,7 +118,7 @@ public class Product implements Serializable {
     }
 
     public String toString() {
-        return "[ID: " + this.getId() + ", Price: " + this.getPrice() + ", Name: " + this.getName() + ", Categoria: " + this.category  + ", Quantidade:" + this.quantity +  "]";
+        return "[ID: " + this.getId() + ", Preço: " + this.getPrice() + ", Nome: " + this.getName() + ", Categoria: " + this.category  + ", Quantidade:" + this.quantity +  "]";
     }
 
     public void decrementQuantity() throws ProductStockExceededException {

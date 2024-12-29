@@ -108,7 +108,7 @@ public class Purchase implements Serializable {
     }
 
     public String toString() {
-        return "[id: " + this.id + " , products: " + this.products.toString() + ", total: " + this.total + " ]";
+        return "[ID: " + this.id + " , Produtos: " + this.products.toString() + ", Total: " + this.total + " ]";
     }
 
     public void printInvoice(Client c) {

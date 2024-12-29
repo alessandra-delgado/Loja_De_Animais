@@ -45,7 +45,7 @@ public class Client extends Person implements Serializable {
     }
 
     public String toString(){
-        return super.toString() + "\nTotal gasto = " + totalSpent + "\nPurchases = " + purchases.toString() + "\n";
+        return super.toString() + "\nTotal gasto = " + totalSpent + "\nCompras = " + purchases.toString() + "\n";
     }
 
     public boolean equals(Object obj){

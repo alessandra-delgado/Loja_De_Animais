@@ -33,8 +33,7 @@ public class Employee extends Person {
     }
 
     public String toString(){
-        String s = super.toString() + "\nSalary: " + salary + "\nPosition: " + position + "\n";
-        return s;
+        return super.toString() + "\nSalário " + salary + "\nPosição: " + position + "\n";
     }
 
     public boolean equals(Object obj){

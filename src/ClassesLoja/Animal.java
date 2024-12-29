@@ -64,7 +64,7 @@ public class Animal extends Product {
     }
 
     public String toString() {
-        return super.toString() + "Age: " + age + "Gender: " + gender + "Sciname: " + sciname;
+        return super.toString() + "Idade: " + age + "Género: " + gender + "Nome científico: " + sciname;
     }
 
     public void viewAnimal(){
