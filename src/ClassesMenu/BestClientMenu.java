@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import static src.Main.clients;
 
-public class MenuBestClient {
+public class BestClientMenu {
     public static void menu() {
         System.out.println("Melhores clientes que têm: ");
         System.out.println("1 - Maior gasto total");
@@ -18,17 +18,17 @@ public class MenuBestClient {
 
     public static void showMenu() {
         do {
-            MenuBestClient.menu();
+            BestClientMenu.menu();
 
             switch (Ler.umInt()) {
                 case 1:
-                    MenuBestClient.MostSpentTotal();
+                    BestClientMenu.MostSpentTotal();
                     break;
                 case 2:
-                    MenuBestClient.MostSpentSingle();
+                    BestClientMenu.MostSpentSingle();
                     break;
                 case 3:
-                    MenuBestClient.MostPurchasesTotal();
+                    BestClientMenu.MostPurchasesTotal();
                     break;
                 case 4:
                     System.out.println("Sair");

@@ -9,7 +9,7 @@ import src.Main;
 
 import java.util.ArrayList;
 
-public class AnimaisMenu {
+public class AnimalsMenu {
     private static AnimalType categoria;
     private static boolean real;
     private static String filePath;
@@ -23,7 +23,7 @@ public class AnimaisMenu {
 
     public static void show() {
         while (true) {
-            AnimaisMenu.menu();
+            AnimalsMenu.menu();
             switch (Ler.umInt()){
                 case 1:
                     addAnimal();
