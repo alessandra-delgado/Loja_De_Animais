@@ -83,7 +83,7 @@ public class AnimaisMenu {
         System.out.println("Qual a quantidade do animal?");
         int quantidade = Ler.umInt();
         System.out.println("Qual o género do animal(F/M)?");
-        String genero = Ler.umaString();
+        char genero = Ler.umChar();
         System.out.println("Qual o nome cientifico do animal?");
         String nomeCientifico = Ler.umaString();
         System.out.println("Insira a arte ASCII do animal?");
@@ -165,7 +165,7 @@ public class AnimaisMenu {
                         break;
                     case 3:
                         System.out.println("Qual o novo sexo?");
-                        animal.setGender(Ler.umaString());
+                        animal.setGender(Ler.umChar());
                         break;
                     case 4:
                         System.out.println("Qual o novo nome cientifico?");
@@ -231,14 +231,7 @@ public class AnimaisMenu {
             System.out.println("Nome cientifico: " + animal.getSciname());
 
             //verifica se a arte ASCII está disponivel
-            String arte = animal.getAsciiart();
-            if (arte != null && !arte.isEmpty()) {
-                System.out.println("Arte: ");
-                System.out.println(arte);
-            }else{
-                System.out.println("Visualização não disponivel.");
-            }
-
+            animal.viewAnimal();
         }else{
             System.out.println("Animal não encontrado!");
         }
@@ -379,5 +372,3 @@ public class AnimaisMenu {
     }
 }
 }
-
-
