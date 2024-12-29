@@ -18,7 +18,7 @@ public class PurchaseMenu {
         do {
             System.out.println("Escolher um cliente para a operação (por índice)");
             System.out.println("1 - Pesquisar cliente");
-            System.out.println("2 - Inserir id de cliente");
+            System.out.println("2 - Inserir índice de cliente");
             System.out.println("3 - Novo cliente");
             System.out.println("4 - Voltar");
             System.out.print("Insira uma opção: ");
