@@ -117,6 +117,7 @@ public class PurchaseMenu {
         System.out.println("Obrigado Pela Compra");
         Main.clients.get(id_selected).addPurchase(purchase);
 
+        // todo: Check if this is removable without any bugs.
         File.binWrite(Main.clients, "Client/Client.dat");
         File.binWriteInt(Purchase.getLast(), "Purchase/LastId.dat");
         Main.saveData(); // Update Quantities after finishing purchase
