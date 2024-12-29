@@ -1,7 +1,5 @@
 package src.ClassesMenu;
 
-// Todo: escrever fatura para o ficheiro de faturas, Formatar fatura!
-
 import src.ClassesLoja.*;
 import src.Exceptions.ProductNotFoundException;
 import src.Exceptions.ProductStockExceededException;

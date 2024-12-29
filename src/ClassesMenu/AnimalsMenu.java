@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class AnimalsMenu {
     private static AnimalType categoria;
     private static boolean real;
-    private static String filePath;
+
     public static void menu() {
         System.out.println("1 - Adicionar Animais");
         System.out.println("2 - Atualizar Animais");

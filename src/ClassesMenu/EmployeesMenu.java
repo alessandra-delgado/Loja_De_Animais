@@ -5,8 +5,8 @@ import src.ClassesLoja.Employee;
 import src.Input.Ler;
 import src.ClassesLoja.File;
 import src.Main;
-import java.time.LocalDate;
 
+import java.time.LocalDate;
 
 public class EmployeesMenu {
     public static void menu() {
@@ -25,7 +25,7 @@ public class EmployeesMenu {
             op = Ler.umInt();
             switch (op) {
                 case 1:
-                   addEmployee();
+                    addEmployee();
                     break;
                 case 2:
                     updateEmployee();
@@ -43,7 +43,7 @@ public class EmployeesMenu {
         }
     }
 
-    private static void addEmployee () {
+    private static void addEmployee() {
         System.out.println("Insira o nome, género, data de nascimento, número de telefone e NIF da Pessoa: ");
 
         //dados da pessoa
@@ -72,7 +72,7 @@ public class EmployeesMenu {
         System.out.println("Empregado adicionado com sucesso!");
     }
 
-    private static void updateEmployee () {
+    private static void updateEmployee() {
 
         System.out.println("Insira o NIF do Empregado: ");
         int nif = Ler.umInt();
@@ -147,14 +147,14 @@ public class EmployeesMenu {
         }
     }
 
-    private static void viewEmployees () {
+    private static void viewEmployees() {
 
         for (int i = 0; i < Main.employees.size(); i++) {
             System.out.println(Main.employees.get(i).toString());
         }
     }
 
-    private static void deleteEmployee () {
+    private static void deleteEmployee() {
         System.out.println("Insira o NIF do Empregado: ");
         double nif = Ler.umDouble();
 

@@ -57,7 +57,7 @@ public class TotalGainedMenu {
         double total_day = 0.0;
         for (Client c : clients) {
             for (Purchase p : c.getPurchases()) {
-                if (p.getPurchase_time().toLocalDate().equals(date)) {
+                if (p.getDate().toLocalDate().equals(date)) {
                     total_day += p.getTotal();
                 }
             }
