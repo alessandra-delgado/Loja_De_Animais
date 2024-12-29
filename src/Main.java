@@ -17,36 +17,25 @@ public class Main {
         init();
 
         // Shows main menu
+        System.out.println("Bem-vindo à Puro Pet, uma loja de animais um tanto complexa.");
         MainMenu.show();
+        System.out.println("Volte sempre!");
     }
 
     public static void init() {
         // Initializes the product by type
         products = new HashMap<>();
-
-        products.put(ProductType.ANIMAL_REAL_LAND, File.binRead("Animal/Real/Land.dat"));
-        products.put(ProductType.ANIMAL_REAL_AQUATIC, File.binRead("Animal/Real/Aquatic.dat"));
-        products.put(ProductType.ANIMAL_REAL_AERIAL, File.binRead("Animal/Real/Aerial.dat"));
-
-        products.put(ProductType.ANIMAL_IMAGINARY_LAND, File.binRead("Animal/Imaginary/Land.dat"));
-        products.put(ProductType.ANIMAL_IMAGINARY_AQUATIC, File.binRead("Animal/Imaginary/Aquatic.dat"));
-        products.put(ProductType.ANIMAL_IMAGINARY_AERIAL, File.binRead("Animal/Imaginary/Aerial.dat"));
-
-        products.put(ProductType.COSMETIC, File.binRead("Cosmetics/Cosmetics.dat"));
-        products.put(ProductType.FOOD, File.binRead("Food/Food.dat"));
-        products.put(ProductType.HABITAT, File.binRead("Habitat/Habitat.dat"));
-        products.put(ProductType.HYGIENE, File.binRead("Hygiene/Hygiene.dat"));
-        products.put(ProductType.MEDICINE, File.binRead("Medicine/Medicine.dat"));
+        for(ProductType type : ProductType.values())
+            if(type != ProductType.NONE)
+                products.put(type, File.binRead(type.getFilePath()));
 
         // Clients
         clients = File.binRead("Client/Client.dat");
-
         // Employees
         employees = File.binRead("Employee/Employee.dat");
 
         // Set Product ID
         Product.setLast(File.binReadInt("Product/LastId.dat"));
-
         // Set Purchase ID
         Purchase.setLast(File.binReadInt("Purchase/LastId.dat"));
 
@@ -55,7 +44,8 @@ public class Main {
     public static void saveData() {
         // All products (animals included)
         for(ProductType type : ProductType.values()) {
-            File.binWrite(Main.products.get(type), type.getFilePath());
+            if (type != ProductType.NONE)
+                File.binWrite(Main.products.get(type), type.getFilePath());
         }
 
         // Clients and employees

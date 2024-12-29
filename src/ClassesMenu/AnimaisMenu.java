@@ -1,16 +1,13 @@
 package src.ClassesMenu;
 
-import files.*;
+
 import src.ClassesLoja.*;
 import src.Enum.AnimalType;
 import src.Enum.ProductType;
 import src.Input.Ler;
 import src.Main;
 
-import javax.print.DocFlavor;
-import java.time.format.SignStyle;
 import java.util.ArrayList;
-import java.util.SequencedSet;
 
 public class AnimaisMenu {
     private static AnimalType categoria;

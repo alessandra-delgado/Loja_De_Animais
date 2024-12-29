@@ -46,7 +46,7 @@ public enum ProductType {
             case HABITAT -> "Habitat/Habitat.dat";
             case HYGIENE -> "Hygiene/Hygiene.dat";
             case MEDICINE -> "Medicine/Medicine.dat";
-            default -> throw new ProviderNotFoundException("Categoria de produto não encontrada");
+            default -> throw new ProviderNotFoundException("Categoria de produto não encontrada" + this.name());
         };
     }
 }
