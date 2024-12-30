@@ -56,7 +56,6 @@ public class StatsMenu {
 
         for (ProductType p : ProductType.values()) {
             if (products.get(p) == null || products.get(p).isEmpty()) continue;
-            if(p == ProductType.ANIMAL_IMAGINARY_AQUATIC || p == ProductType.ANIMAL_IMAGINARY_AERIAL || p == ProductType.ANIMAL_IMAGINARY_LAND || p == ProductType.ANIMAL_REAL_AERIAL || p == ProductType.ANIMAL_REAL_AQUATIC || p == ProductType.ANIMAL_REAL_LAND) continue;
 
             prod_sold.addAll(products.get(p));
         }
@@ -76,7 +75,6 @@ public class StatsMenu {
 
         for (ProductType p : ProductType.values()) {
             if (products.get(p) == null || products.get(p).isEmpty()) continue;
-            if(p == ProductType.ANIMAL_IMAGINARY_AQUATIC || p == ProductType.ANIMAL_IMAGINARY_AERIAL || p == ProductType.ANIMAL_IMAGINARY_LAND || p == ProductType.ANIMAL_REAL_AERIAL || p == ProductType.ANIMAL_REAL_AQUATIC || p == ProductType.ANIMAL_REAL_LAND) continue;
 
             prod_sold.addAll(products.get(p));
         }
