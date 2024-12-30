@@ -48,7 +48,6 @@ public class EmployeesMenu {
     }
 
     private static void addEmployee() {
-        System.out.println("Insira o nome, género, data de nascimento, número de telefone e NIF da Pessoa: ");
 
         //dados da pessoa --------------------------------------------------------------------
         // Nome
@@ -70,7 +69,11 @@ public class EmployeesMenu {
 
         //criar pessoa -----------------------------------------------------------------------
         Person e1 = new Person(name, gender, datenascimento, tel, nif);
-        System.out.println("Agora, insira o salário e a posição do Empregado: ");
+
+        System.out.println(" ");
+        System.out.println("╭───────────────────────────────────────────────────╮");
+        System.out.println("│ Agora, insira o salário e a posição do Empregado: │ ");
+        System.out.println("╰───────────────────────────────────────────────────╯");
 
         //dados empregado
         double sal = insertSalary();
@@ -85,19 +88,41 @@ public class EmployeesMenu {
         //atualizar ficheiro
         File.binWrite(Main.employees, "Employee/Employee.dat");
 
-        System.out.println("Empregado adicionado com sucesso!");
+        System.out.println(" ");
+        System.out.println("╭───────────────────────────────────╮");
+        System.out.println("│ Empregado adicionado com sucesso! │");
+        System.out.println("╰───────────────────────────────────╯");
     }
 
     private static void updateEmployee() {
 
-        System.out.println("Insira o NIF do Empregado: ");
+        System.out.println("╭────────────────────────────╮");
+        System.out.println("│ Insira o NIF do Empregado: │");
+        System.out.println("╰────────────────────────────╯");
         int nif = Ler.umInt();
 
         for (int i = 0; i < Main.employees.size(); i++) {
             if (Main.employees.get(i).getNif() == nif) {
-                System.out.println("Empregado: ");
+                System.out.println("╭────────────╮");
+                System.out.println("│ Empregado: │");
+                System.out.println("╰────────────╯");
                 System.out.println(Main.employees.get(i).toString());
+                System.out.println(" ");
 
+                System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+                System.out.println("┃ Selecione o que deseja atualizar: ┃ ");
+                System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+                System.out.println(" ");
+                System.out.println("╭──────────────────────────╮");
+                System.out.println("│ 1- Nome                  │");
+                System.out.println("│ 2- Género                │");
+                System.out.println("│ 3- Data de nascimento    │");
+                System.out.println("│ 4- Telefone              │");
+                System.out.println("│ 5- NIF                   │");
+                System.out.println("│ 6- Salário               │");
+                System.out.println("│ 7 - Posição              │");
+                System.out.println("│ 8- Sair                  │");
+                System.out.println("╰──────────────────────────╯");
 
                 int op = 0;
                 while (true) {
@@ -114,7 +139,9 @@ public class EmployeesMenu {
                     op = Ler.umInt();
                     switch (op) {
                         case 1:
-                            System.out.println("Insira o nome do Empregado: ");
+                            System.out.println("╭─────────────────────────────╮");
+                            System.out.println("│ Insira o nome do Empregado: │ ");
+                            System.out.println("╰─────────────────────────────╯");
                             String name = Ler.umaString();
                             Main.employees.get(i).setName(name);
                             break;
@@ -129,7 +156,9 @@ public class EmployeesMenu {
                             Main.employees.get(i).setBirthdate(date);
                             break;
                         case 4:
-                            System.out.println("Insira o telefone do Empregado: ");
+                            System.out.println("╭────────────────────────────────────────────╮");
+                            System.out.println("│ Insira o número de  telefone do Empregado: │");
+                            System.out.println("╰────────────────────────────────────────────╯");
                             int tel = Ler.umInt();
                             Main.employees.get(i).setTel(tel);
                             break;
@@ -142,7 +171,9 @@ public class EmployeesMenu {
                             Main.employees.get(i).setSalary(sal);
                             break;
                         case 7:
-                            System.out.println("Insira a posição do Empregado: ");
+                            System.out.println("╭────────────────────────────────╮");
+                            System.out.println("│ Insira a posição do Empregado: │");
+                            System.out.println("╰────────────────────────────────╯");
                             String position = Ler.umaString();
                             Main.employees.get(i).setPosition(position);
                             break;
@@ -152,8 +183,10 @@ public class EmployeesMenu {
                             System.out.println("A voltar...");
                             return;
                         default:
-                            System.out.println("Opção inválida.");
-                            return;
+                            System.out.println("┏━━━━━━━━━━━━━━━━━┓");
+                            System.out.println("┃ Opção inválida! ┃");
+                            System.out.println("┗━━━━━━━━━━━━━━━━━┛");
+                            break;
                     }
                 }
             }
@@ -168,8 +201,10 @@ public class EmployeesMenu {
     }
 
     private static void deleteEmployee() {
-        System.out.println("Insira o NIF do Empregado: ");
-        double nif = Ler.umDouble();
+        System.out.println("╭────────────────────────────╮");
+        System.out.println("│ Insira o NIF do Empregado: │");
+        System.out.println("╰────────────────────────────╯");
+        int nif = Ler.umInt();
 
         for (int i = 0; i < Main.employees.size(); i++) {
             if (Main.employees.get(i).getNif() == nif) {

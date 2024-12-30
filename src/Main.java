@@ -5,6 +5,7 @@ import src.ClassesLoja.*;
 import src.Enum.AnimalType;
 import src.Enum.ProductType;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -141,7 +142,6 @@ public class Main {
         animalImaginaryLand.add(unicorn);
         animalImaginaryLand.add(helloKitty);
         animalImaginaryLand.add(cinnamoroll);
-        File.binWrite(Main.products.get(ProductType.ANIMAL_IMAGINARY_LAND), "Animal/Imaginary/Land.dat");
 
         Animal kraken = new Animal(
                 500, 'M', "Giganticus oceanicus",
@@ -183,7 +183,6 @@ public class Main {
         ArrayList<Product> animalImaginaryAquatic = Main.products.get(ProductType.ANIMAL_IMAGINARY_AQUATIC);
         animalImaginaryAquatic.add(kraken);
         animalImaginaryAquatic.add(blueDragon);
-        File.binWrite(Main.products.get(ProductType.ANIMAL_IMAGINARY_AQUATIC), "Animal/Imaginary/Aquatic.dat");
 
         Animal griffin = new Animal(
                 300, 'M', "Griffinus magnus",
@@ -252,7 +251,6 @@ public class Main {
         imaginaryAerialAnimals.add(phoenix);
         imaginaryAerialAnimals.add(sphinx);
         imaginaryAerialAnimals.add(batman);
-        File.binWrite(imaginaryAerialAnimals, "Animal/Imaginary/Aerial.dat");
 
         Animal gato = new Animal(
                 2, 'F', "Felis catus",
@@ -336,7 +334,6 @@ public class Main {
         realLandAnimals.add(leão);
         realLandAnimals.add(hamster);
         realLandAnimals.add(galinha);
-        File.binWrite(realLandAnimals, "Animal/Real/Land.dat");
 
         Animal peixeDourado = new Animal(
                 1, 'F', "Carassius auratus",
@@ -414,7 +411,6 @@ public class Main {
         animaisAquaticos.add(tartaruga);
         animaisAquaticos.add(cavaloMarinho);
         animaisAquaticos.add(trilobita);
-        File.binWrite(animaisAquaticos, "Animal/Real/Aquatic.dat");
 
         Animal águia = new Animal(
                 15, 'M', "Aquila chrysaetos",
@@ -485,8 +481,6 @@ public class Main {
         animaisAereos.add(coruja);
         animaisAereos.add(cacatua);
         animaisAereos.add(morcego);
-        File.binWrite(animaisAereos, "Animal/Real/Aerial.dat");
-
 
         // cosmetic field
 
@@ -498,16 +492,77 @@ public class Main {
 
 
         // hygiene field
+        Product shampooCao = new Product("Shampoo para Cães", 15.99, 100);
+        Product condicionadorCao = new Product("Condicionador para Cães", 18.50, 50);
+        Product luvasEscovarCao = new Product("Luvas para Escovar Cães", 12.99, 40);
+        Product escovaCao = new Product("Escova para Cães", 10.50, 60);
+        Product escovaDentesCao = new Product("Escova de Dentes para Cães", 8.99, 50);
+        Product pastaDentesCao = new Product("Pasta de Dentes para Cães", 9.99, 45);
 
+        Product shampooGato = new Product("Shampoo para Gatos", 14.99, 80);
+        Product condicionadorGato = new Product("Condicionador para Gatos", 17.50, 40);
+        Product luvasEscovarGato = new Product("Luvas para Escovar Gatos", 12.99, 30);
+        Product escovaGato = new Product("Escova para Gatos", 10.50, 50);
+        Product escovaDentesGato = new Product("Escova de Dentes para Gatos", 8.99, 40);
+        Product pastaDentesGato = new Product("Pasta de Dentes para Gatos", 9.99, 35);
+
+        Product shampooPassaro = new Product("Shampoo para Pássaros", 12.99, 60);
+        Product condicionadorPassaro = new Product("Condicionador para Pássaros", 16.00, 30);
+        Product luvasEscovarPassaro = new Product("Luvas para Escovar Pássaros", 11.99, 20);
+        Product escovaPassaro = new Product("Escova para Pássaros", 9.50, 25);
+
+        Product shampooCoelho = new Product("Shampoo para Coelhos", 13.99, 70);
+        Product condicionadorCoelho = new Product("Condicionador para Coelhos", 15.50, 20);
+        Product luvasEscovarCoelho = new Product("Luvas para Escovar Coelhos", 11.99, 15);
+        Product escovaCoelho = new Product("Escova para Coelhos", 9.50, 20);
+
+        ArrayList<Product> produtosHigiene = Main.products.get(ProductType.HYGIENE);
+        produtosHigiene.add(shampooCao);
+        produtosHigiene.add(condicionadorCao);
+        produtosHigiene.add(luvasEscovarCao);
+        produtosHigiene.add(escovaCao);
+        produtosHigiene.add(escovaDentesCao);
+        produtosHigiene.add(pastaDentesCao);
+
+        produtosHigiene.add(shampooGato);
+        produtosHigiene.add(condicionadorGato);
+        produtosHigiene.add(luvasEscovarGato);
+        produtosHigiene.add(escovaGato);
+        produtosHigiene.add(escovaDentesGato);
+        produtosHigiene.add(pastaDentesGato);
+
+        produtosHigiene.add(shampooPassaro);
+        produtosHigiene.add(condicionadorPassaro);
+        produtosHigiene.add(luvasEscovarPassaro);
+        produtosHigiene.add(escovaPassaro);
+
+        produtosHigiene.add(shampooCoelho);
+        produtosHigiene.add(condicionadorCoelho);
+        produtosHigiene.add(luvasEscovarCoelho);
+        produtosHigiene.add(escovaCoelho);
 
         // medicine field
 
 
         // clients ---------------------------------
-
+        clients.add(new Client(new Person("Ana Silva", 'F', LocalDate.of(1990, 5, 20), 912345678, 123456789)));
+        clients.add(new Client(new Person("Bruno Costa", 'M', LocalDate.of(1985, 3, 15), 923456789, 987654321)));
+        clients.add(new Client(new Person("Clara Mendes", 'F', LocalDate.of(1992, 8, 10), 934567890, 456789123)));
+        clients.add(new Client(new Person("David Pereira", 'M', LocalDate.of(1988, 12, 25), 945678901, 321654987)));
+        clients.add(new Client(new Person("Eva Santos", 'F', LocalDate.of(1995, 7, 30), 956789012, 654321789)));
+        clients.add(new Client(new Person("Fábio Almeida", 'M', LocalDate.of(1980, 1, 5), 967890123, 789123456)));
+        clients.add(new Client(new Person("Gabriela Rocha", 'F', LocalDate.of(1993, 4, 22), 978901234, 159753468)));
+        clients.add(new Client(new Person("Hugo Martins", 'M', LocalDate.of(1987, 9, 17), 989012345, 753159846)));
+        clients.add(new Client(new Person("Isabel Ferreira", 'F', LocalDate.of(1991, 11, 12), 991234567, 852456963)));
+        clients.add(new Client(new Person("João Carvalho", 'M', LocalDate.of(1986, 2, 28), 902345678, 963258741)));
 
         // employees -------------------------------
-
+        employees.add(new Employee(new Person("Carlos Mendes", 'M', LocalDate.of(1985, 4, 10), 912345678, 123456789), 2500.00, "Desenvolvedor"));
+        employees.add(new Employee(new Person("Maria Oliveira", 'F', LocalDate.of(1990, 6, 15), 923456789, 987654321), 3000.00, "Gerente"));
+        employees.add(new Employee(new Person("Pedro Santos", 'M', LocalDate.of(1982, 2, 20), 934567890, 456789123), 2200.00, "Analista"));
+        employees.add(new Employee(new Person("Ana Costa", 'F', LocalDate.of(1988, 8, 30), 945678901, 321654987), 2800.00, "Designer"));
+        employees.add(new Employee(new Person("Jorge Almeida", 'M', LocalDate.of(1995, 1, 5), 956789012, 654321789), 3200.00, "Engenheiro"));
+        employees.add(new Employee(new Person("Sofia Ferreira", 'F', LocalDate.of(1993, 11, 12), 967890123, 789123456), 2700.00, "Coordenadora"));
 
         // Guardar todos os produtos
         saveData();

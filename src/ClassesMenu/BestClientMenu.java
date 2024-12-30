@@ -34,7 +34,9 @@ public class BestClientMenu {
                     System.out.println("Voltar");
                     return;
                 default:
-                    System.out.println("Opção inválida");
+                    System.out.println("┏━━━━━━━━━━━━━━━━━┓");
+                    System.out.println("┃ Opção inválida! ┃");
+                    System.out.println("┗━━━━━━━━━━━━━━━━━┛");
                     break;
             }
         }while(true);
@@ -44,14 +46,20 @@ public class BestClientMenu {
         int i = 0;
 
         if (clients.isEmpty()){
-            System.out.println("No clients available");
+            System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+            System.out.println("┃ Nenhum cliente disponível! ┃");
+            System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
         }
 
         ArrayList<Client> bestClients = new ArrayList<Client>(clients);
         bestClients.sort((client1, client2) -> Double.compare(client2.getTotalSpent(), client1.getTotalSpent()));
 
         while (i < bestClients.size()) {
-            System.out.println(bestClients.get(i).getName() + " : Total spent is " + bestClients.get(i).getTotalSpent());
+            System.out.println("╭───────────────────────────────────────────╮");
+            System.out.println("│" + bestClients.get(i).getName() + "       │");
+            System.out.println("│ Total spent is:                           │");
+            System.out.println("│" + bestClients.get(i).getTotalSpent() + "        │");
+            System.out.println("╰───────────────────────────────────────────╯");
             if (i == 5) break;
             i++;
         }
@@ -61,7 +69,9 @@ public class BestClientMenu {
         int i = 0;
 
         if (clients.isEmpty()){
-            System.out.println("No clients available");
+            System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+            System.out.println("┃ Nenhum cliente disponível! ┃");
+            System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
         }
 
         ArrayList<Client> bestClients = new ArrayList<Client>(clients);
@@ -77,7 +87,9 @@ public class BestClientMenu {
         int i = 0;
 
         if (clients.isEmpty()){
-            System.out.println("No clients available");
+            System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+            System.out.println("┃ Nenhum cliente disponível! ┃");
+            System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
         }
 
         ArrayList<Client> bestClients = new ArrayList<Client>(clients);

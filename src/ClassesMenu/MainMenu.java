@@ -7,7 +7,8 @@ public class MainMenu {
         System.out.println("1 - Loja");
         System.out.println("2 - Inventário");
         System.out.println("3 - Estatisticas");
-        System.out.println("4 - Sair");
+        System.out.println("4 - Ajuda");
+        System.out.println("5 - Sair");
         System.out.print("Escolha uma opção: ");
     }
 
@@ -26,6 +27,8 @@ public class MainMenu {
                     StatsMenu.showMenu();
                     break;
                 case 4:
+                    HelpMenu.show();
+                case 5:
                     // Exit
                     return;
                 default:
