@@ -1,7 +1,5 @@
 package src.ClassesMenu;
 
-// Todo: escrever fatura para o ficheiro de faturas, Formatar fatura!
-
 import src.ClassesLoja.*;
 import src.Exceptions.ProductNotFoundException;
 import src.Exceptions.ProductStockExceededException;
@@ -16,9 +14,9 @@ public class PurchaseMenu {
 
         // 1 - Choose client
         do {
-            System.out.println("Escolher um cliente para a operação (por id)");
+            System.out.println("Escolher um cliente para a operação (por índice)");
             System.out.println("1 - Pesquisar cliente");
-            System.out.println("2 - Inserir id de cliente");
+            System.out.println("2 - Inserir índice de cliente");
             System.out.println("3 - Novo cliente");
             System.out.println("4 - Voltar");
             System.out.print("Insira uma opção: ");
@@ -38,7 +36,7 @@ public class PurchaseMenu {
                         continue;
                     }
 
-                    System.out.println("Cliente selecionado com sucesso! (id : " + (id_selected + 1) + ")");
+                    System.out.println("Cliente selecionado com sucesso! (índice : " + (id_selected + 1) + ")");
                     break;
                 case 3:
                     id_selected = ClientMenu.createNewClient();
@@ -47,7 +45,7 @@ public class PurchaseMenu {
                         continue;
                     }
 
-                    System.out.println("Cliente registado e selecionado com sucesso! (id : " + (id_selected + 1) + ")");
+                    System.out.println("Cliente registado e selecionado com sucesso! (índice : " + (id_selected + 1) + ")");
                     break;
                 case 4:
                     System.out.println("<-");

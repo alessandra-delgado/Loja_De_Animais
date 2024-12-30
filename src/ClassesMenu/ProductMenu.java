@@ -381,6 +381,7 @@ public class ProductMenu {
             }
         });
 
+        
         if (selected.get() != null) {
             return selected.get();
         }

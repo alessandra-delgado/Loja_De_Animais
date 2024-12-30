@@ -1,8 +1,8 @@
 package src.ClassesLoja;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
-
 
 public class Client extends Person implements Serializable {
     @Serial
@@ -45,7 +45,7 @@ public class Client extends Person implements Serializable {
     }
 
     public String toString(){
-        return super.toString() + "\nNumber = " + totalSpent + "\nPurchases = " + purchases.toString() + "\n";
+        return super.toString() + "\nTotal gasto = " + totalSpent + "\nCompras = " + purchases.toString() + "\n";
     }
 
     public boolean equals(Object obj){

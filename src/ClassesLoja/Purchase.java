@@ -6,8 +6,8 @@ import src.Exceptions.ProductStockExceededException;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -18,13 +18,13 @@ public class Purchase implements Serializable {
     private int id;
     private double total;
     private ArrayList<Product> products;
-    private LocalDateTime purchase_time;
+    private LocalDateTime date;
 
     public Purchase() {
         this.id = ++last_id;
         this.total = 0.0;
         products = new ArrayList<>();
-        purchase_time = LocalDateTime.now();
+        date = LocalDateTime.now();
     }
 
     public static int getLast() {
@@ -43,8 +43,8 @@ public class Purchase implements Serializable {
         return new ArrayList<>(this.products);
     }
 
-    public LocalDateTime getPurchase_time() {
-        return purchase_time;
+    public LocalDateTime getDate() {
+        return date;
     }
 
     public void setId(int id) {
@@ -59,8 +59,8 @@ public class Purchase implements Serializable {
         this.products = products;
     }
 
-    public void setPurchase_time(LocalDateTime purchase_time) {
-        this.purchase_time = purchase_time;
+    public void setDate(LocalDateTime date) {
+        this.date = date;
     }
 
     public void addProduct(Product p) throws ProductStockExceededException {
@@ -95,20 +95,20 @@ public class Purchase implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Purchase p)) return false;
-        return this.id == p.id && this.products.equals(p.products) && this.total == p.total && this.purchase_time.equals(p.purchase_time); // does id comparison make sense?
+        return this.id == p.id && this.products.equals(p.products) && this.total == p.total && this.date.equals(p.date); // does id comparison make sense?
     }
 
     public Object clone() {
         Purchase p = new Purchase();
         p.id = this.id; //?
         p.total = this.total;
-        p.purchase_time = this.purchase_time;
+        p.date = this.date;
         p.products = (ArrayList<Product>) this.products.clone();
         return p;
     }
 
     public String toString() {
-        return "[id: " + this.id + " , products: " + this.products.toString() + ", total: " + this.total + " ]";
+        return "[ID: " + this.id + " , Produtos: " + this.products.toString() + ", Total: " + this.total + " ]";
     }
 
     public void printInvoice(Client c) {
@@ -133,7 +133,7 @@ public class Purchase implements Serializable {
         System.out.printf("|| %-46s ||%n", "Fatura Simplificada");
 
         // Data formatada
-        System.out.printf("||  Data: %-39s ||%n", "currentDate"); //todo: add date
+        System.out.printf("||  Data: %-39s ||%n", this.date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd k:m")));
 
         System.out.println("|| ---------------------------------------------- ||");
 

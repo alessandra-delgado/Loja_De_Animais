@@ -52,6 +52,11 @@ public class File {
         } catch (ClassNotFoundException e) {
             System.out.println("Erro ao ler os dados em do ficheiro " + fileName + ": " + e.getMessage());
         }
+
+        if (list == null) {
+            return new ArrayList<>();
+        }
+
         return list;
     }
 

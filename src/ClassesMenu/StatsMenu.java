@@ -4,17 +4,11 @@ import src.ClassesLoja.*;
 import src.Enum.ProductType;
 import src.Input.Ler;
 
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.temporal.TemporalAdjuster;
-import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 
-import static src.Main.clients;
 import static src.Main.products;
 
-public class MenuStats {
+public class StatsMenu {
     public static void menu() {
         System.out.println("1 - Produtos mais vendidos");
         System.out.println("2 - Produtos menos vendidos");
@@ -26,23 +20,23 @@ public class MenuStats {
 
     public static void showMenu() {
         do {
-            MenuStats.menu();
+            StatsMenu.menu();
 
             switch (Ler.umInt()) {
                 case 1:
                     System.out.println("Produtos mais vendidos");
-                    MenuStats.MostLeastSold(0);
+                    StatsMenu.MostLeastSold(0);
                     break;
                 case 2:
                     System.out.println("Produtos menos vendidos");
-                    MenuStats.MostLeastSold(1);
+                    StatsMenu.MostLeastSold(1);
                     break;
                 case 3:
                     System.out.println("Melhores clientes");
-                    MenuBestClient.showMenu();
+                    BestClientMenu.showMenu();
                     break;
                 case 4:
-                    MenuTotalGained.showMenu();
+                    TotalGainedMenu.showMenu();
                     break;
                 case 5:
                     System.out.println("Sair");

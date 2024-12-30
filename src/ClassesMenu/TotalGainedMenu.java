@@ -10,7 +10,7 @@ import java.time.temporal.TemporalAdjusters;
 
 import static src.Main.clients;
 
-public class MenuTotalGained {
+public class TotalGainedMenu {
     public static void menu() {
         System.out.println("1 - Valor faturado num dia");
         System.out.println("2 - Valor faturado numa semana");
@@ -20,20 +20,20 @@ public class MenuTotalGained {
 
     public static void showMenu() {
         do {
-            MenuTotalGained.menu();
+            TotalGainedMenu.menu();
             LocalDate date = LocalDate.now();
 
             switch (Ler.umInt()) {
                 case 1:
                     System.out.println("Insira o dia pretendido (YYYY-MM-DD): ");
                     date = LocalDate.parse(Ler.umaString());
-                    double total_day = MenuTotalGained.Total_Day(date);
+                    double total_day = TotalGainedMenu.Total_Day(date);
                     System.out.println("Valor faturado no dia " + date + " = " + total_day);
                     break;
                 case 2:
                     System.out.println("Insira um dia da semana pretendida (YYYY-MM-DD): ");
                     date = LocalDate.parse(Ler.umaString());
-                    MenuTotalGained.Total_week(date);
+                    TotalGainedMenu.Total_week(date);
                     break;
                 case 3:
                     System.out.println("Insira o ano pretendido: ");
@@ -41,7 +41,7 @@ public class MenuTotalGained {
                     System.out.println("Insira o mês pretendido (numero inteiro): ");
                     int month = Ler.umInt();
                     date = LocalDate.of(year, month, 1);
-                    MenuTotalGained.Total_Month(date);
+                    TotalGainedMenu.Total_Month(date);
                     break;
                 case 4:
                     System.out.println("Sair");
@@ -57,7 +57,7 @@ public class MenuTotalGained {
         double total_day = 0.0;
         for (Client c : clients) {
             for (Purchase p : c.getPurchases()) {
-                if (p.getPurchase_time().toLocalDate().equals(date)) {
+                if (p.getDate().toLocalDate().equals(date)) {
                     total_day += p.getTotal();
                 }
             }
