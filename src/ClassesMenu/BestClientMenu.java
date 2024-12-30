@@ -9,11 +9,14 @@ import static src.Main.clients;
 
 public class BestClientMenu {
     public static void menu() {
-        System.out.println("Melhores clientes que têm: ");
-        System.out.println("1 - Maior gasto total");
-        System.out.println("2 - Maior gasto numa única compra");
-        System.out.println("3 - Maior número de compras totais");
-        System.out.println("4 - Voltar");
+        System.out.println("╭───────────────────────────────────╮");
+        System.out.println("│Melhores clientes que têm:         │");
+        System.out.println("│1 - Maior gasto total              │");
+        System.out.println("│2 - Maior gasto numa única compra  │");
+        System.out.println("│3 - Maior número de compras totais │");
+        System.out.println("│4 - Voltar                         │");
+        System.out.println("╰───────────────────────────────────╯");
+        System.out.print("Escolha uma opção: ");
     }
 
     public static void showMenu() {
@@ -31,12 +34,10 @@ public class BestClientMenu {
                     BestClientMenu.MostPurchasesTotal();
                     break;
                 case 4:
-                    System.out.println("Voltar");
+                    System.out.println("A voltar... ");
                     return;
                 default:
-                    System.out.println("┏━━━━━━━━━━━━━━━━━┓");
-                    System.out.println("┃ Opção inválida! ┃");
-                    System.out.println("┗━━━━━━━━━━━━━━━━━┛");
+                    System.out.println("Opção inválida");
                     break;
             }
         }while(true);
@@ -46,21 +47,15 @@ public class BestClientMenu {
         int i = 0;
 
         if (clients.isEmpty()){
-            System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-            System.out.println("┃ Nenhum cliente disponível! ┃");
-            System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+            System.out.println("No clients available");
         }
 
         ArrayList<Client> bestClients = new ArrayList<Client>(clients);
         bestClients.sort((client1, client2) -> Double.compare(client2.getTotalSpent(), client1.getTotalSpent()));
 
         while (i < bestClients.size()) {
-            System.out.println("╭───────────────────────────────────────────╮");
-            System.out.println("│" + bestClients.get(i).getName() + "       │");
-            System.out.println("│ Total spent is:                           │");
-            System.out.println("│" + bestClients.get(i).getTotalSpent() + "        │");
-            System.out.println("╰───────────────────────────────────────────╯");
-            if (i == 5) break;
+            System.out.println(bestClients.get(i).getName() + " : Total spent is " + bestClients.get(i).getTotalSpent());
+            if (i == 4) break;
             i++;
         }
     }
@@ -69,16 +64,14 @@ public class BestClientMenu {
         int i = 0;
 
         if (clients.isEmpty()){
-            System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-            System.out.println("┃ Nenhum cliente disponível! ┃");
-            System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+            System.out.println("No clients available");
         }
 
         ArrayList<Client> bestClients = new ArrayList<Client>(clients);
         bestClients.sort((client1, client2) -> Double.compare(client2.MostExpensivePurchase(), client1.MostExpensivePurchase()));
         while (i < bestClients.size()) {
             System.out.println(bestClients.get(i).getName() + " : The most spent o na single purchase " + bestClients.get(i).MostExpensivePurchase());
-            if (i == 5) break;
+            if (i == 4) break;
             i++;
         }
     }
@@ -87,16 +80,14 @@ public class BestClientMenu {
         int i = 0;
 
         if (clients.isEmpty()){
-            System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-            System.out.println("┃ Nenhum cliente disponível! ┃");
-            System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+            System.out.println("No clients available");
         }
 
         ArrayList<Client> bestClients = new ArrayList<Client>(clients);
         bestClients.sort((client1, client2) -> client2.totalPurchases() - client1.totalPurchases());
         while (i < bestClients.size()) {
             System.out.println(bestClients.get(i).getName() + " : Total purchases made is " + bestClients.get(i).totalPurchases());
-            if (i == 5) break;
+            if (i == 4) break;
             i++;
         }
     }

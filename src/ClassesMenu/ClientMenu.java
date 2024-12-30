@@ -13,12 +13,14 @@ import java.util.HashMap;
 
 public class ClientMenu {
     public static void menu() {
-        System.out.println("1 - Pesquisar Clientes");
-        System.out.println("2 - Adicionar Clientes");
-        System.out.println("3 - Atualizar Clientes");
-        System.out.println("4 - Visualizar Clientes");
-        System.out.println("5 - Histórico de Compras");
-        System.out.println("6 - Voltar");
+        System.out.println("╭──────────────────────────╮");
+        System.out.println("│ 1 - Pesquisar Clientes   │");
+        System.out.println("│ 2 - Adicionar Clientes   │");
+        System.out.println("│ 3 - Atualizar Clientes   │");
+        System.out.println("│ 4 - Visualizar Clientes  │");
+        System.out.println("│ 5 - Histórico de Compras │");
+        System.out.println("│ 6 - Voltar               │");
+        System.out.println("╰──────────────────────────╯");
         System.out.print("Escolha uma opção: ");
     }
 
@@ -57,7 +59,7 @@ public class ClientMenu {
     public static void searchClient() {
         do {
             System.out.println("Pesquisar cliente");
-            System.out.println("1 - Filtrar por Nome");
+            System.out.println("1 - Filtrar por Nome ");
             System.out.println("2 - Listagem de todos os clientes");
             System.out.println("3 - Voltar");
             System.out.print("Insira uma opção: ");

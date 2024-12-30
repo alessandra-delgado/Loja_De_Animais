@@ -15,12 +15,15 @@ public class AnimalsMenu {
     private static boolean real;
 
     public static void menu() {
-        System.out.println("1 - Adicionar Animal");
-        System.out.println("2 - Atualizar Animal");
-        System.out.println("3 - Visualizar Animal");
-        System.out.println("4 - Listar Animais");
-        System.out.println("5 - Eliminar Animal");
-        System.out.println("6 - Voltar");
+        System.out.println("╭───────────────────────╮");
+        System.out.println("│ 1 - Adicionar Animal  │");
+        System.out.println("│ 2 - Atualizar Animal  │");
+        System.out.println("│ 3 - Visualizar Animal │");
+        System.out.println("│ 4 - Listar Animais    │");
+        System.out.println("│ 5 - Eliminar Animal   │");
+        System.out.println("│ 6 - Voltar            │ ");
+        System.out.println("╰───────────────────────╯");
+        System.out.print("Escolha uma opção: ");
     }
 
     public static void show() {

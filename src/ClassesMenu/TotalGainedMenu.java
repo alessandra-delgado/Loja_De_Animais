@@ -13,10 +13,12 @@ import static src.Main.clients;
 
 public class TotalGainedMenu {
     public static void menu() {
-        System.out.println("1 - Valor faturado num dia");
-        System.out.println("2 - Valor faturado numa semana");
-        System.out.println("3 - Valor faturado num mês");
-        System.out.println("4 - Voltar");
+        System.out.println("╭───────────────────────────────╮");
+        System.out.println("│ 1 - Valor faturado num dia    │");
+        System.out.println("│ 2 - Valor faturado numa semana│");
+        System.out.println("│ 3 - Valor faturado num mês    │");
+        System.out.println("│ 4 - Voltar                    │");
+        System.out.println("╰───────────────────────────────╯");
     }
 
     public static void showMenu() {
@@ -79,8 +81,9 @@ public class TotalGainedMenu {
     public static double Total_Day(LocalDate date) {
         double total_day = 0.0;
         for (Client c : clients) {
+            if (c.getPurchases() == null || c.getPurchases().isEmpty()) continue;
             for (Purchase p : c.getPurchases()) {
-                if (p.getDate().toLocalDate().equals(date)) {
+                if (p.getDate() != null && p.getDate().toLocalDate().equals(date)) {
                     total_day += p.getTotal();
                 }
             }
