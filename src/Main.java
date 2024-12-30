@@ -15,7 +15,7 @@ public class Main {
 
     public static void main(String[] args) {
         init();
-    presetData();
+
         // Shows main menu
         System.out.println("Bem-vindo à Puro Pet, uma loja de animais um tanto complexa.");
         MainMenu.show();
