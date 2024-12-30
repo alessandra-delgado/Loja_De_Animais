@@ -1,7 +1,5 @@
 package src;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,7 +13,7 @@ public class Main {
     public static ArrayList<Client> clients;
     public static ArrayList<Employee> employees;
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
         init();
     presetData();
         // Shows main menu
@@ -66,7 +64,7 @@ public class Main {
         }
     }
 
-    public static void presetData() throws FileNotFoundException {
+    public static void presetData() {
         //todo: create objects
     /*
         // products --------------------------------
