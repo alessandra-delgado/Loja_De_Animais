@@ -27,11 +27,11 @@ public class StatsMenu {
             switch (Ler.umInt()) {
                 case 1:
                     System.out.println("Produtos mais vendidos");
-                    StatsMenu.MostLeastSold(0);
+                    StatsMenu.MostSold();
                     break;
                 case 2:
                     System.out.println("Produtos menos vendidos");
-                    StatsMenu.MostLeastSold(1);
+                    StatsMenu.LeastSold();
                     break;
                 case 3:
                     System.out.println("Melhores clientes");
@@ -50,29 +50,53 @@ public class StatsMenu {
         } while (true);
     }
 
-    public static void MostLeastSold(int j) {
+    public static void MostSold() {
         int i = 0;
         ArrayList<Product> prod_sold = new ArrayList<>();
+
         for (ProductType p : ProductType.values()) {
             if (products.get(p) == null || products.get(p).isEmpty()) continue;
+            if(p == ProductType.ANIMAL_IMAGINARY_AQUATIC || p == ProductType.ANIMAL_IMAGINARY_AERIAL || p == ProductType.ANIMAL_IMAGINARY_LAND || p == ProductType.ANIMAL_REAL_AERIAL || p == ProductType.ANIMAL_REAL_AQUATIC || p == ProductType.ANIMAL_REAL_LAND) continue;
             ArrayList<Product> prod = new ArrayList<Product>(products.get(p));
 
-            prod.sort((product1, product2) -> {
-                if (j == 0) return product2.getQuantity_sold() - product1.getQuantity_sold();
-                else return product1.getQuantity_sold() - product2.getQuantity_sold();
-            });
-            i = 0;
+            prod.sort((product1, product2) -> product2.getQuantity_sold() - product1.getQuantity_sold());
 
-            while (i < prod.size() && prod.get(i).getQuantity_sold() == prod.get(0).getQuantity_sold()) {
+            System.out.println(prod.toString());
+            while ( prod.get(i).getQuantity_sold() != 0 && i < prod.size() && i < 5) {
                 prod_sold.add(prod.get(i));
                 i++;
             }
         }
 
-        prod_sold.sort((product1, product2) -> {
-            if (j == 0) return product2.getQuantity_sold() - product1.getQuantity_sold();
-            else return product1.getQuantity_sold() - product2.getQuantity_sold();
-        });
+        prod_sold.sort((product1, product2) -> product2.getQuantity_sold() - product1.getQuantity_sold());
+
+        i = 0;
+        while (i < prod_sold.size()) {
+            System.out.println(prod_sold.get(i).getName() + " : " + prod_sold.get(i).getQuantity_sold() + " purchases");
+            i++;
+            if (i == 5) break;
+        }
+    }
+
+    public static void LeastSold() {
+        int i = 0;
+        ArrayList<Product> prod_sold = new ArrayList<>();
+
+        for (ProductType p : ProductType.values()) {
+            if (products.get(p) == null || products.get(p).isEmpty()) continue;
+            if(p == ProductType.ANIMAL_IMAGINARY_AQUATIC || p == ProductType.ANIMAL_IMAGINARY_AERIAL || p == ProductType.ANIMAL_IMAGINARY_LAND || p == ProductType.ANIMAL_REAL_AERIAL || p == ProductType.ANIMAL_REAL_AQUATIC || p == ProductType.ANIMAL_REAL_LAND) continue;
+
+            ArrayList<Product> prod = new ArrayList<Product>(products.get(p));
+
+            prod.sort((product1, product2) -> -(product2.getQuantity_sold() - product1.getQuantity_sold()));
+            System.out.println(prod.toString());
+            while ( i < prod.size()) {
+                prod_sold.add(prod.get(i));
+                i++;
+            }
+        }
+
+        prod_sold.sort((product1, product2) -> -(product1.getQuantity_sold() - product2.getQuantity_sold()));
 
         i = 0;
         while (i < prod_sold.size()) {

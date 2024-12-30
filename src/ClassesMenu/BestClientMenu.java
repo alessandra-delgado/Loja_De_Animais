@@ -55,7 +55,7 @@ public class BestClientMenu {
 
         while (i < bestClients.size()) {
             System.out.println(bestClients.get(i).getName() + " : Total spent is " + bestClients.get(i).getTotalSpent());
-            if (i == 5) break;
+            if (i == 4) break;
             i++;
         }
     }
@@ -71,7 +71,7 @@ public class BestClientMenu {
         bestClients.sort((client1, client2) -> Double.compare(client2.MostExpensivePurchase(), client1.MostExpensivePurchase()));
         while (i < bestClients.size()) {
             System.out.println(bestClients.get(i).getName() + " : The most spent o na single purchase " + bestClients.get(i).MostExpensivePurchase());
-            if (i == 5) break;
+            if (i == 4) break;
             i++;
         }
     }
@@ -87,7 +87,7 @@ public class BestClientMenu {
         bestClients.sort((client1, client2) -> client2.totalPurchases() - client1.totalPurchases());
         while (i < bestClients.size()) {
             System.out.println(bestClients.get(i).getName() + " : Total purchases made is " + bestClients.get(i).totalPurchases());
-            if (i == 5) break;
+            if (i == 4) break;
             i++;
         }
     }

@@ -60,7 +60,7 @@ public class Purchase implements Serializable {
     }
 
     public void setDate(LocalDateTime date) {
-        this.date = date;
+        if( date != null ) this.date = date;
     }
 
     public void addProduct(Product p) throws ProductStockExceededException {

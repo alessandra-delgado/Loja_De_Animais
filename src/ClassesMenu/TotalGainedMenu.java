@@ -81,8 +81,9 @@ public class TotalGainedMenu {
     public static double Total_Day(LocalDate date) {
         double total_day = 0.0;
         for (Client c : clients) {
+            if (c.getPurchases() == null || c.getPurchases().isEmpty()) continue;
             for (Purchase p : c.getPurchases()) {
-                if (p.getDate().toLocalDate().equals(date)) {
+                if (p.getDate() != null && p.getDate().toLocalDate().equals(date)) {
                     total_day += p.getTotal();
                 }
             }
