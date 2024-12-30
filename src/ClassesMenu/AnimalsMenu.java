@@ -4,6 +4,7 @@ package src.ClassesMenu;
 import src.ClassesLoja.*;
 import src.Enum.AnimalType;
 import src.Enum.ProductType;
+import src.FormValidation.Form;
 import src.Input.Ler;
 import src.Main;
 
@@ -56,13 +57,13 @@ public class AnimalsMenu {
         System.out.println("Qual o nome de animal?");
         String nome = Ler.umaString();
         System.out.println("Qual o preço do animal?");
-        double preco = Ler.umDouble();
+        double preco = Form.insertPrice();
         System.out.println("Qual a idade do animal?");
-        int idade = Ler.umInt();
+        int idade = Form.insertAge();
         System.out.println("Qual a quantidade do animal?");
-        int quantidade = Ler.umInt();
+        int quantidade = Form.insertQuantity();
         System.out.println("Qual o género do animal(F/M)?");
-        char genero = Ler.umChar();
+        char genero = Form.insertGender();
         System.out.println("Qual o nome cientifico do animal?");
         String nomeCientifico = Ler.umaString();
         System.out.println("Insira a arte ASCII do animal?");
@@ -166,11 +167,11 @@ public class AnimalsMenu {
                         break;
                     case 2:
                         System.out.println("Qual a nova idade?");
-                        animal.setAge(Ler.umInt());
+                        animal.setAge(Form.insertAge());
                         break;
                     case 3:
                         System.out.println("Qual o novo sexo?");
-                        animal.setGender(Ler.umChar());
+                        animal.setGender(Form.insertGender());
                         break;
                     case 4:
                         System.out.println("Qual o novo nome cientifico?");
@@ -200,7 +201,7 @@ public class AnimalsMenu {
                         break;
                     case 6:
                         System.out.println("Qual a nova quantidade?");
-                        animal.setQuantity(Ler.umInt());
+                        animal.setQuantity(Form.insertQuantity());
                         break;
                     case 7:
                         System.out.println("A voltar...");

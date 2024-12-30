@@ -7,11 +7,13 @@ import src.ClassesLoja.Product;
 import src.Enum.ProductType;
 import src.ClassesLoja.File;
 import src.Exceptions.ProductNotFoundException;
+import src.FormValidation.Form;
 import src.Input.Ler;
 import src.Main;
 
 public class ProductMenu {
     private static String filePath;
+
     private static void menu() {
         System.out.println("1 - Adicionar Produtos");
         System.out.println("2 - Atualizar Produtos");
@@ -61,9 +63,9 @@ public class ProductMenu {
                     System.out.println("Qual o nome do cosmetico:");
                     String nome = Ler.umaString();
                     System.out.println("Qual o preco do cosmetico:");
-                    double preco = Ler.umDouble();
-                    System.out.println("Qual a quantidade do cosmetico:");
-                    int quantidade = Ler.umInt();
+                    double preco = Form.insertPrice();
+                    System.out.println("Qual a quantidade do cosmetico?");
+                    int quantidade = Form.insertQuantity();
 
                     //Cria produto
                     Product novoCosmetico = new Product(nome, preco, quantidade);
@@ -77,10 +79,10 @@ public class ProductMenu {
                 case 2:
                     System.out.println("Qual o nome da comida:");
                     String nomeComida = Ler.umaString();
-                    System.out.println("Qual o preco do comida:");
-                    double precoComida = Ler.umDouble();
-                    System.out.println("Qual a quantidade do comida:");
-                    int quantidadeComida = Ler.umInt();
+                    System.out.println("Qual o preco da comida:");
+                    double precoComida = Form.insertPrice();
+                    System.out.println("Qual a quantidade da comida?");
+                    int quantidadeComida = Form.insertQuantity();
 
                     Product comida = new Product(nomeComida, precoComida, quantidadeComida);
                     comida.setCategory(ProductType.FOOD);
@@ -93,9 +95,9 @@ public class ProductMenu {
                     System.out.println("Qual o nome do habitat:");
                     String nomeHabitat = Ler.umaString();
                     System.out.println("Qual o preco do habitat:");
-                    double precoHabitat = Ler.umDouble();
-                    System.out.println("Qual a quantidade do habitat:");
-                    int quantidadeHabitat = Ler.umInt();
+                    double precoHabitat = Form.insertPrice();
+                    System.out.println("Qual a quantidade do habitat?");
+                    int quantidadeHabitat = Form.insertQuantity();
 
                     Product habitat = new Product(nomeHabitat, precoHabitat, quantidadeHabitat);
                     habitat.setCategory(ProductType.HABITAT);
@@ -108,9 +110,9 @@ public class ProductMenu {
                     System.out.println("Qual o nome do produto de higiene:");
                     String nomeHigiene = Ler.umaString();
                     System.out.println("Qual o preco do produto de higiene:");
-                    double precoHigiene = Ler.umDouble();
-                    System.out.println("Qual a quantidade do produto de higiene:");
-                    int quantidadeHigiene = Ler.umInt();
+                    double precoHigiene = Form.insertPrice();
+                    System.out.println("Qual a quantidade do produto de higiene?");
+                    int quantidadeHigiene = Form.insertQuantity();
 
                     Product higiene = new Product(nomeHigiene, precoHigiene, quantidadeHigiene);
                     higiene.setCategory(ProductType.HYGIENE);
@@ -123,9 +125,9 @@ public class ProductMenu {
                     System.out.println("Qual o nome do medicamento:");
                     String nomeMedicamento = Ler.umaString();
                     System.out.println("Qual o preco do medicamento:");
-                    double precoMedicamento = Ler.umDouble();
-                    System.out.println("Qual a quantidade do medicamento:");
-                    int quantidadeMedicamento = Ler.umInt();
+                    double precoMedicamento = Form.insertPrice();
+                    System.out.println("Qual a quantidade do medicamento?");
+                    int quantidadeMedicamento = Form.insertQuantity();
 
                     Product medicamento = new Product(nomeMedicamento, precoMedicamento, quantidadeMedicamento);
                     medicamento.setCategory(ProductType.MEDICINE);
@@ -153,7 +155,7 @@ public class ProductMenu {
         System.out.println("6 - Voltar");
 
         ProductType categoria = getProductByCategory(Ler.umInt());
-        if (categoria == null){
+        if (categoria == null) {
             return;
         }
         System.out.println("Qual o nome do produto:");
@@ -190,7 +192,7 @@ public class ProductMenu {
                         break;
                 }
             }
-        }else{
+        } else {
             System.out.println("Produto não encontrado! ");
         }
     }
@@ -204,7 +206,7 @@ public class ProductMenu {
         System.out.println("5 - Medicamentos");
         System.out.println("6 - Voltar");
 
-        switch (Ler.umInt()){
+        switch (Ler.umInt()) {
             case 1:
                 viewProdructDetails(ProductType.COSMETIC);
                 return;
@@ -238,7 +240,7 @@ public class ProductMenu {
         System.out.println("5 - Medicamentos");
         System.out.println("6 - Voltar");
 
-        switch (Ler.umInt()){
+        switch (Ler.umInt()) {
             case 1:
                 deleteProductDetails(ProductType.COSMETIC);
                 return;
@@ -262,7 +264,8 @@ public class ProductMenu {
                 break;
         }
     }
-    private static ProductType getProductByCategory(int op){
+
+    private static ProductType getProductByCategory(int op) {
         switch (op) {
             case 1:
                 return ProductType.COSMETIC;
@@ -283,10 +286,11 @@ public class ProductMenu {
 
         }
     }
+
     //Função atualizar preço
     private static void updatePrice(Product product, ProductType categoria) {
         System.out.println("Qual o novo preço?");
-        product.setPrice(Ler.umDouble());
+        product.setPrice(Form.insertPrice());
         File.binWrite(Main.products.get(categoria), categoria.getFilePath());
         System.out.println("Preço atualizado!");
     }
@@ -310,23 +314,20 @@ public class ProductMenu {
             File.binWrite(Main.products.get(categoria), categoria.getFilePath());
             File.binWrite(Main.products.get(novaCategoria), novaCategoria.getFilePath());
             System.out.println("Categoria atualizada!");
-        }else{
+        } else {
             System.out.println("Categoria inválida");
         }
     }
 
     private static void updateQuantity(Product product, ProductType categoria) {
         System.out.println("Qual a nova quantidade?");
-        int quantidade = Ler.umInt();
-        if (quantidade < 0 ) {
-            System.out.println("Quantidade tem de ser positiva!!");
-            return;
-        }else{
-            product.setQuantity(quantidade);
-            File.binWrite(Main.products.get(categoria), categoria.getFilePath());
-            System.out.println("Quantidade atualizada!");
-        }
+        int quantidade = Form.insertQuantity();
+        product.setQuantity(quantidade);
+        File.binWrite(Main.products.get(categoria), categoria.getFilePath());
+        System.out.println("Quantidade atualizada!");
+
     }
+
     //Função para ver os detalhes dos produtos
     private static void viewProdructDetails(ProductType categoria) {
         System.out.println("Qual o nome do produto?");
@@ -339,7 +340,7 @@ public class ProductMenu {
             System.out.println("Nome: " + produto.getName());
             System.out.println("Quantidade: " + produto.getQuantity());
             System.out.println("Preço atual: " + produto.getPrice());
-        }else{
+        } else {
             System.out.println(categoria.toString() + " não encontrado!");
         }
     }
@@ -354,7 +355,7 @@ public class ProductMenu {
             produtos.remove(produto);
             File.binWrite(produtos, categoria.getFilePath());
             System.out.println(categoria.toString() + " eliminado!");
-        }else{
+        } else {
             System.out.println(categoria.toString() + " não encontrado!");
         }
     }
@@ -381,14 +382,13 @@ public class ProductMenu {
             }
         });
 
-        
+
         if (selected.get() != null) {
             return selected.get();
         }
 
         throw new ProductNotFoundException("Erro: Não existe nenhum produto com o id introduzido");
     }
-
 
 
 }

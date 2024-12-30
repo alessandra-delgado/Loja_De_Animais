@@ -2,6 +2,7 @@ package src.FormValidation;
 
 import src.Exceptions.InvalidAgeException;
 import src.Exceptions.InvalidGenderException;
+import src.Exceptions.InvalidPriceException;
 import src.Exceptions.InvalidProductQuantityException;
 import src.Input.Ler;
 
@@ -42,7 +43,7 @@ public class Form {
         int quantity;
         while (true) {
             try {
-                System.out.print("Insira a quantidade: ");
+                System.out.print("Insira a quantidade ");
                 quantity = Validation.validateQuantity();
                 return quantity;
             } catch (InvalidProductQuantityException e) {
@@ -59,6 +60,19 @@ public class Form {
                 age = Validation.validateAge();
                 return age;
             } catch (InvalidAgeException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    public static double insertPrice(){
+        double price;
+        while (true) {
+            try{
+                System.out.print("Insira o preço: ");
+                price = Validation.validatePrice();
+                return price;
+            } catch (InvalidPriceException e) {
                 System.out.println(e.getMessage());
             }
         }
