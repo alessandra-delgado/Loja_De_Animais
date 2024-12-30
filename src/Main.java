@@ -93,6 +93,9 @@ public class Main {
                         "       \"\"\"'          \"\"'             `\"\" mh", // Simples arte ASCII de unicórnio
                 AnimalType.LAND
         );
+        unicorn.setCategory(ProductType.ANIMAL_IMAGINARY_LAND);
+        unicorn.setName("Unicórnio");
+        unicorn.setQuantity(5);
 
         Animal helloKitty = new Animal(
                 5, 'F', "Felinus cuterus",
@@ -122,6 +125,9 @@ public class Main {
                         "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
                 AnimalType.LAND
         );
+        helloKitty.setCategory(ProductType.ANIMAL_IMAGINARY_LAND);
+        helloKitty.setName("Hello Kitty");
+        helloKitty.setQuantity(5);
 
         Animal cinnamoroll = new Animal(
                 3, 'M', "Canis adorabilis",
@@ -136,6 +142,9 @@ public class Main {
                         "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⠤⠤⠴⣄⡸⠤⣄⠴⠤⠴⠄⠼⠀⠀⠀⠀⠀⠀⠀⠀",
                 AnimalType.LAND
         );
+        cinnamoroll.setCategory(ProductType.ANIMAL_IMAGINARY_LAND);
+        cinnamoroll.setName("cinnamoroll");
+        cinnamoroll.setQuantity(5);
 
         ArrayList<Product> animalImaginaryLand = Main.products.get(ProductType.ANIMAL_IMAGINARY_LAND);
         animalImaginaryLand.add(unicorn);
@@ -161,6 +170,9 @@ public class Main {
                         "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠛⠿⠟⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀",
                 AnimalType.AQUATIC
         );
+        kraken.setCategory(ProductType.ANIMAL_IMAGINARY_AQUATIC);
+        kraken.setName("kraken");
+        kraken.setQuantity(5);
 
         Animal blueDragon = new Animal(
                 2, 'M', "Glaucus atlanticus imaginarius",
@@ -178,6 +190,9 @@ public class Main {
                         "                   ,'---\\ \\              ,---`,;,",
                 AnimalType.AQUATIC
         );
+        blueDragon.setCategory(ProductType.ANIMAL_IMAGINARY_AQUATIC);
+        blueDragon.setName("Blue Dragon");
+        blueDragon.setQuantity(5);
 
         ArrayList<Product> animalImaginaryAquatic = Main.products.get(ProductType.ANIMAL_IMAGINARY_AQUATIC);
         animalImaginaryAquatic.add(kraken);
@@ -201,6 +216,10 @@ public class Main {
                         "    ((='--;)         (,___/(,_/",
                 AnimalType.AERIAL
         );
+        griffin.setCategory(ProductType.ANIMAL_IMAGINARY_AERIAL);
+        griffin.setName("griffin");
+        griffin.setQuantity(5);
+
         Animal phoenix = new Animal(
                 1000, 'F', "Aves immortalis",
                 " .\\\\            //.\n" +
@@ -215,6 +234,10 @@ public class Main {
                         "      .'",
                 AnimalType.AERIAL
         );
+        phoenix.setCategory(ProductType.ANIMAL_IMAGINARY_AERIAL);
+        phoenix.setName("phoenix");
+        phoenix.setQuantity(5);
+
         Animal sphinx = new Animal(
                 800, 'F', "Mysticus enigmaticus",
                 "          /                    ___:__:__:__:__:_\\. /\n" +
@@ -230,6 +253,10 @@ public class Main {
                         "      |_|_|_|XXX|_|_|_'|_/",
                 AnimalType.AERIAL
         );
+        sphinx.setCategory(ProductType.ANIMAL_IMAGINARY_AERIAL);
+        sphinx.setName("sphinx");
+        sphinx.setQuantity(5);
+
         Animal batman = new Animal(
                 35, 'M', "Chiroptera sapiens",
                 "        __.--'\\     \\.__./     /'--.__\n" +
@@ -244,6 +271,9 @@ public class Main {
                         "                      ''",
                 AnimalType.AERIAL
         );
+        batman.setCategory(ProductType.ANIMAL_IMAGINARY_AERIAL);
+        batman.setName("batman");
+        batman.setQuantity(5);
 
         ArrayList<Product> imaginaryAerialAnimals = Main.products.get(ProductType.ANIMAL_IMAGINARY_AERIAL);
         imaginaryAerialAnimals.add(griffin);
@@ -260,6 +290,10 @@ public class Main {
                         "         / // // //  `-._,_)' // / ``--...____..-' /// / //  ",
                 AnimalType.LAND
         );
+        gato.setCategory(ProductType.ANIMAL_REAL_LAND);
+        gato.setName("gato");
+        gato.setQuantity(5);
+
         Animal cachorro = new Animal(
                 3, 'M', "Canis lupus familiaris",
                 "          /^ ^\\\n" +
@@ -270,6 +304,10 @@ public class Main {
                         "        V__) ||",
                 AnimalType.LAND
         );
+        cachorro.setCategory(ProductType.ANIMAL_REAL_LAND);
+        cachorro.setName("cachorro");
+        cachorro.setQuantity(5);
+
         Animal Roedores = new Animal(
                 1, 'F', "Oryctolagus cuniculus",
                 "             ,\\\n" +
@@ -282,6 +320,10 @@ public class Main {
                         "       `-----` `--`",
                 AnimalType.LAND
         );
+        Roedores.setCategory(ProductType.ANIMAL_REAL_LAND);
+        Roedores.setName("Roedores");
+        Roedores.setQuantity(5);
+
         Animal leão = new Animal(
                 5, 'M', "Panthera leo",
                 "         ,%%%%%%%,\n" +
@@ -294,6 +336,10 @@ public class Main {
                         "         `%%%%%%%'",
                 AnimalType.LAND
         );
+        leão.setCategory(ProductType.ANIMAL_REAL_LAND);
+        leão.setName("leão");
+        leão.setQuantity(5);
+
         Animal hamster = new Animal(
                 1, 'M', "Cricetinae",
                 "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠀⠀⠀⠀⠀⠀⠀\n" +
@@ -313,6 +359,10 @@ public class Main {
                         "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀",
                 AnimalType.LAND
         );
+        hamster.setCategory(ProductType.ANIMAL_REAL_LAND);
+        hamster.setName("hamster");
+        hamster.setQuantity(5);
+
         Animal galinha = new Animal(
                 1, 'F', "Gallus gallus domesticus",
                 "         __//\n" +
@@ -325,6 +375,9 @@ public class Main {
                         "         \" \"",
                 AnimalType.LAND
         );
+        galinha.setCategory(ProductType.ANIMAL_REAL_LAND);
+        galinha.setName("galinha");
+        galinha.setQuantity(5);
 
         ArrayList<Product> realLandAnimals = Main.products.get(ProductType.ANIMAL_REAL_LAND);
         realLandAnimals.add(gato);
@@ -343,6 +396,10 @@ public class Main {
                         "          ''",
                 AnimalType.AQUATIC
         );
+        peixeDourado.setCategory(ProductType.ANIMAL_REAL_AQUATIC);
+        peixeDourado.setName("Peixe Dourado");
+        peixeDourado.setQuantity(5);
+
         Animal betta = new Animal(
                 1, 'M', "Betta splendens",
                 "      /\\\n" +
@@ -353,6 +410,10 @@ public class Main {
                         "    `'",
                 AnimalType.AQUATIC
         );
+        betta.setCategory(ProductType.ANIMAL_REAL_AQUATIC);
+        betta.setName("betta");
+        betta.setQuantity(5);
+
         Animal guppy = new Animal(
                 1, 'F', "Poecilia reticulata",
                 "|\\   \\\\\\\\__     o\n" +
@@ -362,15 +423,27 @@ public class Main {
                         "|/     |/",
                 AnimalType.AQUATIC
         );
+        guppy.setCategory(ProductType.ANIMAL_REAL_AQUATIC);
+        guppy.setName("guppy");
+        guppy.setQuantity(5);
+
         Animal estrelaDoMar = new Animal(
                 10, 'F', "Asteroidea", null,
                 AnimalType.AQUATIC
         );
+        estrelaDoMar.setCategory(ProductType.ANIMAL_REAL_AQUATIC);
+        estrelaDoMar.setName("Estrela Do Mar");
+        estrelaDoMar.setQuantity(5);
+
         Animal ouriçoDoMar = new Animal(
                 5, 'M', "Echinoidea",
                 null,
                 AnimalType.AQUATIC
         );
+        ouriçoDoMar.setCategory(ProductType.ANIMAL_REAL_AQUATIC);
+        ouriçoDoMar.setName("Ouriço Do Mar");
+        ouriçoDoMar.setQuantity(5);
+
         Animal tartaruga = new Animal(
                 80, 'F', "Chelonioidea",
                 "     _..---.--.\n" +
@@ -381,6 +454,10 @@ public class Main {
                         "   (_..)--(.._)'--'",
                 AnimalType.AQUATIC
         );
+        tartaruga.setCategory(ProductType.ANIMAL_REAL_AQUATIC);
+        tartaruga.setName("tartaruga");
+        tartaruga.setQuantity(5);
+
         Animal cavaloMarinho = new Animal(
                 2, 'M', "Hippocampus",
                 "           :=()\n" +
@@ -391,6 +468,10 @@ public class Main {
                         "           \\__/",
                 AnimalType.AQUATIC
         );
+        cavaloMarinho.setCategory(ProductType.ANIMAL_REAL_AQUATIC);
+        cavaloMarinho.setName("Cavalo Marinho");
+        cavaloMarinho.setQuantity(5);
+
         Animal trilobita = new Animal(
                 300, 'M', "Trilobita",
                 "        ..\\\\\\\\\n" +
@@ -400,6 +481,9 @@ public class Main {
                         "        ''////",
                 AnimalType.AQUATIC
         );
+        trilobita.setCategory(ProductType.ANIMAL_REAL_AQUATIC);
+        trilobita.setName("trilobita");
+        trilobita.setQuantity(5);
 
         ArrayList<Product> animaisAquaticos = Main.products.get(ProductType.ANIMAL_REAL_AQUATIC);
         animaisAquaticos.add(peixeDourado);
@@ -425,6 +509,10 @@ public class Main {
                         "                      ((` ((",
                 AnimalType.AERIAL
         );
+        águia.setCategory(ProductType.ANIMAL_REAL_AERIAL);
+        águia.setName("águia");
+        águia.setQuantity(5);
+
         Animal coruja = new Animal(
                 7, 'F', "Strigiformes",
                 "\n" +
@@ -439,6 +527,10 @@ public class Main {
                         " ------------------(((--(((-------",
                 AnimalType.AERIAL
         );
+        coruja.setCategory(ProductType.ANIMAL_REAL_AERIAL);
+        coruja.setName("coruja");
+        coruja.setQuantity(5);
+
         Animal cacatua = new Animal(
                 3, 'M', "Nymphicus hollandicus",
                 "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
@@ -463,6 +555,10 @@ public class Main {
                         "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠚⠓⠾⠓⠒⠚⠲⠞⠆⠲⠖⠂⠀⠗⠛⠓⠛⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
                 AnimalType.AERIAL
         );
+        cacatua.setCategory(ProductType.ANIMAL_REAL_AERIAL);
+        cacatua.setName("cacatua");
+        cacatua.setQuantity(5);
+
         Animal morcego = new Animal(
                 4, 'M', "Chiroptera",
                 "   /\\                 /\\\n" +
@@ -474,7 +570,9 @@ public class Main {
                         "           \" ` \"",
                 AnimalType.AERIAL
         );
-
+        morcego.setCategory(ProductType.ANIMAL_REAL_AERIAL);
+        morcego.setName("morcego");
+        morcego.setQuantity(5);
 
         ArrayList<Product> animaisAereos = Main.products.get(ProductType.ANIMAL_REAL_AERIAL);
         animaisAereos.add(águia);

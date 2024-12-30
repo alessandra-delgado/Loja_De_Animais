@@ -8,7 +8,7 @@ public class HelpMenu {
         System.out.println("│ 1 - Loja          │");
         System.out.println("│ 2 - Inventário    │");
         System.out.println("│ 3 - Estatísticas  │");
-        System.out.println("│ 4 - Sair          │");
+        System.out.println("│ 4 - Voltar        │");
         System.out.println("╰───────────────────╯");
         System.out.println(" ");
         System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━┓");
