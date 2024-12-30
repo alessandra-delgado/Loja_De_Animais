@@ -15,11 +15,13 @@ public class ProductMenu {
     private static String filePath;
 
     private static void menu() {
-        System.out.println("1 - Adicionar Produtos");
-        System.out.println("2 - Atualizar Produtos");
-        System.out.println("3 - Visualizar Produtos");
-        System.out.println("4 - Eliminar Produtos");
-        System.out.println("5 - Voltar");
+        System.out.println("╭─────────────────────────╮");
+        System.out.println("│ 1 - Adicionar Produtos  │");
+        System.out.println("│ 2 - Atualizar Produtos  │");
+        System.out.println("│ 3 - Visualizar Produtos │");
+        System.out.println("│ 4 - Eliminar Produtos   │");
+        System.out.println("│ 5 - Voltar              │");
+        System.out.println("╰─────────────────────────╯");
         System.out.print("Escolha uma opção: ");
     }
 
