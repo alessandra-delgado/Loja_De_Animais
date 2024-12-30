@@ -16,7 +16,7 @@ public class TotalGainedMenu {
         System.out.println("1 - Valor faturado num dia");
         System.out.println("2 - Valor faturado numa semana");
         System.out.println("3 - Valor faturado num mês");
-        System.out.println("4 - Sair");
+        System.out.println("4 - Voltar");
     }
 
     public static void showMenu() {
@@ -67,7 +67,7 @@ public class TotalGainedMenu {
 
                     break;
                 case 4:
-                    System.out.println("Sair");
+                    System.out.println("A voltar...");
                     return;
                 default:
                     System.out.println("Opção inválida");

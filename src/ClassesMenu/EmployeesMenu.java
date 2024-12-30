@@ -18,7 +18,7 @@ public class EmployeesMenu {
         System.out.println("2 - Atualizar Empregados ");
         System.out.println("3 - Visualizar Empregados ");
         System.out.println("4 - Eliminar Empregados ");
-        System.out.println("5 - Sair");
+        System.out.println("5 - Voltar");
         System.out.println("Escolha uma opção:");
     }
 
@@ -41,7 +41,7 @@ public class EmployeesMenu {
                     deleteEmployee();
                     break;
                 case 5:
-                    System.out.println("A sair ...");
+                    System.out.println("A voltar ...");
                     return;
             }
         }
@@ -102,14 +102,14 @@ public class EmployeesMenu {
                 int op = 0;
                 while (true) {
                     System.out.println("Selecione o que deseja atualizar: ");
-                    System.out.println("1- Nome");
-                    System.out.println("2- Género");
-                    System.out.println("3- Data de nascimento");
-                    System.out.println("4- Telefone");
-                    System.out.println("5- NIF");
-                    System.out.println("6- Salário");
+                    System.out.println("1 - Nome");
+                    System.out.println("2 - Género");
+                    System.out.println("3 - Data de nascimento");
+                    System.out.println("4 - Telefone");
+                    System.out.println("5 - NIF");
+                    System.out.println("6 - Salário");
                     System.out.println("7 - Posição");
-                    System.out.println("8- Sair");
+                    System.out.println("8 - Voltar");
                     System.out.print("Insira uma opção: ");
                     op = Ler.umInt();
                     switch (op) {
@@ -149,7 +149,7 @@ public class EmployeesMenu {
                         case 8:
                             File.binWrite(Main.employees, "Employee/Employee.dat");
                             System.out.println("Empregado atualizado com sucesso!");
-                            System.out.println("A sair...");
+                            System.out.println("A voltar...");
                             return;
                         default:
                             System.out.println("Opção inválida.");

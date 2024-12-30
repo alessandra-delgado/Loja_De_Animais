@@ -18,7 +18,7 @@ public class AnimalsMenu {
         System.out.println("2 - Atualizar Animais");
         System.out.println("3 - Ver Animais");
         System.out.println("4 - Eliminar Animais");
-        System.out.println("5 - Sair");
+        System.out.println("5 - Voltar");
     }
 
     public static void show() {
@@ -38,7 +38,7 @@ public class AnimalsMenu {
                     deleteAnimal();
                     return;
                 case 5:
-                    System.out.println("A sair ...");
+                    System.out.println("A voltar ...");
                     return;
                 default:
                     break;
@@ -125,7 +125,7 @@ public class AnimalsMenu {
                 case 3:
                     return AnimalType.AQUATIC;
                 case 4:
-                    System.out.println("A sair ...");
+                    System.out.println("A voltar ...");
                     return null;
                 default:
                     System.out.println("Opção inválida!");
@@ -156,7 +156,7 @@ public class AnimalsMenu {
             System.out.println("4 - Nome científico");
             System.out.println("5 - Tipo");
             System.out.println("6 - Quantidade");
-            System.out.println("7 - Sair");
+            System.out.println("7 - Voltar");
 
             while (true) {
                 switch (Ler.umInt()) {
@@ -203,7 +203,7 @@ public class AnimalsMenu {
                         animal.setQuantity(Ler.umInt());
                         break;
                     case 7:
-                        System.out.println("A sair...");
+                        System.out.println("A voltar...");
                         return;
                     default:
                         System.out.print("Opção inválida");
@@ -267,7 +267,7 @@ public class AnimalsMenu {
         System.out.println("4 - Imaginário Terrestre");
         System.out.println("5 - Imaginário Aéreo");
         System.out.println("6 - Imaginário Aquatico");
-        System.out.println("7 - Sair");
+        System.out.println("7 - Voltar");
 
         AnimalType categoria = null;
         boolean real = false;
@@ -304,7 +304,7 @@ public class AnimalsMenu {
                 filePath = "Imaginary/Aquatic.dat";
                 break;
             case 7:
-                System.out.println("A sair ...");
+                System.out.println("A voltar ...");
                 return;
             default:
                 System.out.print("Opção inválida");

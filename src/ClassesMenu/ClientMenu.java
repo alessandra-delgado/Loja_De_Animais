@@ -17,7 +17,7 @@ public class ClientMenu {
         System.out.println("2 - Adicionar Clientes");
         System.out.println("3 - Atualizar Clientes");
         System.out.println("4 - Visualizar Clientes");
-        System.out.println("5 - Histórico de compras");
+        System.out.println("5 - Histórico de Compras");
         System.out.println("6 - Voltar");
         System.out.print("Escolha uma opção: ");
     }

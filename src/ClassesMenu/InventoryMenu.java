@@ -9,7 +9,7 @@ public class InventoryMenu {
         System.out.println("2 - Animais");
         System.out.println("3 - Empregados");
         System.out.println("4 - Clientes");
-        System.out.println("5 - Sair");
+        System.out.println("5 - Voltar");
         System.out.println("Escolha uma opção:");
 
         int op = 0;

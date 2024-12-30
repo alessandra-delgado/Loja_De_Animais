@@ -55,7 +55,7 @@ public class CatalogMenu {
                     Main.listProducts(ProductType.HYGIENE);
                     break;
                 case 8:
-                    System.out.println("Sair");
+                    System.out.println("Voltar");
                     return;
                 case 42:
                     secret();
@@ -100,7 +100,7 @@ public class CatalogMenu {
                     Main.listProducts(aquaticType);
                     break;
                 case 5:
-                    System.out.println("Sair");
+                    System.out.println("Voltar");
                     return;
                 default:
                     System.out.println("Opção inválida.");

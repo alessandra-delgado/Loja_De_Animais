@@ -13,7 +13,7 @@ public class BestClientMenu {
         System.out.println("1 - Maior gasto total");
         System.out.println("2 - Maior gasto numa única compra");
         System.out.println("3 - Maior número de compras totais");
-        System.out.println("4 - Sair");
+        System.out.println("4 - Voltar");
     }
 
     public static void showMenu() {
@@ -31,7 +31,7 @@ public class BestClientMenu {
                     BestClientMenu.MostPurchasesTotal();
                     break;
                 case 4:
-                    System.out.println("Sair");
+                    System.out.println("Voltar");
                     return;
                 default:
                     System.out.println("Opção inválida");

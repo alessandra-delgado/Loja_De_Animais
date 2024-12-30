@@ -38,7 +38,7 @@ public class ProductMenu {
                     deleteProduct();
                     return;
                 case 5:
-                    System.out.println("A sair ...");
+                    System.out.println("A voltar ...");
                     return;
                 default:
                     break;
@@ -135,7 +135,7 @@ public class ProductMenu {
                     System.out.println("Medicamento registado!!");
                     return;
                 case 6:
-                    System.out.println("A sair ...");
+                    System.out.println("A voltar ...");
                     return;
                 default:
                     System.out.println("Opção inválida.");
@@ -150,7 +150,7 @@ public class ProductMenu {
         System.out.println("3 - Habitat");
         System.out.println("4 - Higiene");
         System.out.println("5 - Medicamentos");
-        System.out.println("6 - Sair");
+        System.out.println("6 - Voltar");
 
         ProductType categoria = getProductByCategory(Ler.umInt());
         if (categoria == null){
@@ -168,7 +168,7 @@ public class ProductMenu {
             System.out.println("1 - Preço");
             System.out.println("2 - Categoria");
             System.out.println("3 - Quantidade");
-            System.out.println("4 - Sair");
+            System.out.println("4 - Voltar");
 
 
             while (true) {
@@ -183,7 +183,7 @@ public class ProductMenu {
                         updateQuantity(produto, categoria);
                         return;
                     case 4:
-                        System.out.println("A sair ...");
+                        System.out.println("A voltar ...");
                         return;
                     default:
                         System.out.println("Opção inválida.");
@@ -221,7 +221,7 @@ public class ProductMenu {
                 viewProdructDetails(ProductType.MEDICINE);
                 return;
             case 6:
-                System.out.println("A sair ...");
+                System.out.println("A voltar ...");
                 return;
             default:
                 System.out.println("Opção inválida.");
@@ -255,7 +255,7 @@ public class ProductMenu {
                 deleteProductDetails(ProductType.MEDICINE);
                 return;
             case 6:
-                System.out.println("A sair ...");
+                System.out.println("A voltar ...");
                 return;
             default:
                 System.out.println("Opção inválida");
@@ -275,7 +275,7 @@ public class ProductMenu {
             case 5:
                 return ProductType.MEDICINE;
             case 6:
-                System.out.println("A sair ...");
+                System.out.println("A voltar ...");
                 return null;
             default:
                 System.out.println("Opção inválida");
@@ -298,7 +298,7 @@ public class ProductMenu {
         System.out.println("3 - Habitat");
         System.out.println("4 - Higiene");
         System.out.println("5 - Medicamentos");
-        System.out.println("6 - Sair");
+        System.out.println("6 - Voltar");
 
         ProductType novaCategoria = getProductByCategory(Ler.umInt());
 

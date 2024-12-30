@@ -14,7 +14,7 @@ public class StatsMenu {
         System.out.println("2 - Produtos menos vendidos");
         System.out.println("3 - Melhores clientes");
         System.out.println("4 - Valor faturado");
-        System.out.println("5 - Sair");
+        System.out.println("5 - Voltar");
         System.out.println("Escolha uma opção:");
     }
 
