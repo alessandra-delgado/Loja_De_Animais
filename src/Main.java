@@ -66,7 +66,7 @@ public class Main {
 
     public static void presetData() {
         //todo: create objects
-    /*
+
         // products --------------------------------
         // IMAGINARIOS
         Animal unicorn = new Animal(
@@ -481,7 +481,7 @@ public class Main {
         animaisAereos.add(coruja);
         animaisAereos.add(cacatua);
         animaisAereos.add(morcego);
-*/
+
         // cosmetic field
         ArrayList<Product> cosmeticos = Main.products.get(ProductType.COSMETIC);
 
@@ -835,11 +835,11 @@ public class Main {
         clients.add(new Client(new Person("João Carvalho", 'M', LocalDate.of(1986, 2, 28), 902345678, 963258741)));
 
         // employees -------------------------------
-        employees.add(new Employee(new Person("Carlos Mendes", 'M', LocalDate.of(1985, 4, 10), 912345678, 123456789), 2500.00, "Desenvolvedor"));
+        employees.add(new Employee(new Person("Carlos Mendes", 'M', LocalDate.of(1985, 4, 10), 912345678, 123456789), 2500.00, "Especialista em animais"));
         employees.add(new Employee(new Person("Maria Oliveira", 'F', LocalDate.of(1990, 6, 15), 923456789, 987654321), 3000.00, "Gerente"));
-        employees.add(new Employee(new Person("Pedro Santos", 'M', LocalDate.of(1982, 2, 20), 934567890, 456789123), 2200.00, "Analista"));
-        employees.add(new Employee(new Person("Ana Costa", 'F', LocalDate.of(1988, 8, 30), 945678901, 321654987), 2800.00, "Designer"));
-        employees.add(new Employee(new Person("Jorge Almeida", 'M', LocalDate.of(1995, 1, 5), 956789012, 654321789), 3200.00, "Engenheiro"));
+        employees.add(new Employee(new Person("Pedro Santos", 'M', LocalDate.of(1982, 2, 20), 934567890, 456789123), 2200.00, "Atendedor de clientes"));
+        employees.add(new Employee(new Person("Ana Costa", 'F', LocalDate.of(1988, 8, 30), 945678901, 321654987), 2800.00, "Atendedor de clientes"));
+        employees.add(new Employee(new Person("Jorge Almeida", 'M', LocalDate.of(1995, 1, 5), 956789012, 654321789), 3200.00, "Atendedor de clientes"));
         employees.add(new Employee(new Person("Sofia Ferreira", 'F', LocalDate.of(1993, 11, 12), 967890123, 789123456), 2700.00, "Coordenadora"));
 
         // **Cosméticos para Cães**
