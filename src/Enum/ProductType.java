@@ -16,6 +16,14 @@ public enum ProductType {
     MEDICINE,
     NONE;
 
+    public boolean isAnimalReal() {
+        return switch (this) {
+            case ANIMAL_REAL_LAND, ANIMAL_REAL_AERIAL, ANIMAL_REAL_AQUATIC -> true;
+            case ANIMAL_IMAGINARY_LAND, ANIMAL_IMAGINARY_AERIAL, ANIMAL_IMAGINARY_AQUATIC -> false;
+            default -> false;
+        };
+    }
+
     @Override
     public String toString() {
         return switch (this) {

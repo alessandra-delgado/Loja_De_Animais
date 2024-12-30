@@ -9,15 +9,18 @@ import java.util.ArrayList;
 
 public class CatalogMenu {
     private static void menu() {
-        System.out.println("1 - Animais Reais");
-        System.out.println("2 - Animais Imaginários");
-        System.out.println("3 - Cosmeticos");
-        System.out.println("4 - Comida");
-        System.out.println("5 - Habitat");
-        System.out.println("6 - Medicamentos");
-        System.out.println("7 - Higiene");
-        System.out.println("? - ?");
-        System.out.println("8 - Voltar");
+        System.out.println("╭──────────────────────────╮");
+        System.out.println("│ 1 - Animais Reais        │");
+        System.out.println("│ 2 - Animais Imaginários  │");
+        System.out.println("│ 3 - Cosmeticos           │");
+        System.out.println("│ 4 - Comida               │");
+        System.out.println("│ 5 - Habitat              │");
+        System.out.println("│ 6 - Medicamentos         │");
+        System.out.println("│ 7 - Higiene              │");
+        System.out.println("│ ? - ?                    │");
+        System.out.println("│ 8 - Voltar               │");
+        System.out.println("╰──────────────────────────╯");
+        System.out.println(" ");
         System.out.print("Escolha uma opção: ");
     }
 
@@ -55,7 +58,7 @@ public class CatalogMenu {
                     Main.listProducts(ProductType.HYGIENE);
                     break;
                 case 8:
-                    System.out.println("Sair");
+                    System.out.println("Voltar");
                     return;
                 case 42:
                     secret();
@@ -75,9 +78,9 @@ public class CatalogMenu {
         do {
             System.out.println("1 - Aéreos");
             System.out.println("2 - Terrestres");
-            System.out.println("3 - Aquáticos");
-            System.out.println("4 - Todos");
-            System.out.println("5 - Voltar");
+            System.out.println("3 - Aquáticos ");
+            System.out.println("4 - Todos ");
+            System.out.println("5 - Voltar ");
             System.out.print("Escolha uma opção: ");
 
             switch (Ler.umInt()) {
@@ -100,7 +103,7 @@ public class CatalogMenu {
                     Main.listProducts(aquaticType);
                     break;
                 case 5:
-                    System.out.println("Sair");
+                    System.out.println("Voltar");
                     return;
                 default:
                     System.out.println("Opção inválida.");

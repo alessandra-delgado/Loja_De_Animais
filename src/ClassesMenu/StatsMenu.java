@@ -10,11 +10,13 @@ import static src.Main.products;
 
 public class StatsMenu {
     public static void menu() {
-        System.out.println("1 - Produtos mais vendidos");
-        System.out.println("2 - Produtos menos vendidos");
-        System.out.println("3 - Melhores clientes");
-        System.out.println("4 - Valor faturado");
-        System.out.println("5 - Sair");
+        System.out.println("╭─────────────────────────────╮");
+        System.out.println("│ 1 - Produtos mais vendidos  │");
+        System.out.println("│ 2 - Produtos menos vendidos │");
+        System.out.println("│ 3 - Melhores clientes       │");
+        System.out.println("│ 4 - Valor faturado          │");
+        System.out.println("│ 5 - Voltar                  │");
+        System.out.println("╰─────────────────────────────╯");
         System.out.println("Escolha uma opção:");
     }
 

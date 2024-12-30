@@ -14,11 +14,13 @@ public class PurchaseMenu {
 
         // 1 - Choose client
         do {
-            System.out.println("Escolher um cliente para a operação (por índice)");
-            System.out.println("1 - Pesquisar cliente");
-            System.out.println("2 - Inserir índice de cliente");
-            System.out.println("3 - Novo cliente");
-            System.out.println("4 - Voltar");
+            System.out.println("╭──────────────────────────────────────────────────╮");
+            System.out.println("│ Escolher um cliente para a operação (por índice) │");
+            System.out.println("│ 1 - Pesquisar cliente                            │");
+            System.out.println("│ 2 - Inserir índice de cliente                    │");
+            System.out.println("│ 3 - Novo cliente                                 │");
+            System.out.println("│ 4 - Voltar                                       │");
+            System.out.println("╰──────────────────────────────────────────────────╯");
             System.out.print("Insira uma opção: ");
 
             switch (Ler.umInt()) {
@@ -82,6 +84,8 @@ public class PurchaseMenu {
 
                     try {
                         purchase.addProduct(product);
+                        if(product instanceof Animal)
+                            ((Animal) product).viewAnimal();
                     } catch (ProductStockExceededException e) {
                         System.out.println(e.getMessage());
                     } // Redundant, but necessary if changes are made in the code

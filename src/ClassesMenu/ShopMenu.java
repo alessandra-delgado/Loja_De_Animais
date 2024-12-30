@@ -4,10 +4,12 @@ import src.Input.Ler;
 
 public class ShopMenu {
     private static void menu() {
-        System.out.println("Menu Catálogo");
-        System.out.println("1 - Visualizar catálogo");
-        System.out.println("2 - Fazer Compra");
-        System.out.println("3 - Voltar");
+        System.out.println("╭─────────────────────────╮");
+        System.out.println("│ Menu Catálogo           │");
+        System.out.println("│ 1 - Visualizar catálogo │");
+        System.out.println("│ 2 - Fazer Compra        │");
+        System.out.println("│ 3 - Voltar              │");
+        System.out.println("╰─────────────────────────╯");
         System.out.print("Escolha uma opção: ");
     }
 
@@ -22,7 +24,7 @@ public class ShopMenu {
                     PurchaseMenu.show();
                     break;
                 case 3:
-                    System.out.println("A voltar");
+                    System.out.println("A voltar ...");
                     return;
             }
         }

@@ -67,17 +67,17 @@ public class Animal extends Product {
         return super.toString() + "Idade: " + age + "Género: " + gender + "Nome científico: " + sciname;
     }
 
-    public void viewAnimal(){
-        if (asciiart != null) {
-            System.out.print(asciiart);
-        }
-        else System.out.println("Não há visualização disponível");
+    public void viewAnimal() {
+        if (asciiart != null)
+            System.out.println(asciiart);
+        else
+            System.out.println("Não há visualização disponível");
     }
 
-    public boolean equals(Object obj){
-    if (obj instanceof Animal){
-    Animal a1 = (Animal) obj;
-    return super.equals(a1) && this.age == a1.age && this.gender == a1.gender && this.sciname.equals(a1.sciname) && this.asciiart.equals(a1.asciiart) && this.type == a1.type;
+    public boolean equals(Object obj) {
+        if (obj instanceof Animal) {
+            Animal a1 = (Animal) obj;
+            return super.equals(a1) && this.age == a1.age && this.gender == a1.gender && this.sciname.equals(a1.sciname) && this.asciiart.equals(a1.asciiart) && this.type == a1.type;
         }
         return false;
     }

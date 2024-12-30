@@ -2,6 +2,7 @@ package src.ClassesMenu;
 
 import src.ClassesLoja.*;
 import src.Exceptions.ClientNotFoundException;
+import src.FormValidation.Form;
 import src.Input.Ler;
 import src.Main;
 
@@ -12,12 +13,14 @@ import java.util.HashMap;
 
 public class ClientMenu {
     public static void menu() {
-        System.out.println("1 - Pesquisar Clientes");
-        System.out.println("2 - Adicionar Clientes");
-        System.out.println("3 - Atualizar Clientes");
-        System.out.println("4 - Visualizar Clientes");
-        System.out.println("5 - Histórico de compras");
-        System.out.println("6 - Voltar");
+        System.out.println("╭──────────────────────────╮");
+        System.out.println("│ 1 - Pesquisar Clientes   │");
+        System.out.println("│ 2 - Adicionar Clientes   │");
+        System.out.println("│ 3 - Atualizar Clientes   │");
+        System.out.println("│ 4 - Visualizar Clientes  │");
+        System.out.println("│ 5 - Histórico de Compras │");
+        System.out.println("│ 6 - Voltar               │");
+        System.out.println("╰──────────────────────────╯");
         System.out.print("Escolha uma opção: ");
     }
 
@@ -56,7 +59,7 @@ public class ClientMenu {
     public static void searchClient() {
         do {
             System.out.println("Pesquisar cliente");
-            System.out.println("1 - Filtrar por Nome");
+            System.out.println("1 - Filtrar por Nome ");
             System.out.println("2 - Listagem de todos os clientes");
             System.out.println("3 - Voltar");
             System.out.print("Insira uma opção: ");
@@ -88,22 +91,20 @@ public class ClientMenu {
     }
 
     public static void updateClient() {
-        System.out.println("Digite o NIF do cliente: ");
-        int nif = Ler.umInt();
-
         try {
-            Client cliente = findByNIF(nif);
-            System.out.println("Cliente encontrado: " + cliente.getName());
-            System.out.println("O que quer atualizar?");
-            System.out.println("1 - Nome");
-            System.out.println("2 - Telefone");
-            System.out.println("3 - Género");
-            System.out.println("4 - Data de nascimento");
-            System.out.println("5 - NIF");
-            System.out.println("6 - Voltar");
-            System.out.print("Insira uma opção: ");
-
             while (true) {
+                System.out.println("Digite o NIF do cliente: ");
+                int nif = Ler.umInt();
+                Client cliente = findByNIF(nif);
+                System.out.println("Cliente encontrado: " + cliente.getName());
+                System.out.println("O que quer atualizar?");
+                System.out.println("1 - Nome");
+                System.out.println("2 - Telefone");
+                System.out.println("3 - Género");
+                System.out.println("4 - Data de nascimento");
+                System.out.println("5 - NIF");
+                System.out.println("6 - Voltar");
+                System.out.print("Insira uma opção: ");
                 switch (Ler.umInt()) {
                     case 1:
                         System.out.print("Novo nome: ");
@@ -114,21 +115,12 @@ public class ClientMenu {
                         cliente.setTel(Ler.umInt());
                         return;
                     case 3:
-                        System.out.print("Novo género (M/F): ");
-                        cliente.setGender(Ler.umChar());
+                        System.out.println("Novo género: ");
+                        cliente.setGender(Form.insertGender());
                         return;
                     case 4:
-                        do {
-                            System.out.println("Nova data de nascimento (AAAA-MM-DD):");
-
-                            try {
-                                cliente.setBirthdate(LocalDate.parse(Ler.umaString()));
-                                break;
-                            } catch (DateTimeParseException e) {
-                                System.out.println("A data introduzida não é válida.");
-                            }
-                        } while (true);
-
+                        System.out.println("Nova data de nascimento:");
+                        cliente.setBirthdate(Form.insertDate());
                         return;
                     case 5:
                         do {
@@ -181,7 +173,7 @@ public class ClientMenu {
             ArrayList<Purchase> purchases = cliente.getPurchases();
 
             if (purchases.isEmpty()) {
-                System.out.println("Nenhum compra foi realizada pelo cliente");
+                System.out.println("Nenhuma compra foi realizada pelo cliente");
             } else {
                 for (Purchase p : purchases) {
                     System.out.println(p);
@@ -250,23 +242,13 @@ public class ClientMenu {
                     switch (Ler.umChar()) {
                         case 'Y', 'y':
                             System.out.print("Género: ");
-                            c.setGender(Ler.umChar());
+                            c.setGender(Form.insertGender());
                     }
 
                     System.out.print("Deseja inserir a data de nascimento? (Y para confirmar) ");
                     switch (Ler.umChar()) {
                         case 'Y', 'y':
-                            do {
-                                System.out.print("Deve inserir no formato YYYY-MM-DD: ");
-
-                                try {
-                                    c.setBirthdate(LocalDate.parse(Ler.umaString()));
-                                    break;
-                                } catch (DateTimeParseException e) {
-                                    System.out.println("A data introduzida não é válida.");
-                                }
-                            } while (true);
-
+                            c.setBirthdate(Form.insertDate());
                             break;
                     }
 
