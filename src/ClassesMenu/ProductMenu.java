@@ -307,6 +307,7 @@ public class ProductMenu {
         ProductType novaCategoria = getProductByCategory(Ler.umInt());
 
         if (novaCategoria != null && novaCategoria != categoria) {
+            product.setCategory(novaCategoria);
             //remover da antiga e adicionar na nova
             Main.products.get(categoria).remove(product);
             Main.products.get(novaCategoria).add(product);
@@ -325,7 +326,6 @@ public class ProductMenu {
         product.setQuantity(quantidade);
         File.binWrite(Main.products.get(categoria), categoria.getFilePath());
         System.out.println("Quantidade atualizada!");
-
     }
 
     //Função para ver os detalhes dos produtos
@@ -363,7 +363,7 @@ public class ProductMenu {
     //Função para encontrar produto
     private static Product findProduct(ArrayList<Product> produtos, String nome) {
         for (Product p : produtos) {
-            if (p.getName().equalsIgnoreCase(nome)) {
+            if (p.getName().toLowerCase().contains(nome.toLowerCase())) {
                 return p;
             }
         }
