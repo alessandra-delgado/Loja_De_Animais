@@ -82,6 +82,8 @@ public class PurchaseMenu {
 
                     try {
                         purchase.addProduct(product);
+                        if(product instanceof Animal)
+                            ((Animal) product).viewAnimal();
                     } catch (ProductStockExceededException e) {
                         System.out.println(e.getMessage());
                     } // Redundant, but necessary if changes are made in the code

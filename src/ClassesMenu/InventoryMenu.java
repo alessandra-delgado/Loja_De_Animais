@@ -21,6 +21,7 @@ public class InventoryMenu {
                     return;
                 case 2:
                     AnimalsMenu.show();
+                    return;
                 case 3:
                     EmployeesMenu.show();
                     return;

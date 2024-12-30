@@ -24,7 +24,7 @@ public class AnimalsMenu {
     public static void show() {
         while (true) {
             AnimalsMenu.menu();
-            switch (Ler.umInt()){
+            switch (Ler.umInt()) {
                 case 1:
                     addAnimal();
                     return;
@@ -47,33 +47,12 @@ public class AnimalsMenu {
     }
 
     public static void addAnimal() {
-        System.out.println("Qual o tipo de animal?");
-        System.out.println("1 - Terrestre");
-        System.out.println("2 - Aéreo");
-        System.out.println("3 - Aquático");
-        System.out.println("4 - Sair");
+        AnimalType tipoAnimal = getAnimalType();
 
-        AnimalType tipoAnimal = null;
-        while (true) {
-            switch (Ler.umInt()){
-                case 1:
-                    tipoAnimal = AnimalType.LAND;
-                    break;
-                case 2:
-                    tipoAnimal = AnimalType.AERIAL;
-                    break;
-                case 3:
-                    tipoAnimal = AnimalType.AQUATIC;
-                    break;
-                case 4:
-                    System.out.println("A sair ...");
-                    return;
-                default:
-                    System.out.println("Opção inválida!");
-                    break;
-            }
-            break;
+        if (tipoAnimal == null) {
+            return;
         }
+
         System.out.println("Qual o nome de animal?");
         String nome = Ler.umaString();
         System.out.println("Qual o preço do animal?");
@@ -89,7 +68,7 @@ public class AnimalsMenu {
         System.out.println("Insira a arte ASCII do animal?");
         String arte = Ler.umaString();
 
-        Animal novoAnimal = new Animal(idade, genero, nomeCientifico, arte,tipoAnimal);
+        Animal novoAnimal = new Animal(idade, genero, nomeCientifico, arte, tipoAnimal);
         novoAnimal.setName(nome);
         novoAnimal.setPrice(preco);
         novoAnimal.setQuantity(quantidade);
@@ -103,22 +82,22 @@ public class AnimalsMenu {
             if (tipoAnimal == AnimalType.LAND) {
                 Main.products.get(ProductType.ANIMAL_REAL_LAND).add(novoAnimal);
                 File.binWrite(Main.products.get(ProductType.ANIMAL_REAL_LAND), "Animal/Real/Land.dat");
-            }else if (tipoAnimal == AnimalType.AERIAL) {
+            } else if (tipoAnimal == AnimalType.AERIAL) {
                 Main.products.get(ProductType.ANIMAL_REAL_AERIAL).add(novoAnimal);
                 File.binWrite(Main.products.get(ProductType.ANIMAL_REAL_AERIAL), "Animal/Real/Aerial.dat");
-            }else if (tipoAnimal == AnimalType.AQUATIC) {
+            } else if (tipoAnimal == AnimalType.AQUATIC) {
                 Main.products.get(ProductType.ANIMAL_REAL_AQUATIC).add(novoAnimal);
                 File.binWrite(Main.products.get(ProductType.ANIMAL_REAL_AQUATIC), "Animal/Real/Aquatic.dat");
             }
-        }else{
+        } else {
             //animal imaginário
             if (tipoAnimal == AnimalType.LAND) {
                 Main.products.get(ProductType.ANIMAL_IMAGINARY_LAND).add(novoAnimal);
                 File.binWrite(Main.products.get(ProductType.ANIMAL_IMAGINARY_LAND), "Animal/Imaginary/Land.dat");
-            }else if (tipoAnimal == AnimalType.AERIAL) {
+            } else if (tipoAnimal == AnimalType.AERIAL) {
                 Main.products.get(ProductType.ANIMAL_IMAGINARY_AERIAL).add(novoAnimal);
                 File.binWrite(Main.products.get(ProductType.ANIMAL_IMAGINARY_AERIAL), "Animal/Imaginary/Aerial.dat");
-            }else if (tipoAnimal == AnimalType.AQUATIC) {
+            } else if (tipoAnimal == AnimalType.AQUATIC) {
                 Main.products.get(ProductType.ANIMAL_IMAGINARY_AQUATIC).add(novoAnimal);
                 File.binWrite(Main.products.get(ProductType.ANIMAL_IMAGINARY_AQUATIC), "Animal/Imaginary/Aquatic.dat");
             }
@@ -126,6 +105,32 @@ public class AnimalsMenu {
 
         System.out.println("Animal registado!!");
 
+    }
+
+
+    private static AnimalType getAnimalType() {
+        while (true) {
+            System.out.println("Qual o tipo de animal?");
+            System.out.println("1 - Terrestre");
+            System.out.println("2 - Aéreo");
+            System.out.println("3 - Aquático");
+            System.out.println("4 - Cancelar");
+            System.out.println("Insira uma opção: ");
+
+            switch (Ler.umInt()) {
+                case 1:
+                    return AnimalType.LAND;
+                case 2:
+                    return AnimalType.AERIAL;
+                case 3:
+                    return AnimalType.AQUATIC;
+                case 4:
+                    System.out.println("A sair ...");
+                    return null;
+                default:
+                    System.out.println("Opção inválida!");
+            }
+        }
     }
 
     public static void updateAnimal() {
@@ -153,8 +158,8 @@ public class AnimalsMenu {
             System.out.println("6 - Quantidade");
             System.out.println("7 - Sair");
 
-            while(true){
-                switch (Ler.umInt()){
+            while (true) {
+                switch (Ler.umInt()) {
                     case 1:
                         System.out.println("Qual o novo nome?");
                         animal.setName(Ler.umaString());
@@ -177,7 +182,7 @@ public class AnimalsMenu {
                         System.out.println("2 - Aquático");
                         System.out.println("3 - Terrestre");
                         AnimalType novoTipo = null;
-                        switch (Ler.umInt()){
+                        switch (Ler.umInt()) {
                             case 1:
                                 novoTipo = AnimalType.AERIAL;
                                 break;
@@ -209,8 +214,8 @@ public class AnimalsMenu {
                 updateFileByType(real, categoria);
                 System.out.println("Animal atualizado!");
                 return;
-        }
-    }else{
+            }
+        } else {
             System.out.println("Animal não encontrado!");
         }
     }
@@ -232,7 +237,7 @@ public class AnimalsMenu {
 
             //verifica se a arte ASCII está disponivel
             animal.viewAnimal();
-        }else{
+        } else {
             System.out.println("Animal não encontrado!");
         }
 
@@ -248,12 +253,13 @@ public class AnimalsMenu {
             animais.remove(animal);
             System.out.println("Animal removido!");
             updateFileByType(real, categoria);
-        }else{
+        } else {
             System.out.println("Animal não encontrado!");
         }
 
     }
-    private static void animalType(){
+
+    private static void animalType() {
         System.out.println("Qual o tipo de animal?");
         System.out.println("1 - Real Terrestre");
         System.out.println("2 - Real Aéreo");
@@ -266,16 +272,16 @@ public class AnimalsMenu {
         AnimalType categoria = null;
         boolean real = false;
         String filePath = "";
-        switch (Ler.umInt()){
+        switch (Ler.umInt()) {
             case 1:
                 categoria = AnimalType.LAND;
                 real = true;
-                filePath =  "Real/Land.dat";
+                filePath = "Real/Land.dat";
                 break;
             case 2:
                 categoria = AnimalType.AERIAL;
                 real = true;
-                filePath =  "Real/Aerial.dat";
+                filePath = "Real/Aerial.dat";
                 break;
             case 3:
                 categoria = AnimalType.AQUATIC;
@@ -305,6 +311,7 @@ public class AnimalsMenu {
                 break;
         }
     }
+
     private static ArrayList<Animal> getAnimalbyType(AnimalType tipo, boolean real) {
         ArrayList<Product> produtos = new ArrayList<>();
         if (real) {
@@ -335,6 +342,7 @@ public class AnimalsMenu {
         return animais;
 
     }
+
     //procurar animal pelo nome
     private static Animal findAnimal(ArrayList<Animal> animais, String nome) {
         for (Animal animal : animais) {
@@ -344,31 +352,32 @@ public class AnimalsMenu {
         }
         return null;
     }
+
     private static void updateFileByType(boolean real, AnimalType tipo) {
-       if(real){
-        switch (tipo) {
-            case AERIAL:
-                File.binWrite(Main.products.get(ProductType.ANIMAL_REAL_AERIAL), "Real/Aerial.dat");
-                break;
-            case AQUATIC:
-                File.binWrite(Main.products.get(ProductType.ANIMAL_REAL_AQUATIC), "Real/Aquatic.dat");
-                break;
-            case LAND:
-                File.binWrite(Main.products.get(ProductType.ANIMAL_REAL_LAND), "Real/Land.dat");
-                break;
-        }
-    }else {
-        switch (tipo) {
-            case AERIAL:
-                File.binWrite(Main.products.get(ProductType.ANIMAL_IMAGINARY_AERIAL), "Imaginary/Aerial.dat");
-                break;
-            case AQUATIC:
-                File.binWrite(Main.products.get(ProductType.ANIMAL_IMAGINARY_AQUATIC), "Imaginary/Aquatic.dat");
-                break;
-            case LAND:
-                File.binWrite(Main.products.get(ProductType.ANIMAL_IMAGINARY_LAND), "Imaginary/Land.dat");
-                break;
+        if (real) {
+            switch (tipo) {
+                case AERIAL:
+                    File.binWrite(Main.products.get(ProductType.ANIMAL_REAL_AERIAL), "Real/Aerial.dat");
+                    break;
+                case AQUATIC:
+                    File.binWrite(Main.products.get(ProductType.ANIMAL_REAL_AQUATIC), "Real/Aquatic.dat");
+                    break;
+                case LAND:
+                    File.binWrite(Main.products.get(ProductType.ANIMAL_REAL_LAND), "Real/Land.dat");
+                    break;
+            }
+        } else {
+            switch (tipo) {
+                case AERIAL:
+                    File.binWrite(Main.products.get(ProductType.ANIMAL_IMAGINARY_AERIAL), "Imaginary/Aerial.dat");
+                    break;
+                case AQUATIC:
+                    File.binWrite(Main.products.get(ProductType.ANIMAL_IMAGINARY_AQUATIC), "Imaginary/Aquatic.dat");
+                    break;
+                case LAND:
+                    File.binWrite(Main.products.get(ProductType.ANIMAL_IMAGINARY_LAND), "Imaginary/Land.dat");
+                    break;
+            }
         }
     }
-}
 }

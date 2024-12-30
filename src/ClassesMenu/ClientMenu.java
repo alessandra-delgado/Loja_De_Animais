@@ -181,7 +181,7 @@ public class ClientMenu {
             ArrayList<Purchase> purchases = cliente.getPurchases();
 
             if (purchases.isEmpty()) {
-                System.out.println("Nenhum compra foi realizada pelo cliente");
+                System.out.println("Nenhuma compra foi realizada pelo cliente");
             } else {
                 for (Purchase p : purchases) {
                     System.out.println(p);
