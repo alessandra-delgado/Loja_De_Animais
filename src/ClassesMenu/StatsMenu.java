@@ -56,21 +56,12 @@ public class StatsMenu {
 
         for (ProductType p : ProductType.values()) {
             if (products.get(p) == null || products.get(p).isEmpty()) continue;
-            if(p == ProductType.ANIMAL_IMAGINARY_AQUATIC || p == ProductType.ANIMAL_IMAGINARY_AERIAL || p == ProductType.ANIMAL_IMAGINARY_LAND || p == ProductType.ANIMAL_REAL_AERIAL || p == ProductType.ANIMAL_REAL_AQUATIC || p == ProductType.ANIMAL_REAL_LAND) continue;
-            ArrayList<Product> prod = new ArrayList<Product>(products.get(p));
 
-            prod.sort((product1, product2) -> product2.getQuantity_sold() - product1.getQuantity_sold());
-
-            System.out.println(prod.toString());
-            while ( prod.get(i).getQuantity_sold() != 0 && i < prod.size() && i < 5) {
-                prod_sold.add(prod.get(i));
-                i++;
-            }
+            prod_sold.addAll(products.get(p));
         }
 
-        prod_sold.sort((product1, product2) -> product2.getQuantity_sold() - product1.getQuantity_sold());
+        prod_sold.sort((product1, product2) -> (product2.getQuantity_sold() - product1.getQuantity_sold()));
 
-        i = 0;
         while (i < prod_sold.size()) {
             System.out.println(prod_sold.get(i).getName() + " : " + prod_sold.get(i).getQuantity_sold() + " purchases");
             i++;
@@ -84,21 +75,12 @@ public class StatsMenu {
 
         for (ProductType p : ProductType.values()) {
             if (products.get(p) == null || products.get(p).isEmpty()) continue;
-            if(p == ProductType.ANIMAL_IMAGINARY_AQUATIC || p == ProductType.ANIMAL_IMAGINARY_AERIAL || p == ProductType.ANIMAL_IMAGINARY_LAND || p == ProductType.ANIMAL_REAL_AERIAL || p == ProductType.ANIMAL_REAL_AQUATIC || p == ProductType.ANIMAL_REAL_LAND) continue;
 
-            ArrayList<Product> prod = new ArrayList<Product>(products.get(p));
-
-            prod.sort((product1, product2) -> -(product2.getQuantity_sold() - product1.getQuantity_sold()));
-            System.out.println(prod.toString());
-            while ( i < prod.size()) {
-                prod_sold.add(prod.get(i));
-                i++;
-            }
+            prod_sold.addAll(products.get(p));
         }
 
-        prod_sold.sort((product1, product2) -> -(product1.getQuantity_sold() - product2.getQuantity_sold()));
+        prod_sold.sort((product1, product2) -> (product1.getQuantity_sold() - product2.getQuantity_sold()));
 
-        i = 0;
         while (i < prod_sold.size()) {
             System.out.println(prod_sold.get(i).getName() + " : " + prod_sold.get(i).getQuantity_sold() + " purchases");
             i++;
