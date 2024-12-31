@@ -1,8 +1,12 @@
-package src.Classes_Loja;
+package src.ClassesLoja;
+
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Person implements Serializable{
+public class Person implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
     protected String name;
     protected char gender;
     protected LocalDate birthdate;
@@ -17,7 +21,7 @@ public class Person implements Serializable{
         this.nif = 0;
     }
 
-    public Person(String name, int tel, int nif){
+    public Person(String name, int tel, int nif) {
         this.name = name;
         this.gender = ' ';
         this.birthdate = null;
@@ -74,26 +78,26 @@ public class Person implements Serializable{
     }
 
     public String toString() {
-        String s = "\nName = " + name + "\nBirthdate = " + birthdate + "\nTel = " + tel + "\nNIF = " + nif;
-        if ( gender != ' ' ){
-            s += "\nGender = " + gender;
+        String s = "\nNome = " + name +  "\nTel = " + tel + "\nNIF = " + nif;
+        if (gender != ' ') {
+            s += "\nGénero = " + gender;
         }
-        if ( birthdate != null ){
-            s += "\nBirthdate = " + birthdate;
+        if (birthdate != null) {
+            s += "\nData de Nascimento = " + birthdate;
         }
         return s;
     }
 
-    public boolean equals(Object obj){
-        if ( obj != null && obj.getClass() == this.getClass() ) {
+    public boolean equals(Object obj) {
+        if (obj != null && obj.getClass() == this.getClass()) {
             Person p = (Person) obj;
             return name.equals(p.name) && gender == p.gender && birthdate.equals(p.birthdate) && tel == p.tel && nif == p.nif;
-        }else{
+        } else {
             return false;
         }
     }
 
-    public Object clone(){
+    public Object clone() {
         Person p = new Person(name, gender, birthdate, tel, nif);
         return p;
     }

@@ -1,5 +1,4 @@
-package src.Classes_Loja;
-import java.io.Serializable;
+package src.ClassesLoja;
 
 public class Employee extends Person implements Serializable {
     private double salary;
@@ -34,8 +33,7 @@ public class Employee extends Person implements Serializable {
     }
 
     public String toString(){
-        String s = super.toString() + "\nSalary: " + salary + "\nPosition: " + position + "\n";
-        return s;
+        return super.toString() + "\nSalário " + salary + "\nPosição: " + position + "\n";
     }
 
     public boolean equals(Object obj){
