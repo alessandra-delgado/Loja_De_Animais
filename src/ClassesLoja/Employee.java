@@ -1,6 +1,6 @@
 package src.ClassesLoja;
 
-public class Employee extends Person implements Serializable {
+public class Employee extends Person {
     private double salary;
     private String position;
 
